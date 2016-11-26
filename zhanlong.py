@@ -44,10 +44,6 @@ def arguments():
                         help='Labels to add as metadata to the epub')
     args = parser.parse_args()
 
-    # try:
-    #     args.title
-    # except AttributeError:
-    #     args.title = "untitled"
     if not hasattr(args, "title"):
         args.title = 'untitled'
 
