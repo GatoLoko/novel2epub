@@ -186,4 +186,9 @@ if __name__ == "__main__":
         myspine.append(i)
     book.spine = myspine
 
+    if args.debug:
+        print(args)
+        mem = psutil.Process(os.getpid()).memory_info()[0] / float(2 ** 20)
+        print("Used memory: %s MB" % round(mem, 1))
+
     epub.write_epub(filename, book, {})
