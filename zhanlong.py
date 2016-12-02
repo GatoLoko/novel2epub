@@ -17,9 +17,9 @@ import re
 from string import Template
 
 # Regex for HTML cleanup
-replacement = re.compile('<div class="innerContent" ng-class="fontClass">'
-                         '|</div>|<span style="font-weight: 400">|</span>|'
-                         '<p>&#160;</p>')
+# WARNING: The "space" character between p tags isn't really an space character
+cleanup = re.compile('<div class="innerContent" ng-class="fontClass">|</div>'
+                     '|<span style="font-weight: 400">|</span>|<p> </p>')
 # Regex for uncensoring
 damnit = re.compile('d\*m\*t|d\*mn\*t|d\*mmit')
 damned = re.compile('d\*mn\*d')
@@ -103,7 +103,7 @@ def get_chapter(url):
     text = str(soup_text)
 
     # HTML cleanup
-    text = replacement.sub('', text)
+    text = cleanup.sub('', text)
 
     # Fixing common typos
 
