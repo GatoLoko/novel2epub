@@ -95,7 +95,7 @@ def get_chapter(url):
     html_title = html.find('title').text
     chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
     print(chapter_title)
-    chapter_file = chapter_title.replace(' ', '') + '.xhtml'
+    chapter_file = chapter_title.replace(' ', '_').replace(':', '') + '.xhtml'
     print(chapter_file)
     soup_text = html.find('div', 'innerContent')
     for i in soup_text.find_all('p', {'style': 'text-align: center;'}):
