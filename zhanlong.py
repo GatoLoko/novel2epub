@@ -97,7 +97,10 @@ def get_chapter(url):
     print(chapter_title)
     chapter_file = chapter_title.replace(' ', '_').replace(':', '') + '.xhtml'
     print(chapter_file)
-    soup_text = html.find('div', 'innerContent')
+    # Extract the main text DIV content and join all strings into a single one
+    soup_str = "".join(map(str, html.find('div', 'innerContent').contents))
+    # Turns the string back into a soup
+    soup_text = BeautifulSoup(soup_str, 'lxml')
     for i in soup_text.find_all('p', {'style': 'text-align: center;'}):
         i.decompose()
     text = str(soup_text)
