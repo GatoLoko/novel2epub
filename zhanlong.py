@@ -15,6 +15,7 @@ import socket
 from bs4 import BeautifulSoup
 import re
 from string import Template
+import common
 
 # Regex for HTML cleanup
 # WARNING: The "space" character between p tags isn't really an space character
@@ -68,30 +69,9 @@ def genlist(start, end):
     return chapterlist
 
 
-def get_html(url):
-    tryes = 5
-    html = ""
-    while tryes > 0:
-        try:
-            req = urllib.request.Request(url)
-            req.add_header('User-Agent', 'Mozilla/5.0 (Linux x86_64)')
-            request = urllib.request.urlopen(req)
-            html = BeautifulSoup(request.read(), "lxml")
-            break
-        except socket.timeout:
-            tryes -= 1
-        except urllib.error.URLError as error:
-            if isinstance(error.reason, socket.timeout):
-                tryes -= 1
-            else:
-                print("URL error: " + error.reason)
-                quit()
-    return html
-
-
 def get_chapter(url):
     print("Processing: " + url)
-    html = get_html(url)
+    html = common.get_html(url)
     html_title = html.find('title').text
     chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
     print(chapter_title)
