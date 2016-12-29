@@ -27,6 +27,8 @@ import urllib.error
 import urllib.parse
 from bs4 import BeautifulSoup
 import socket
+import gzip
+from io import BytesIO
 
 
 def get_html(url):
@@ -34,11 +36,18 @@ def get_html(url):
     html = ""
     while tryes > 0:
         try:
-            # TODO: Add support for compressed content
             req = urllib.request.Request(url)
+            # Accept gziped content
+            req.add_header('Accepting-encoding', 'gzip')
+            # Fake user aggent
             req.add_header('User-Agent', 'Mozilla/5.0 (Linux x86_64)')
             request = urllib.request.urlopen(req)
-            html = BeautifulSoup(request.read(), "lxml")
+            if request.info().get('Content-Encoding') == 'gzip':
+                buf = BytesIO(request.read())
+                f = gzip.GzipFile(fileobj=buf)
+                html = BeautifulSoup(f.read(), 'lxml')
+            else:
+                html = BeautifulSoup(request.read(), "lxml")
             break
         except socket.timeout:
             tryes -= 1
@@ -49,4 +58,3 @@ def get_html(url):
                 print("URL error: " + error.reason)
                 quit()
     return html
-
