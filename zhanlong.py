@@ -10,8 +10,6 @@ import os
 import argparse
 import psutil
 from ebooklib import epub
-import urllib.request
-import socket
 from bs4 import BeautifulSoup
 import re
 from string import Template
