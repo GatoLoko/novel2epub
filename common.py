@@ -58,3 +58,24 @@ def get_html(url):
                 print("URL error: " + error.reason)
                 quit()
     return html
+
+
+def get_image(cover_url):
+    # print(cover_url)
+    tries = 5
+    while tries > 0:
+        try:
+            req = urllib.request.Request(cover_url)
+            req.add_header('User-agent', 'Mozilla/5.0 (Linux x86_64)')
+            request = urllib.request.urlopen(req)
+            temp = request.read()
+            with open('cover.jpg', 'wb') as f:
+                f.write(temp)
+            tries == 0
+            # break
+            return 1
+        except Exception as error:
+            tries -= 1
+            print("Can't retrieve the image")
+            print(error)
+            return 0

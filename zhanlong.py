@@ -106,6 +106,22 @@ def get_chapter(url):
     return chapter
 
 
+###############################################################################
+# TODO: Remove this block when the fix is released
+# Something goes wrong when adding an image as a cover, and we need to work
+# around it by replacing the get_template function with our own that takes care
+# of properly encoding the template as utf8.
+# There is a bug reported, and this will become unnecesary once the fix gets
+# into the distributions.
+original_get_template = epub.EpubBook.get_template
+
+
+def new_get_template(*args, **kwargs):
+        return original_get_template(*args, **kwargs).encode(encoding='utf8')
+epub.EpubBook.get_template = new_get_template
+###############################################################################
+
+
 if __name__ == "__main__":
     # TODO: Extract this variables
     origin = "http://gravitytales.com/novel/Zhan-Long"
@@ -118,6 +134,11 @@ if __name__ == "__main__":
     print("Chapters: " + str(len(chapterlist)))
     print("Filename: " + filename)
 
+    origin_html = common.get_html(origin)
+    img_ptrn = re.compile('.*background-image:\surl\((.*)\);')
+    div = str(origin_html.find('div', id='coverImg'))
+    cover_url = img_ptrn.match(div).group(1)
+
     book = epub.EpubBook()
     book.set_title(args.title)
     book.set_language('en')
@@ -125,6 +146,13 @@ if __name__ == "__main__":
     if hasattr(args, 'labels'):
         for label in args.labels:
             book.add_metadata('DC', 'subject', label)
+    # Add a cover if it's available
+    if common.get_image(cover_url):
+        cover = True
+        book.set_cover(file_name='cover.jpg', content=open('cover.jpg',
+                                                           'rb').read(),
+                       create_page=True)
+    os.remove('cover.jpg')
 
     allchapters = []
 
@@ -169,9 +197,11 @@ if __name__ == "__main__":
     book.add_item(epub.EpubNav())
 
     # Basic spine
-    myspine = [intro_ch, 'nav']
-    for i in allchapters:
-        myspine.append(i)
+    myspine = []
+    if cover:
+        myspine.append('cover')
+    myspine.extend([intro_ch, 'nav'])
+    myspine.extend(allchapters)
     book.spine = myspine
 
     if args.debug:
