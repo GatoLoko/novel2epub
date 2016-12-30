@@ -15,10 +15,6 @@ import re
 from string import Template
 import common
 
-# Regex for HTML cleanup
-# WARNING: The "space" character between p tags isn't really an space character
-cleanup = re.compile('<div class="innerContent" ng-class="fontClass">|</div>'
-                     '|<span style="font-weight: 400">|</span>|<p> </p>')
 # Regex for uncensoring
 damnit = re.compile('d\*m\*t|d\*mn\*t|d\*mmit')
 damned = re.compile('d\*mn\*d')
@@ -81,12 +77,21 @@ def get_chapter(url):
     soup_text = BeautifulSoup(soup_str, 'lxml')
     for i in soup_text.find_all('p', {'style': 'text-align: center;'}):
         i.decompose()
-    text = str(soup_text)
-
     # HTML cleanup
-    text = cleanup.sub('', text)
+    # Remove all atributes from all tags
+    for tag in soup_text.findAll(True):
+        tag.attrs = {}
+    # Remove empty paragrafs, including those wich only contain br tags or the
+    # weird space character
+    for paragraf in soup_text.findAll(['p', 'span']):
+        if len(paragraf.text) == 0 or paragraf.text in [' ', '。']:
+            paragraf.decompose()
+    # Remove stray br tags
+    for br in soup_text.findAll('br'):
+        br.decompose()
 
-    # Fixing common typos
+    # Turn the soup into text
+    text = str(soup_text)
 
     # Undo some ridiculous censoring
     text = damnit.sub('damn it', text)
