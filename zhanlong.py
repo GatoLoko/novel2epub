@@ -24,8 +24,8 @@ fuck = re.compile('fxck')
 def arguments():
     parser = argparse.ArgumentParser(
         description="Download web stories and stores them as epub.",
-        epilog="This script doesn't support actualizing an existing epub with" +
-               "new chapters, so it regenerates them from scratch.",
+        epilog="This script doesn't support actualizing an existing epub" +
+               " with new chapters, so it regenerates them from scratch.",
         argument_default=argparse.SUPPRESS)
     parser.add_argument('start', metavar='start', type=int,
                         help='First chapter in the series')
@@ -166,7 +166,8 @@ if __name__ == "__main__":
     # Define CSS style
     with open("CSS/nav.css") as style_nav:
         nav_css = epub.EpubItem(uid="style_nav", file_name="style/nav.css",
-                                media_type="text/css", content=style_nav.read())
+                                media_type="text/css",
+                                content=style_nav.read())
     with open("CSS/body.css") as style_body:
         body_css = epub.EpubItem(uid="style_body", file_name="style/body.css",
                                  media_type="text/css",
