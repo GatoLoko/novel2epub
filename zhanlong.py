@@ -56,9 +56,9 @@ def genlist(start, end):
     for i in range(start, end+1):
         url = baseurl + str(i)
         if i in [12, 30, 31, 32, 33, 34, 35, 236, 237, 238, 472]:
-            url = url + "-2"
+            url += "-2"
         elif i is 11:
-            url = url + "-3"
+            url += "-3"
         chapterlist.append(url)
     return chapterlist
 
