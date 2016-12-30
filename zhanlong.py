@@ -107,6 +107,10 @@ def get_chapter(url):
 
 
 if __name__ == "__main__":
+    # TODO: Extract this variables
+    origin = "http://gravitytales.com/novel/Zhan-Long"
+    author = 'Shi Luo Ye'
+
     args = arguments()
     chapterlist = genlist(args.start, args.end)
     filename = args.title + ".epub"
@@ -146,9 +150,7 @@ if __name__ == "__main__":
     # Introduction
     intro_ch = epub.EpubHtml(title=args.title, file_name='intro.xhtml')
     intro_ch.add_item(body_css)
-    # TODO: Extract this variables
-    origin = "http://gravitytales.com/novel/Zhan-Long"
-    author = 'Shi Luo Ye'
+
     intro_ch = epub.EpubHtml(title='Introduction', file_name='intro.xhtml')
     intro_ch.add_item(body_css)
     with open('HTML/intro.xhtml') as infile:
