@@ -80,7 +80,7 @@ def get_image(cover_url, referer):
                 temp = request.read()
             with open('cover.jpg', 'wb') as f:
                 f.write(temp)
-            tries == 0
+            tries = 0
             # break
             return 1
         except Exception as error:
