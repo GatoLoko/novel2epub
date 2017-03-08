@@ -153,7 +153,7 @@ if __name__ == "__main__":
         book.set_cover(file_name='cover.jpg', content=open('cover.jpg',
                                                            'rb').read(),
                        create_page=True)
-    os.remove('cover.jpg')
+        os.remove('cover.jpg')
 
     allchapters = []
 
