@@ -42,6 +42,7 @@ def get_html(url):
             # Fake user aggent
             req.add_header('User-Agent', 'Mozilla/5.0 (Linux x86_64)')
             request = urllib.request.urlopen(req)
+            # referer = request.META.get('HTTP_REFERER')
             if request.info().get('Content-Encoding') == 'gzip':
                 buf = BytesIO(request.read())
                 f = gzip.GzipFile(fileobj=buf)

@@ -15,6 +15,7 @@ import re
 from string import Template
 import common
 
+# TODO: Extract to plugin
 # Regex for uncensoring
 damnit = re.compile('d\*m\*t|d\*mn\*t|d\*mmit')
 damned = re.compile('d\*mn\*d')
@@ -50,6 +51,7 @@ def arguments():
 
 
 def genlist(start, end):
+    # TODO: Extract to plugin
     baseurl = 'http://gravitytales.com/novel/Zhan-Long/zl-chapter-'
     chapterlist = []
     # end = end + 1
@@ -73,7 +75,7 @@ def get_chapter(url):
     print(chapter_file)
     # Extract the main text DIV content and join all strings into a single one
     soup_str = "".join(map(str, html.find('div', 'innerContent').contents))
-    # Turns the string back into a soup
+    # Turn the string back into a soup
     soup_text = BeautifulSoup(soup_str, 'lxml')
     for i in soup_text.find_all('p', {'style': 'text-align: center;'}):
         i.decompose()
@@ -180,7 +182,6 @@ if __name__ == "__main__":
     # Introduction
     intro_ch = epub.EpubHtml(title=args.title, file_name='intro.xhtml')
     intro_ch.add_item(body_css)
-
     intro_ch = epub.EpubHtml(title='Introduction', file_name='intro.xhtml')
     intro_ch.add_item(body_css)
     with open('HTML/intro.xhtml') as infile:
