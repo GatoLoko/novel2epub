@@ -66,11 +66,18 @@ def get_image(cover_url, referer):
     while tries > 0:
         try:
             req = urllib.request.Request(cover_url)
+            # Accept gziped content
+            req.add_header('Accepting-encoding', 'gzip')
+            # Fake user agent
             req.add_header('User-agent', 'Mozilla/5.0 (Linux x86_64)')
             # Referer?
             req.add_header('referer', referer)
             request = urllib.request.urlopen(req)
-            temp = request.read()
+            if request.info().get('Content-Encoding') == 'gzip':
+                buf = BytesIO(request.read())
+                temp = gzip.GzipFile(fileobj=buf)
+            else:
+                temp = request.read()
             with open('cover.jpg', 'wb') as f:
                 f.write(temp)
             tries == 0
