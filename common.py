@@ -60,13 +60,15 @@ def get_html(url):
     return html
 
 
-def get_image(cover_url):
+def get_image(cover_url, referer):
     # print(cover_url)
     tries = 5
     while tries > 0:
         try:
             req = urllib.request.Request(cover_url)
             req.add_header('User-agent', 'Mozilla/5.0 (Linux x86_64)')
+            # Referer?
+            req.add_header('referer', referer)
             request = urllib.request.urlopen(req)
             temp = request.read()
             with open('cover.jpg', 'wb') as f:
