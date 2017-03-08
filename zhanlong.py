@@ -147,7 +147,8 @@ if __name__ == "__main__":
         for label in args.labels:
             book.add_metadata('DC', 'subject', label)
     # Add a cover if it's available
-    if common.get_image(cover_url):
+    cover = False
+    if common.get_image(cover_url, origin):
         cover = True
         book.set_cover(file_name='cover.jpg', content=open('cover.jpg',
                                                            'rb').read(),
