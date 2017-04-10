@@ -13,13 +13,18 @@ from ebooklib import epub
 from bs4 import BeautifulSoup
 import re
 from string import Template
-import common
 
 # TODO: Extract to plugin
 # Regex for uncensoring
 damnit = re.compile('d\*m\*t|d\*mn\*t|d\*mmit')
 damned = re.compile('d\*mn\*d')
 fuck = re.compile('fxck')
+import sys
+sys.path.append("Novels")
+try:
+    import common
+except:
+    raise
 
 
 def arguments():
