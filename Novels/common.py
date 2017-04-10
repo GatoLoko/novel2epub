@@ -31,6 +31,27 @@ import gzip
 from io import BytesIO
 
 
+# List of User-Agent strings we may want to try
+minimum = 'Mozilla/5.0 (Linux x86_64)'
+
+# Woxter QX95
+# Mozilla/5.0 (Linux; Android 4.4.2; Woxter QX95 Build/KOT49H)
+#     AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0
+#     Safari/537.36
+qx95 = 'Mozilla/5.0 (Linux; Android 4.4.2; Woxter QX95 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Safari/537.36'
+
+# Webview (KitKat & Lolipop)
+# Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36
+#     (KHTML, like Gecko) Version 4.0 Chrome/30.0.0.0 Mobile Safari/537.36
+
+# Nexus 5 WebView (nuevo):
+# Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv)
+#     AppleWebKit/537.36 (KHTML, like Gecko) Version 4.0 Chrome/43.0.2357.65
+#     Mobile Safari/537.36
+
+user_agent = qx95
+
+
 def get_html(url):
     tryes = 5
     html = ""
@@ -39,7 +60,7 @@ def get_html(url):
     # Accept gziped content
     req.add_header('Accepting-encoding', 'gzip')
     # Fake user aggent
-    req.add_header('User-Agent', 'Mozilla/5.0 (Linux x86_64)')
+    req.add_header('User-Agent', user_agent)
     while tryes > 0:
         try:
             request = urllib.request.urlopen(req)
