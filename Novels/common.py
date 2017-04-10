@@ -43,13 +43,6 @@ def get_html(url):
     while tryes > 0:
         try:
             request = urllib.request.urlopen(req)
-            # referer = request.META.get('HTTP_REFERER')
-            if request.info().get('Content-Encoding') == 'gzip':
-                buf = BytesIO(request.read())
-                f = gzip.GzipFile(fileobj=buf)
-                html = BeautifulSoup(f.read(), 'lxml')
-            else:
-                html = BeautifulSoup(request.read(), "lxml")
             break
         except socket.timeout:
             tryes -= 1
@@ -59,6 +52,13 @@ def get_html(url):
             else:
                 print("URL error: " + error.reason)
                 quit()
+    if request.info().get('Content-Encoding') == 'gzip':
+        buf = BytesIO(request.read())
+        f = gzip.GzipFile(fileobj=buf)
+        html = BeautifulSoup(f.read(), 'lxml')
+    else:
+        html = BeautifulSoup(request.read(), "lxml")
+    request.close()
     return html
 
 
