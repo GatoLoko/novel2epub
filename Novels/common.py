@@ -34,13 +34,14 @@ from io import BytesIO
 def get_html(url):
     tryes = 5
     html = ""
+    # Build our request
+    req = urllib.request.Request(url)
+    # Accept gziped content
+    req.add_header('Accepting-encoding', 'gzip')
+    # Fake user aggent
+    req.add_header('User-Agent', 'Mozilla/5.0 (Linux x86_64)')
     while tryes > 0:
         try:
-            req = urllib.request.Request(url)
-            # Accept gziped content
-            req.add_header('Accepting-encoding', 'gzip')
-            # Fake user aggent
-            req.add_header('User-Agent', 'Mozilla/5.0 (Linux x86_64)')
             request = urllib.request.urlopen(req)
             # referer = request.META.get('HTTP_REFERER')
             if request.info().get('Content-Encoding') == 'gzip':
