@@ -29,6 +29,7 @@ from bs4 import BeautifulSoup
 import socket
 import gzip
 from io import BytesIO
+import re
 
 
 # List of User-Agent strings we may want to try
@@ -50,6 +51,13 @@ qx95 = 'Mozilla/5.0 (Linux; Android 4.4.2; Woxter QX95 Build/KOT49H) AppleWebKit
 #     Mobile Safari/537.36
 
 user_agent = qx95
+
+
+class Volume():
+    def __init__(self, title, first, last):
+        self.title = title
+        self.first = first
+        self.last = last
 
 
 def get_html(url):
@@ -83,31 +91,52 @@ def get_html(url):
     return html
 
 
-def get_image(cover_url, referer):
-    # print(cover_url)
-    tries = 5
-    while tries > 0:
-        try:
-            req = urllib.request.Request(cover_url)
-            # Accept gziped content
-            req.add_header('Accepting-encoding', 'gzip')
-            # Fake user agent
-            req.add_header('User-agent', 'Mozilla/5.0 (Linux x86_64)')
-            # Referer?
-            req.add_header('referer', referer)
-            request = urllib.request.urlopen(req)
-            if request.info().get('Content-Encoding') == 'gzip':
-                buf = BytesIO(request.read())
-                temp = gzip.GzipFile(fileobj=buf)
-            else:
-                temp = request.read()
-            with open('cover.jpg', 'wb') as f:
-                f.write(temp)
-            tries = 0
-            # break
-            return 1
-        except Exception as error:
-            tries -= 1
-            print("Can't retrieve the image")
-            print(error)
-            return 0
+def get_chapter(url):
+    print("Processing: " + url)
+    html = get_html(url)
+    html_title = html.find('title').text
+    if 'gravitytales' in url:
+        chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
+        # Extract the main text DIV content and turn it into a string
+        contents = html.find('div', 'innerContent').contents
+    soup_str = "".join(map(str, contents))
+    # Before turning the html into a soup, replace all weird chinese spaces
+    # with actual spaces.
+    soup_str = soup_str.replace('　', ' ')
+    # And replace double br tags with a paragraph break
+    soup_str = re.sub('<br/>[\t\n\r\f\v\s　]*<br/>', '</p>\n<p>', soup_str)
+
+    print(chapter_title)
+    chapter_file = chapter_title.replace(' ', '_') + '.xhtml'
+    # FAT does NOT allow:\/:*?"<>|"
+    for i in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
+        if i in chapter_file:
+            chapter_file = chapter_file.replace(i, '')
+    print(chapter_file)
+    # Then turn the string back into a soup
+    soup_text = BeautifulSoup(soup_str, 'lxml')
+    # TODO: Isn't this covered by the next block?
+    if 'gravitytales' in url:
+        for i in soup_text.find_all('p', {'style': 'text-align: center;'}):
+            i.decompose()
+    # Remove all atributes from all tags
+    for tag in soup_text.findAll(True):
+        tag.attrs = {}
+    # Remove empty paragrafs, including those which only contain br tags or the
+    # weird space character (why the &·$% do you have a paragraf with nothing?)
+    for paragraf in soup_text.findAll(['span', 'p']):
+        if len(paragraf.text) == 0 or paragraf.text in [' ', '。']:
+            paragraf.decompose()
+    # Remove stray br tags
+    for br in soup_text.findAll('br'):
+        br.decompose()
+    # Turn the soup into text
+    # text = str(soup_text)
+    text = soup_text.prettify()
+
+    # Undo some ridiculous censoring
+    # text = damnit.sub('damn it', text)
+    # text = damned.sub('damned', text)
+    # text = fuck.sub('fuck', text)
+
+    return chapter_title, chapter_file, text
