@@ -28,8 +28,21 @@ volumes = {'1': Volume('1', 1, 50),
            '2': Volume('2', 51, 100),
            '3': Volume('3', 101, 150),
            '4': Volume('4', 151, 200),
-           '5': Volume('5', 201, 213),
-           'X': Volume('X - END', 954, 954)
+           '5': Volume('5', 201, 250),
+           '6': Volume('6', 251, 254),
+           '7..': Volume('5', 301, 349),
+           '8..': Volume('5', 351, 400),
+           '9..': Volume('5', 401, 449),
+           '10.': Volume('5', 450, 500),
+           '11.': Volume('5', 501, 549),
+           '12.': Volume('5', 551, 600),
+           '13.': Volume('5', 601, 649),
+           '14.': Volume('5', 651, 700),
+           '15.': Volume('5', 701, 749),
+           '16.': Volume('5', 751, 800),
+           '17.': Volume('5', 801, 849),
+           '18.': Volume('5', 851, 900),
+           '19.': Volume('5 - END', 901, 954),
            }
 
 origin = 'http://gravitytales.com/novel/Chaotic-Lightning-Cultivation/'
