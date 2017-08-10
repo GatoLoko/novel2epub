@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+# -*- coding: utf-8 -*-
+
+# Copyright (C) 2017 GatoLoko
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+
+"""
+Created on 31/07/17
+
+@author: GatoLoko
+"""
+
+from common import Volume
+
+volumes = {'1': Volume('1 - ',
+                       1, 26),
+           '2': Volume('2 - ',
+                       27, 48),
+           '3': Volume('3 - ',
+                       49, 70),
+           '4': Volume('4 - ',
+                       71, 94),
+           '5': Volume('5 - ',
+                       95, 104),
+           'X': Volume('X - END',
+                       2492, 2492)
+           }
+
+origin = 'http://www.wuxiaworld.com/bem-index/'
+author = 'Mekenlo (메켄로)'
+cover_file = 'Covers/BookEatingMagician.jpg'
+title = 'The Book Eating Magician - Vol'
+
+synopsis_text = """
+[‘Lightning Magic Primer’ has been consumed. Your understanding is very high.]
+[The 2nd Circle magic ‘Lightning Bolt’ has been acquired.]</p>
+
+<p>The unprecedented magician who will eat all the magic books of the world has
+appeared.
+"""
+
+
+def genlist(start, end):
+    global origin
+    chapterlist = []
+    for i in range(start, end+1):
+        url = origin + "bem-chapter-" + str(i)
+        chapterlist.append(url)
+    return chapterlist
