@@ -29,7 +29,14 @@ volumes = {'1': Volume('1 - Transmigration',
            '2': Volume('2 - Twilight zone',
                        288, 391),
            '3': Volume('3 - Morning Star chronicles',
-                       392, 590)}
+                       392, 628),
+           '4': Volume('4 - Passage of bloodlines',
+                       629, 786),
+           '5': Volume('5 - World of gods',
+                       787, 1043),
+           '6': Volume('6 - Final war',
+                       1044, 1144)
+           }
 
 origin = 'http://www.wuxiaworld.com/wmw-index/'
 author = 'Wen Chao Gong/Plagiarist (文抄公)'
