@@ -26,8 +26,15 @@ from common import Volume
 
 volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '2': Volume('2 - Wandering the Beiyan province', 91, 180),
-           '3': Volume('3 - The Crafting School', 181, 195),
-           'X': Volume('X - End', 1356, 1356)
+           '3': Volume('3 - The Crafting School', 181, 361),
+           '4': Volume('4 - Soulbeast forest', 362, 391),
+           '5': Volume('5 - ', 511, 511),
+           '6': Volume('6 - ', 701, 701),
+           '7': Volume('7 - ', 841, 841),
+           '8': Volume('8 - ', 1001, 1001),
+           '9': Volume('9 - ', 1051, 1051),
+           '10': Volume('10 - ', 1161, 1161),
+           '11': Volume('11 - ', 1291, 1356)
            }
 
 origin = 'http://www.wuxiaworld.com/usaw-index/'
