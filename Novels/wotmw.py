@@ -63,6 +63,6 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + 'wmw-chapter-' + str(i)
+        url = origin + 'wmw-chapter-' + str(i) + '/'
         chapterlist.append(url)
     return chapterlist
