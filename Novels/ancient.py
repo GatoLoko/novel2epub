@@ -47,9 +47,18 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
            '7': Volume('7 - Path of Martial Saint, heart of the strong',
                        509, 594),
            '8': Volume('8 - Through the flourishing Central Continent',
-                       595, 709),
-           '9': Volume('9 - Hatred from the former years',
-                       909, 968),
+                       595, 744),
+           '9': Volume('9 - Southern Vieweing Continent, hatred of the former'
+                       ' years',
+                       745, 825),
+           '10': Volume('10 - Eastern Victory Divine continent, exquisite'
+                        ' bell spirit',
+                        826, 935),
+           '11': Volume('11 - Storm in the Fifth Continent, the northern'
+                        ' Sacred Lu Continent',
+                        936, 1060),
+           '12': Volume('12 - ',
+                        1061, 1213),
            'X': Volume('X - END',
                        2492, 2492)
            }
