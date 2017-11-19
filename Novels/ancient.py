@@ -92,6 +92,7 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + "ast-chapter-" + str(i)
-        chapterlist.append(url)
+        if i != 1184:
+            url = origin + "ast-chapter-" + str(i)
+            chapterlist.append(url)
     return chapterlist
