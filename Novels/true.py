@@ -68,8 +68,12 @@ volumes = {'1': Volume('1 - Lian tribal clan',
                         872, 916),
            '22': Volume('22 - Alliance chanllenger',
                         917, 949),
-           '23': Volume('23 - ',
-                        950, 982)
+           '23': Volume('23 - Disciple recruitment',
+                        950, 988),
+           '24': Volume('24 - Azure Wood Great World',
+                        989, 1040),
+           'X': Volume('X - ',
+                       9999, 9999)
            }
 
 origin = 'http://www.wuxiaworld.com/truemartial-world-index/'
