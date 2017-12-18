@@ -35,7 +35,7 @@ volumes = {'1': Volume('1 - Transmigration',
            '5': Volume('5 - World of gods',
                        787, 1043),
            '6': Volume('6 - Final war',
-                       1044, 1188)
+                       1044, 1200)
            }
 
 origin = 'http://www.wuxiaworld.com/wmw-index/'
