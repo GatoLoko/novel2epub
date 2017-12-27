@@ -58,7 +58,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         ' Sacred Lu Continent',
                         936, 1060),
            '12': Volume('12 - ',
-                        1061, 1246),
+                        1061, 1292),
            'X': Volume('X - END',
                        2492, 2492)
            }

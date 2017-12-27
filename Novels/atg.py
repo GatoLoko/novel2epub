@@ -43,7 +43,7 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '8': Volume('8 - Cloud\'s End Mirage',
                        801, 900),
            '9': Volume('9 - Realm of the gods',
-                       901, 969),
+                       901, 986),
            'X': Volume('X - END',
                        0000, 0000)
            }
