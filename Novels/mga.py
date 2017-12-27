@@ -43,9 +43,9 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '9': Volume('9 - ',
                        2149, 2328),
            '10': Volume('10 - ',
-                       2149, 2328),
+                        2149, 2328),
            '11': Volume('11 - ',
-                       2149, 2328),
+                        2149, 2328),
            'X': Volume('X - ',
                        9999, 9999)
            }
@@ -56,15 +56,15 @@ cover_file = 'Covers/mga.jpg'
 title = 'Martial God Asura - Vol'
 
 synopsis_text = """
-Regarding potential—even if you are not considered a genius, you can still learn
-Mysterious Techniques and martial skills. Anyone can be enlightened without a
-master.</p>
+Regarding potential—even if you are not considered a genius, you can still
+learn Mysterious Techniques and martial skills. Anyone can be enlightened
+without a master.</p>
 
 <p>Regarding strength—despite having a myriad of artifacts, you may not defeat
 my army of World Spirits.</p>
 
-<p>Who am I? All of the world’s living perceives me as Asura, but I was ignorant
-to such a thing. I thus ascend to be the Martial God as Asura.
+<p>Who am I? All of the world’s living perceives me as Asura, but I was
+ignorant to such a thing. I thus ascend to be the Martial God as Asura.
 """
 
 
@@ -72,8 +72,8 @@ def genlist(start, end):
     global origin
     chapterlist = []
     # unpadded = list(range(1, 58)) + \
-    #     [133, 151, 153, 156, 157, 160, 223, 245, 282, 301, 434, 461, 472, 475,
-    #      478, 480, 510, 512, 518, 527, 530, 541, 633]
+    #     [133, 151, 153, 156, 157, 160, 223, 245, 282, 301, 434, 461, 472,
+    #      475, 478, 480, 510, 512, 518, 527, 530, 541, 633]
     # for i in range(start, end+1):
     #     if i in unpadded or i > 654:
     #         url = origin + 'tmw-chapter-' + str(i)
