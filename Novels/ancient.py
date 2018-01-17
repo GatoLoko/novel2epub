@@ -61,14 +61,14 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         ' force until the mountains and rivers crumble',
                         1061, 1133),
            '13': Volume('13 - Arriving at the Four Continents, Hundred'
-                        'Dynasties, Hundred States. The path of a state'
+                        ' Dynasties, Hundred States. The path of a state'
                         ' master',
                         1134, 1313),
            '14': Volume('14 - Soaring Dragon, dancing Phoenix, Haohan'
                         ' continent',
                         1314, 1338),
            '15': Volume('15 - Demons & monsters dancing in riotous revelry'
-                        'beautiful women are like poetry',
+                        ' beautiful women are like poetry',
                         1594, 1794),
            '16': Volume('16 - Oceanic Grand World, Legend of the Nine'
                         ' Continents',
