@@ -55,6 +55,8 @@ original_get_template = epub.EpubBook.get_template
 
 def new_get_template(*args, **kwargs):
         return original_get_template(*args, **kwargs).encode(encoding='utf8')
+
+
 epub.EpubBook.get_template = new_get_template
 ###############################################################################
 
