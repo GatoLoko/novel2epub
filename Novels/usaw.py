@@ -46,8 +46,8 @@ synopsis_text = """Just as a gamer found an overpowered skill book called ‘Ite
 Upgrade’ in the hottest virtual reality role-playing game on Earth, something
 happened to the game’s system, causing his soul to leave his body and go to
 another dimension. Common sense dictates that he would be born anew then become
-the greatest overlord of this world by making use of his advanced knowledge. Not
-in this case! He was already dead. Only some fragments of his soul and that
+the greatest overlord of this world by making use of his advanced knowledge.
+Not in this case! He was already dead. Only some fragments of his soul and that
 skill book managed to get into that dimension and merge with an ordinary common
 youngster called Bai Yunfei.</p>
 
@@ -56,9 +56,9 @@ no limits. There was a group of humans here who could cultivate the power of
 their own souls then control their bodies, the natural elements and even other
 people’s souls with that power! These special beings were called — soul
 cultivators. Come witness how the several fragments of the dead
-inter-dimensional traveler’s soul and that skill book, which was not governed by
-the laws of this plane, were going to help Bai Yunfei become a legendary soul
-cultivator and craftsman!
+inter-dimensional traveler’s soul and that skill book, which was not governed
+by the laws of this plane, were going to help Bai Yunfei become a legendary
+soul cultivator and craftsman!
 """
 
 
