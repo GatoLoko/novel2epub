@@ -12,7 +12,8 @@ import psutil
 from ebooklib import epub
 from string import Template
 import sys
-sys.path.append("Novels")
+progdir = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(progdir, "Novels"))
 try:
     import common
 except ImportError:
@@ -100,9 +101,9 @@ if __name__ == "__main__":
         for label in args.labels:
             book.add_metadata('DC', 'subject', label)
     # Add a cover if it's available
-    book.set_cover(file_name='cover.jpg',
-                   content=open(novel.cover_file, 'rb').read(),
-                   create_page=True)
+    with open(os.path.join(progdir, novel.cover_file), 'rb') as coverfile:
+        book.set_cover(file_name='cover.jpg', content=coverfile.read(),
+                       create_page=True)
 
     allchapters = []
 
@@ -116,11 +117,11 @@ if __name__ == "__main__":
         allchapters.append(chapter)
 
     # Define CSS style
-    with open("CSS/nav.css") as style_nav:
+    with open(os.path.join(progdir, "CSS/nav.css")) as style_nav:
         nav_css = epub.EpubItem(uid="style_nav", file_name="style/nav.css",
                                 media_type="text/css",
                                 content=style_nav.read())
-    with open("CSS/body.css") as style_body:
+    with open(os.path.join(progdir, "CSS/body.css")) as style_body:
         body_css = epub.EpubItem(uid="style_body", file_name="style/body.css",
                                  media_type="text/css",
                                  content=style_body.read())
@@ -134,7 +135,7 @@ if __name__ == "__main__":
 
     intro_ch = epub.EpubHtml(title='Introduction', file_name='intro.xhtml')
     intro_ch.add_item(body_css)
-    with open('HTML/intro.xhtml') as infile:
+    with open(os.path.join(progdir, 'HTML/intro.xhtml')) as infile:
         in_template = Template(infile.read())
     intro_ch.content = in_template.substitute(title=title,
                                               author=novel.author,
