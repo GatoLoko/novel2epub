@@ -57,10 +57,22 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
            '11': Volume('11 - Storm in the Fifth Continent, the northern'
                         ' Sacred Lu Continent',
                         936, 1060),
-           '12': Volume('12 - ',
-                        1061, 1292),
-           'X': Volume('X - END',
-                       2492, 2492)
+           '12': Volume('12 - Stepping on Lion King Ridge, trampling with such'
+                        ' force until the mountains and rivers crumble',
+                        1061, 1133),
+           '13': Volume('13 - Arriving at the Four Continents, Hundred'
+                        'Dynasties, Hundred States. The path of a state'
+                        ' master',
+                        1134, 1313),
+           '14': Volume('14 - Soaring Dragon, dancing Phoenix, Haohan'
+                        ' continent',
+                        1314, 1338),
+           '15': Volume('15 - Demons & monsters dancing in riotous revelry'
+                        'beautiful women are like poetry',
+                        1594, 1794),
+           '16': Volume('16 - Oceanic Grand World, Legend of the Nine'
+                        ' Continents',
+                        1795, 2492)
            }
 
 origin = 'http://www.wuxiaworld.com/ast-index/'
