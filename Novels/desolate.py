@@ -99,7 +99,9 @@ volumes = {'1': Volume('1 - Ji Clan of Swallow Mountain',
            '36': Volume('36 - Daolord of the Fourth Step',
                         36, 30),
            '37': Volume('37 - Flamewing God',
-                        37, 3),
+                        37, 31),
+           '38': Volume('38 - Daomerge',
+                        38, 40),
            }
 
 origin = 'http://www.wuxiaworld.com/desolate-era-index/'
