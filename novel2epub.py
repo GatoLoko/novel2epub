@@ -15,7 +15,7 @@ import sys
 sys.path.append("Novels")
 try:
     import common
-except:
+except ImportError:
     raise
 
 
@@ -66,7 +66,7 @@ if __name__ == "__main__":
     try:
         novel = __import__(args.novel)
         print("Loaded %s module" % args.novel)
-    except Exception as error:
+    except ImportError:
         print("Unsuported novel")
         raise
 
