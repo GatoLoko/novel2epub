@@ -27,7 +27,7 @@ from common import Volume
 volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '2': Volume('2 - Wandering the Beiyan province', 91, 180),
            '3': Volume('3 - The Crafting School', 181, 361),
-           '4': Volume('4 - Soulbeast forest', 362, 451),
+           '4': Volume('4 - Soulbeast forest', 362, 458),
            '5': Volume('5 - ', 511, 511),
            '6': Volume('6 - ', 701, 701),
            '7': Volume('7 - ', 841, 841),
