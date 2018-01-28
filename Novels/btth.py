@@ -40,7 +40,7 @@ volumes = {'1': Volume('1', 1, 99),
            '14': Volume('14', 1300, 1399),
            '15': Volume('15', 1400, 1499),
            '16': Volume('16', 1500, 1599),
-           '17': Volume('17', 1600, 1607),
+           '17': Volume('17', 1600, 1619),
            }
 
 origin = 'http://www.wuxiaworld.com/btth-index/'

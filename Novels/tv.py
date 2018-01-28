@@ -25,7 +25,7 @@ Created on 09/01/18
 from common import Volume
 
 volumes = {'1': Volume('1 - ',
-                       1, 92),
+                       1, 102),
            '2': Volume('2 - ',
                        265, 548),
            }
