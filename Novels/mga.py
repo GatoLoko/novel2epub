@@ -35,7 +35,7 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '5': Volume('5 - Battle for Overlord',
                        1559, 2148),
            '6': Volume('6 - Hundred refining ordinary realm',
-                       2149, 2437),
+                       2149, 2558),
            '7': Volume('7 - Thousand great upper realm',
                        2673, 2673),
            '8': Volume('8 - ',
@@ -50,7 +50,7 @@ volumes = {'1': Volume('1 - Battle of dignity',
                        9999, 9999)
            }
 
-origin = 'http://www.wuxiaworld.com/mga-index/'
+origin = 'http://www.wuxiaworld.com/novel/martial-god-asura/'
 author = 'Kindhearted Bee (善良的蜜蜂 / Shan Liang de Mi Feng)'
 cover_file = 'Covers/mga.jpg'
 title = 'Martial God Asura - Vol'

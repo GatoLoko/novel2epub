@@ -27,7 +27,7 @@ Created on 24/01/17
 from common import Volume
 
 volumes = {'1': Volume('1 - Red-Colored calamity',
-                       1, 100),
+                       0, 100),
            '2': Volume('2 - Blue Wind continent',
                        101, 200),
            '3': Volume('3 - Name that shakes the Profound Sky',
@@ -37,20 +37,20 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '5': Volume('5 - Primordial Profound Ark',
                        401, 500),
            '6': Volume('6 - Lordship in Illusory Demon',
-                       500, 650),
+                       501, 650),
            '7': Volume('7 - Heaven Smiting shakes the world',
                        651, 800),
            '8': Volume('8 - Cloud\'s End Mirage',
                        801, 900),
            '9': Volume('9 - Realm of the gods',
-                       901, 1000),
+                       901, 1050),
            '10': Volume('10 - Snow Song\'s flame God',
-                        1001, 1009),
+                        1101, 1200),
            'X': Volume('X - END',
                        0000, 0000)
            }
 
-origin = 'http://www.wuxiaworld.com/atg-index/'
+origin = 'http://www.wuxiaworld.com/novel/against-the-gods/'
 author = 'Mars Gravity (火星引力)'
 cover_file = 'Covers/againstthegods-225x300.jpg'
 title = 'Against the Gods - Vol'
@@ -72,15 +72,13 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        if i == 1:
-            url = origin + "prologue"
-            chapterlist.append(url)
+        if i == 761:
             url = origin + "atg-chapter-" + str(i)
             chapterlist.append(url)
-        elif i == 761:
-            url = origin + "atg-chapter-" + str(i)
+            url = origin + "atg-chapter-" + str(i) + "-05"
             chapterlist.append(url)
-            url = origin + "atg.chapter-" + str(i) + "-5"
+        if i in [1043, 1044]:
+            url = origin + "chapter-" + str(i)
             chapterlist.append(url)
         else:
             url = origin + "atg-chapter-" + str(i)

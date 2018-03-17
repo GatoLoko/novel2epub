@@ -25,12 +25,12 @@ Created on 09/01/18
 from common import Volume
 
 volumes = {'1': Volume('1 - ',
-                       1, 102),
+                       1, 100),
            '2': Volume('2 - ',
-                       265, 548),
+                       101, 123),
            }
 
-origin = 'http://www.wuxiaworld.com/tv-index/'
+origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
 author = 'Li Xianyu (李闲鱼)'
 cover_file = 'Covers/tv.jpg'
 title = 'TranXendig Vision - Vol'
@@ -51,6 +51,6 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + 'tranxending-vision-chapter-' + str(i)
+        url = origin + 'tv-chapter-' + str(i)
         chapterlist.append(url)
     return chapterlist

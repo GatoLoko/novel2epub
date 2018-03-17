@@ -96,12 +96,12 @@ def get_chapter(url):
     html = get_html(url)
     html_title = html.find('title').text
     if 'wuxiaworld' in url:
-        title_parts = html_title.split(' – ')
+        title_parts = html_title.split(' - WuxiaWorld')
         chapter_title = title_parts[0]
         if len(title_parts) == 3:
             chapter_title = title_parts[0] + " - " + title_parts[1]
         # Extract the main text DIV content and turn it into a string
-        contents = html.find('div', itemprop='articleBody').contents
+        contents = html.find('div', 'fr-view').contents
     if 'gravitytales' in url:
         chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
         # Extract the main text DIV content and turn it into a string
@@ -129,12 +129,12 @@ def get_chapter(url):
     # Remove all atributes from all tags
     for tag in soup_text.findAll(True):
         tag.attrs = {}
-    if 'wuxiaworld' in url:
-        # Remove previous and next chapter links in wuxiaworld pages
-        for link in soup_text.findAll('a', text='Previous Chapter'):
-            link.decompose()
-        for link in soup_text.findAll('a', text='Next Chapter'):
-            link.decompose()
+    #if 'wuxiaworld' in url:
+    #    # Remove previous and next chapter links in wuxiaworld pages
+    #    for link in soup_text.findAll('a', text='Previous Chapter'):
+    #        link.decompose()
+    #    for link in soup_text.findAll('a', text='Next Chapter'):
+    #        link.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
     # weird space character (why the &·$% do you have a paragraf with nothing?)
     for paragraf in soup_text.findAll(['span', 'p']):

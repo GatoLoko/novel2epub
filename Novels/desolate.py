@@ -103,10 +103,18 @@ volumes = {'1': Volume('1 - Ji Clan of Swallow Mountain',
            '38': Volume('38 - Daomerge',
                         38, 43),
            '39': Volume('39 - Nuwa',
-                        39, 17),
+                        39, 23),
+           '40': Volume('40 - The five Autarchs',
+                        40, 20),
+           '41': Volume('41 - The Daoguard tower',
+                        41, 26),
+           '42': Volume('42 - The five Truncheon chapters',
+                        42, 21),
+           '43': Volume('43 - Final fate',
+                        43, 8),
            }
 
-origin = 'http://www.wuxiaworld.com/desolate-era-index/'
+origin = 'http://www.wuxiaworld.com/novel/desolate-era/'
 author = 'I Eat Tomatoes （我吃西红柿）'
 cover_file = 'Covers/desolate-era.jpg'
 title = 'Desolate Era - Vol'

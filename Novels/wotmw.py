@@ -38,7 +38,7 @@ volumes = {'1': Volume('1 - Transmigration',
                        1044, 1200)
            }
 
-origin = 'http://www.wuxiaworld.com/wmw-index/'
+origin = 'http://www.wuxiaworld.com/novel/warlock-of-the-magus-world/'
 author = 'Wen Chao Gong/Plagiarist (文抄公)'
 cover_file = 'Covers/wotmw.jpg'
 title = 'Warlock Of The Magus World - Vol'

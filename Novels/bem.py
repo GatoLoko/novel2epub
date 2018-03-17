@@ -49,12 +49,18 @@ volumes = {'1': Volume('1 - ',
            '11': Volume('11 - ',
                         225, 247),
            '12': Volume('12 - ',
-                        248, 265),
+                        248, 269),
+           '13': Volume('13 - ',
+                        270, 290),
+           '14': Volume('14 - ',
+                        291, 304),
+           '15': Volume('15 - ',
+                        314, 314),
            'X': Volume('X - END',
                        2492, 2492)
            }
 
-origin = 'http://www.wuxiaworld.com/bem-index/'
+origin = 'http://www.wuxiaworld.com/novel/the-book-eating-magician/'
 author = 'Mekenlo (메켄로)'
 cover_file = 'Covers/BookEatingMagician.jpg'
 title = 'The Book Eating Magician - Vol'
@@ -72,6 +78,9 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + "bem-chapter-" + str(i)
+        if i == 94:
+            url = origin + "bem-chapter-4-1"
+        else:
+            url = origin + "bem-chapter-" + str(i)
         chapterlist.append(url)
     return chapterlist

@@ -66,7 +66,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1134, 1313),
            '14': Volume('14 - Soaring Dragon, dancing Phoenix, Haohan'
                         ' continent',
-                        1314, 1361),
+                        1314, 1451),
            '15': Volume('15 - Demons & monsters dancing in riotous revelry'
                         ' beautiful women are like poetry',
                         1594, 1794),
@@ -75,7 +75,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1795, 2492)
            }
 
-origin = 'http://www.wuxiaworld.com/ast-index/'
+origin = 'http://www.wuxiaworld.com/novel/ancient-strengthening-technique/'
 author = 'I Am Superfluous (我是多余人)'
 cover_file = 'Covers/ancient-strengthening-technique.jpg'
 title = 'Ancient Strengthening Technique - Vol'
@@ -113,7 +113,19 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        if i != 1184:
+        if i not in [29, 1183]:
             url = origin + "ast-chapter-" + str(i)
+            if i == 28:
+                url = origin + "ast-chapter-28-1"
+            elif i == 115:
+                url = origin + "ast-chapter-5-1"
+            elif i == 232:
+                url = origin + "ast-chapter-232-part-1000"
+            elif i in [246, 248]:
+                url = origin + "ast-chapter-" + str(i) + "-part-1"
+            elif i == 329:
+                url = origin + "ast-chapter-329-part-4"
+            elif i == 1421:
+                url = origin + "chapter-1421"
             chapterlist.append(url)
     return chapterlist

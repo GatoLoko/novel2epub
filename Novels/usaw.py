@@ -27,8 +27,8 @@ from common import Volume
 volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '2': Volume('2 - Wandering the Beiyan province', 91, 180),
            '3': Volume('3 - The Crafting School', 181, 361),
-           '4': Volume('4 - Soulbeast forest', 362, 462),
-           '5': Volume('5 - ', 511, 511),
+           '4': Volume('4 - Soulbeast forest', 362, 510),
+           '5': Volume('5 - Turmoil in the Capital', 511, 517),
            '6': Volume('6 - ', 701, 701),
            '7': Volume('7 - ', 841, 841),
            '8': Volume('8 - ', 1001, 1001),
@@ -37,7 +37,7 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '11': Volume('11 - ', 1291, 1356)
            }
 
-origin = 'http://www.wuxiaworld.com/usaw-index/'
+origin = 'http://www.wuxiaworld.com/novel/upgrade-specialist-in-another-world/'
 author = 'Endless Sea Of Clouds (茫茫云海)'
 cover_file = 'Covers/usaw.jpg'
 title = 'Upgrade Specialist in Another World - Book '
@@ -72,6 +72,6 @@ def genlist(start, end):
     for i in range(start, end+1):
         url = origin + 'usaw-book-' + str(currentvol) + '-chapter-' + str(i)
         if i is 0:
-            url = origin + 'usaw-prologue'
+            url = origin + 'usaw-chapter-' + str(i)
         chapterlist.append(url)
     return chapterlist
