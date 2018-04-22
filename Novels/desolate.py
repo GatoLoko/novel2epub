@@ -111,7 +111,11 @@ volumes = {'1': Volume('1 - Ji Clan of Swallow Mountain',
            '42': Volume('42 - The five Truncheon chapters',
                         42, 21),
            '43': Volume('43 - Final fate',
-                        43, 8),
+                        43, 25),
+           '44': Volume('44 - The Dusk war',
+                        44, 29),
+           '45': Volume('45 - The fragrance of the Plum Blossom',
+                        45, 18),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/desolate-era/'
@@ -137,5 +141,7 @@ def genlist(start, end):
     chapterlist = []
     for i in range(1, end+1):
         url = origin + "de-book-" + str(start) + "-chapter-" + str(i)
+        if start == 45 and i == 18:
+            url = origin + "de-afterword"
         chapterlist.append(url)
     return chapterlist
