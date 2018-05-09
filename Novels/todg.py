@@ -28,7 +28,7 @@ volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 463)
+           '5': Volume('5', 401, 465)
            }
 
 origin = 'http://www.wuxiaworld.com/novel/tales-of-demons-and-gods/'
@@ -58,6 +58,9 @@ def genlist(start, end):
     global origin
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + 'tdg-chapter-' + str(i)
+        if i > 464:
+            url = origin + 'tdg-chapter-' +str(i + 1)
+        else:
+            url = origin + 'tdg-chapter-' + str(i)
         chapterlist.append(url)
     return chapterlist
