@@ -14,6 +14,7 @@ from string import Template
 import sys
 progdir = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(progdir, "Novels"))
+sys.path.append(os.path.join(progdir, os.path.join("Novels", "Complete")))
 try:
     import common
 except ImportError:
