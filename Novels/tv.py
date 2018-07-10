@@ -27,7 +27,7 @@ from common import Volume
 volumes = {'1': Volume('1 - ',
                        1, 100),
            '2': Volume('2 - ',
-                       101, 187),
+                       101, 189),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
