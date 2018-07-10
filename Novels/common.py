@@ -96,10 +96,10 @@ def get_chapter(url):
     html = get_html(url)
     html_title = html.find('title').text
     if 'wuxiaworld' in url:
-        title_parts = html_title.split(' - WuxiaWorld')
-        chapter_title = title_parts[0]
+        title_parts = html_title.split(' - ')
+        chapter_title = title_parts[1] + ' - ' + title_parts[2]
         if len(title_parts) == 3:
-            chapter_title = title_parts[0] + " - " + title_parts[1]
+            chapter_title = title_parts[1]
         # Extract the main text DIV content and turn it into a string
         contents = html.find('div', 'fr-view').contents
     if 'gravitytales' in url:
