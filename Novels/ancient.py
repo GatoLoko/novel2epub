@@ -69,7 +69,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1314, 1593),
            '15': Volume('15 - Demons & monsters dancing in riotous revelry,'
                         ' beautiful women are like poetry',
-                        1594, 1658),
+                        1594, 1662),
            '16': Volume('16 - Oceanic Grand World, Legend of the Nine'
                         ' Continents',
                         1795, 2492)
@@ -127,5 +127,7 @@ def genlist(start, end):
                 url = origin + "ast-chapter-329-part-4"
             elif i == 1421:
                 url = origin + "chapter-1421"
+            elif i == 1661:
+                url = origin + "ast-chapter-16611"
             chapterlist.append(url)
     return chapterlist
