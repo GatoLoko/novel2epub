@@ -129,12 +129,11 @@ def get_chapter(url):
     # Remove all atributes from all tags
     for tag in soup_text.findAll(True):
         tag.attrs = {}
-    #if 'wuxiaworld' in url:
-    #    # Remove previous and next chapter links in wuxiaworld pages
-    #    for link in soup_text.findAll('a', text='Previous Chapter'):
-    #        link.decompose()
-    #    for link in soup_text.findAll('a', text='Next Chapter'):
-    #        link.decompose()
+    if 'wuxiaworld' in url:
+        # Remove previous and next chapter links in wuxiaworld pages
+        nav_links = re.compile('[\s]*(Previous|Next) Chapter[\s]*')
+        for link in soup_text.find_all('a', text=nav_links):
+            link.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
     # weird space character (why the &·$% do you have a paragraf with nothing?)
     for paragraf in soup_text.findAll(['span', 'p']):
