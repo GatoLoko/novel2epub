@@ -101,7 +101,8 @@ def get_chapter(url):
         if len(title_parts) == 3:
             chapter_title = title_parts[1]
         # Extract the main text DIV content and turn it into a string
-        contents = html.find('div', 'panel-default').find('div', 'fr-view').contents
+        contents = html.find('div', 'panel-default').find('div',
+                                                          'fr-view').contents
     if 'gravitytales' in url:
         chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
         # Extract the main text DIV content and turn it into a string
