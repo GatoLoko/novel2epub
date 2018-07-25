@@ -112,7 +112,7 @@ def get_chapter(url):
     # with actual spaces.
     soup_str = soup_str.replace('　', ' ')
     # And replace double br tags with a paragraph break
-    soup_str = re.sub('<br/>[\t\n\r\f\v\s　]*<br/>', '</p>\n<p>', soup_str)
+    soup_str = re.sub(r'<br/>[\t\n\r\f\v\s　]*<br/>', '</p>\n<p>', soup_str)
 
     print(chapter_title)
     chapter_file = chapter_title.replace(' ', '_') + '.xhtml'
@@ -132,7 +132,7 @@ def get_chapter(url):
         tag.attrs = {}
     if 'wuxiaworld' in url:
         # Remove previous and next chapter links in wuxiaworld pages
-        nav_links = re.compile('[\s]*(Previous|Next) Chapter[\s]*')
+        nav_links = re.compile(r'[\s]*(Previous|Next) Chapter[\s]*')
         for link in soup_text.find_all('a', text=nav_links):
             link.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
