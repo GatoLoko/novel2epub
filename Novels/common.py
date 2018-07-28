@@ -135,6 +135,8 @@ def get_chapter(url):
         nav_links = re.compile(r'[\s]*(Previous|Next) Chapter[\s]*')
         for link in soup_text.find_all('a', text=nav_links):
             link.decompose()
+        for link in soup_text.find_all('p', text=nav_links):
+            link.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
     # weird space character (why the &·$% do you have a paragraf with nothing?)
     for paragraf in soup_text.findAll(['span', 'p']):
