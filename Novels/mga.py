@@ -74,6 +74,14 @@ def genlist(start, end):
     #     else:
     #         url = origin + 'tmw-chapter-' + str(i).zfill(4)
     for i in range(start, end+1):
-        url = origin + 'mga-chapter-' + str(i)
-        chapterlist.append(url)
+        if i == 1632:
+            # Author misnumbered chapter 1633 as 1632 and continued from there,
+            # causing this number to be duplicated
+            url = origin + 'mga-chapter-1632-01'
+            chapterlist.append(url)
+            url = origin + 'mga-chapter-1632-02'
+            chapterlist.append(url)
+        else:
+            url = origin + 'mga-chapter-' + str(i)
+            chapterlist.append(url)
     return chapterlist
