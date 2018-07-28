@@ -65,14 +65,6 @@ ignorant to such a thing. I thus ascend to be the Martial God as Asura.
 def genlist(start, end):
     global origin
     chapterlist = []
-    # unpadded = list(range(1, 58)) + \
-    #     [133, 151, 153, 156, 157, 160, 223, 245, 282, 301, 434, 461, 472,
-    #      475, 478, 480, 510, 512, 518, 527, 530, 541, 633]
-    # for i in range(start, end+1):
-    #     if i in unpadded or i > 654:
-    #         url = origin + 'tmw-chapter-' + str(i)
-    #     else:
-    #         url = origin + 'tmw-chapter-' + str(i).zfill(4)
     for i in range(start, end+1):
         if i == 1632:
             # Author misnumbered chapter 1633 as 1632 and continued from there,
