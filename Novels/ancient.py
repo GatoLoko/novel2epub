@@ -117,8 +117,6 @@ def genlist(start, end):
             url = origin + "ast-chapter-" + str(i)
             if i == 28:
                 url = origin + "ast-chapter-28-1"
-            elif i == 115:
-                url = origin + "ast-chapter-5-1"
             elif i == 232:
                 url = origin + "ast-chapter-232-part-1000"
             elif i in [246, 248]:
