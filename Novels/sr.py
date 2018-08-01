@@ -43,7 +43,11 @@ volumes = {'1': Volume('1 - ',
            '8': Volume('8 - ',
                        701, 800),
            '9': Volume('9 - ',
-                       801, 996),
+                       801, 900),
+           '10': Volume('10 - ',
+                       901, 1000),
+           '11': Volume('11 - ',
+                       1001, 1005),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/spirit-realm/'
