@@ -69,7 +69,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1314, 1593),
            '15': Volume('15 - Demons & monsters dancing in riotous revelry,'
                         ' beautiful women are like poetry',
-                        1594, 1699),
+                        1594, 1710),
            '16': Volume('16 - Oceanic Grand World, Legend of the Nine'
                         ' Continents',
                         1795, 2492)
@@ -115,7 +115,7 @@ def genlist(start, end):
     for i in range(start, end+1):
         if i not in [29, 1183]:
             url = origin + "ast-chapter-" + str(i)
-            if i in [28, 1697, 1698, 1699]:
+            if i == 28 or i >= 1697:
                 url = origin + "ast-chapter-" + str(i) + "-1"
             elif i == 232:
                 url = origin + "ast-chapter-232-part-1000"
