@@ -91,22 +91,36 @@ def get_html(url):
     return html
 
 
+def get_wuxiaworld(html):
+    html_title = html.find('title').text
+    title_parts = html_title.split(' - ')
+    chapter_title = title_parts[1] + ' - ' + title_parts[2]
+    if len(title_parts) == 3:
+        chapter_title = title_parts[1]
+    # Extract the main text DIV content and turn it into a string
+    contents = html.find('div', 'panel-default').find('div',
+                                                      'fr-view').contents
+    return(chapter_title, contents)
+
+
+def get_gravitytales(html):
+    html_title = html.find('title').text
+    chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
+    # Extract the main text DIV content and turn it into a string
+    contents = html.find('div', 'innerContent').contents
+    return(chapter_title, contents)
+
+
 def get_chapter(url):
     print("Processing: " + url)
     html = get_html(url)
-    html_title = html.find('title').text
     if 'wuxiaworld' in url:
-        title_parts = html_title.split(' - ')
-        chapter_title = title_parts[1] + ' - ' + title_parts[2]
-        if len(title_parts) == 3:
-            chapter_title = title_parts[1]
-        # Extract the main text DIV content and turn it into a string
-        contents = html.find('div', 'panel-default').find('div',
-                                                          'fr-view').contents
-    if 'gravitytales' in url:
-        chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
-        # Extract the main text DIV content and turn it into a string
-        contents = html.find('div', 'innerContent').contents
+        chapter_title, contents = get_wuxiaworld(html)
+    elif 'gravitytales' in url:
+        chapter_title, contents = get_gravitytales(html)
+    else:
+        print('Something went wrong! Unsuported server!')
+        exit()
     soup_str = "".join(map(str, contents))
     # Before turning the html into a soup, replace all weird chinese spaces
     # with actual spaces.
