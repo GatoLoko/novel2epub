@@ -111,6 +111,15 @@ def get_gravitytales(html):
     return(chapter_title, contents)
 
 
+def clean_chapter_name(chapter_title):
+    chapter_file = chapter_title.replace(' ', '_') + '.xhtml'
+    # FAT does NOT allow:\/:*?"<>|"
+    for i in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
+        if i in chapter_file:
+            chapter_file = chapter_file.replace(i, '')
+    return chapter_file
+
+
 def get_chapter(url):
     print("Processing: " + url)
     html = get_html(url)
@@ -129,11 +138,7 @@ def get_chapter(url):
     soup_str = re.sub(r'<br/>[\t\n\r\f\v\s　]*<br/>', '</p>\n<p>', soup_str)
 
     print(chapter_title)
-    chapter_file = chapter_title.replace(' ', '_') + '.xhtml'
-    # FAT does NOT allow:\/:*?"<>|"
-    for i in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
-        if i in chapter_file:
-            chapter_file = chapter_file.replace(i, '')
+    chapter_file = clean_chapter_name(chapter_title)
     print(chapter_file)
     # Then turn the string back into a soup
     soup_text = BeautifulSoup(soup_str, 'lxml')
