@@ -61,9 +61,7 @@ volumes = {'1': Volume('1 - ',
            '17': Volume('17 - ',
                         357, 379),
            '18': Volume('18 - ',
-                        380, 397),
-           '18.': Volume('18 - END',
-                         380, 400)
+                        380, 400)
            }
 
 origin = 'http://www.wuxiaworld.com/novel/the-book-eating-magician/'
