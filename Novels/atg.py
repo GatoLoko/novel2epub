@@ -47,7 +47,7 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '10': Volume('10 - Snow Song\'s flame God',
                         1001, 1100),
            '11': Volume('11 - Profound God convention',
-                        1101, 1170),
+                        1101, 1173),
            'X': Volume('X - END',
                        0000, 0000)
            }
