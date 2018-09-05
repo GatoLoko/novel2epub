@@ -61,8 +61,8 @@ volumes = {'1': Volume('1 - ',
            '24': Volume('24 - ', 24, [218, 231]),
            '25': Volume('25 - ', 25, [232, 238]),
            '26': Volume('26 - ', 26, [239, 266]),
-           '27': Volume('27 - ', 27, [267, 271]),
-           '28': Volume('28 - ', 28, [55, 271]),
+           '27': Volume('27 - ', 27, [267, 275]),
+           '28': Volume('28 - ', 28, [2, 2]),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/heavenly-jewel-change/'
@@ -116,10 +116,10 @@ their training progress is known as Heavenly Jewels 12 Changes.</p>
 def genlist(book, chapters):
     global origin
     chapterlist = []
-    one_pages = [91, 98]
+    one_pages = [91, 98, 275]
     two_pages = [28, 35, 42, 49, 56, 63, 70, 77, 84, 105, 112, 119, 126, 133,
                  138, 140, 147, 149, 153, 154, 161, 168, 175, 182, 189, 196,
-                 203, 210, 217, 224, 231, 238, 245, 252, 259, 266, 271]
+                 203, 210, 217, 224, 231, 238, 245, 252, 259, 266, 273]
     four_pages = [1, 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18, 19,
                   20, 21, 22, 24]
     five_pages = [14, 23]
