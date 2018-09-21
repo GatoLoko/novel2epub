@@ -52,7 +52,7 @@ volumes = {'1': Volume('1 - ', 1, [1, 7]),
            '24': Volume('24 - ', 24, [218, 231]),
            '25': Volume('25 - ', 25, [232, 238]),
            '26': Volume('26 - ', 26, [239, 266]),
-           '27': Volume('27 - ', 27, [267, 279]),
+           '27': Volume('27 - ', 27, [267, 280]),
            '28': Volume('28 - ', 28, [2, 2]),
            }
 
@@ -107,7 +107,7 @@ their training progress is known as Heavenly Jewels 12 Changes.</p>
 def genlist(book, chapters):
     global origin
     chapterlist = []
-    one_pages = [91, 98]
+    one_pages = [91, 98, 280]
     two_pages = [28, 35, 42, 49, 56, 63, 70, 77, 84, 105, 112, 119, 126, 133,
                  138, 140, 147, 149, 153, 154, 161, 168, 175, 182, 189, 196,
                  203, 210, 217, 224, 231, 238, 245, 252, 259, 266, 273]
@@ -128,5 +128,8 @@ def genlist(book, chapters):
         for j in range(1, pages+1):
             url = origin + 'hjc-book-' + str(book) + '-chapter-' + str(i) + \
                 '-' + str(j).zfill(2)
+            if i == 280:
+                url = origin + 'hjc-book-' + str(book) + '-chapter-' + \
+                    str(i) + '-' + str(j)
             chapterlist.append(url)
     return chapterlist
