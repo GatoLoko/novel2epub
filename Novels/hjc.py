@@ -107,7 +107,7 @@ their training progress is known as Heavenly Jewels 12 Changes.</p>
 def genlist(book, chapters):
     global origin
     chapterlist = []
-    one_pages = [91, 98, 286]
+    one_pages = [91, 98]
     two_pages = [28, 35, 42, 49, 56, 63, 70, 77, 84, 105, 112, 119, 126, 133,
                  138, 140, 147, 149, 153, 154, 161, 168, 175, 182, 189, 196,
                  203, 210, 217, 224, 231, 238, 245, 252, 259, 266, 273, 280]
