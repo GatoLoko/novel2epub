@@ -94,7 +94,7 @@ def get_html(url):
 def get_wuxiaworld(html):
     html_title = html.find('title').text
     title_parts = html_title.split(' - ')
-    chapter_title = title_parts[1] + ' - ' + title_parts[2]
+    chapter_title = ' - '.join(title_parts[1:-1])
     if len(title_parts) == 3:
         chapter_title = title_parts[1]
     # Extract the main text DIV content and turn it into a string
