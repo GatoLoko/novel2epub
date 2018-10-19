@@ -31,7 +31,7 @@ This script has the following dependencies:
 You can run the python script doing:
 `python3 novel2epub.py novel-module volume`
 
-> `your_url_argument` should be your the name of the module for the story, for
+> `novel-module` should be your the name of the module for the story, for
 > example, for "The book eating magician" it would be: `bem`
 
 > `volume` should be the volume number you want to download, for example: `1`
