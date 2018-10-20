@@ -34,7 +34,7 @@ volumes = {'1': Volume('1', 0, 100),
 origin = 'http://gravitytales.com/novel/the-lords-empire/'
 author = ' (神天衣)'
 cover_file = 'Covers/the-lords-empire.jpg'
-title = "The Lord's Empire"
+title = "The Lord's Empire - Vol"
 
 synopsis_text = """
 "Ding! Soulbinding has been successfully completed; you will now head to the
