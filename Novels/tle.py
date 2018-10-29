@@ -28,7 +28,8 @@ volumes = {'1': Volume('1', 0, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 482),
+           '5': Volume('5', 401, 500),
+           '6': Volume('6', 501, 503),
            }
 
 origin = 'http://gravitytales.com/novel/the-lords-empire/'

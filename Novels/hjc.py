@@ -53,7 +53,7 @@ volumes = {'1': Volume('1 - ', 1, [1, 7]),
            '25': Volume('25 - ', 25, [232, 238]),
            '26': Volume('26 - ', 26, [239, 266]),
            '27': Volume('27 - ', 27, [267, 284]),
-           '28': Volume('28 - ', 28, [285, 288]),
+           '28': Volume('28 - ', 28, [285, 291]),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/heavenly-jewel-change/'
