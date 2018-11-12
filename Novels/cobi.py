@@ -92,8 +92,7 @@ journey through the world of limitless possibilities and inventions together!
 
 def genlist(start, end):
     global origin
-    #list_page = common.get_html(origin)
-    list_page = common.get_html('https://m.wuxiaworld.co/Castle-of-Black-Iron/all.html')
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
         text = 'Chapter ' + str(i) + ':.*'
