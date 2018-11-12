@@ -171,7 +171,8 @@ def get_chapter(url):
             link.decompose()
     elif 'wuxiaworld.co' in url:
         credline = re.compile(r'Translator:.*Editor:.*')
-        soup_text.find(text=credline).replaceWith('')
+        if soup_text.find(text=credline):
+            soup_text.find(text=credline).replaceWith('')
         for script in soup_text.find_all('script'):
             script.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
