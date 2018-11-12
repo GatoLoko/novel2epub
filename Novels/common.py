@@ -91,7 +91,7 @@ def get_html(url):
     return html
 
 
-def get_wuxiaworld(html):
+def get_wuxiaworld_com(html):
     html_title = html.find('title').text
     title_parts = html_title.split(' - ')
     chapter_title = ' - '.join(title_parts[1:-1])
@@ -100,6 +100,17 @@ def get_wuxiaworld(html):
     # Extract the main text DIV content and turn it into a string
     contents = html.find('div', 'panel-default').find('div',
                                                       'fr-view').contents
+    return(chapter_title, contents)
+
+
+def get_wuxiaworld_co(html):
+    html_title = html.find('title').text
+    title_parts = html_title.split(' - ')
+    chapter_title = ' - '.join(title_parts[1:-1])
+    if len(title_parts) == 3:
+        chapter_title = title_parts[1]
+    # Extract the main text DIV content and turn it into a string
+    contents = html.find('div', {'id': 'content'}).contents
     return(chapter_title, contents)
 
 
@@ -123,8 +134,10 @@ def clean_chapter_name(chapter_title):
 def get_chapter(url):
     print("Processing: " + url)
     html = get_html(url)
-    if 'wuxiaworld' in url:
-        chapter_title, contents = get_wuxiaworld(html)
+    if 'wuxiaworld.com' in url:
+        chapter_title, contents = get_wuxiaworld_com(html)
+    elif 'wuxiaworld.co' in url:
+        chapter_title, contents = get_wuxiaworld_co(html)
     elif 'gravitytales' in url:
         chapter_title, contents = get_gravitytales(html)
     else:
@@ -149,13 +162,18 @@ def get_chapter(url):
     # Remove all atributes from all tags
     for tag in soup_text.findAll(True):
         tag.attrs = {}
-    if 'wuxiaworld' in url:
+    if 'wuxiaworld.com' in url:
         # Remove previous and next chapter links in wuxiaworld pages
         nav_links = re.compile(r'[\s]*(Previous|Next) Chapter[\s]*')
         for link in soup_text.find_all('a', text=nav_links):
             link.decompose()
         for link in soup_text.find_all('p', text=nav_links):
             link.decompose()
+    elif 'wuxiaworld.co' in url:
+        credline = re.compile(r'Translator:.*Editor:.*')
+        soup_text.find(text=credline).replaceWith('')
+        for script in soup_text.find_all('script'):
+            script.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
     # weird space character (why the &·$% do you have a paragraf with nothing?)
     for paragraf in soup_text.findAll(['span', 'p']):
