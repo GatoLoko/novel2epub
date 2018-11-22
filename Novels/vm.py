@@ -79,5 +79,7 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         url = origin + "vm-chapter-" + str(i)
+        if i == 230:
+            url = url + "-1"
         chapterlist.append(url)
     return chapterlist
