@@ -22,9 +22,10 @@ Created on 17/11/18
 @author: GatoLoko
 """
 
-from common import Volume
 import common
 import re
+
+Volume = common.Volume
 
 volumes = {'1': Volume('1', 1, 83),
            '2': Volume('2', 84, 200),
@@ -32,7 +33,7 @@ volumes = {'1': Volume('1', 1, 83),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 609),
+           '7': Volume('7', 601, 617),
            }
 
 origin = 'http://www.wuxiaworld.co/The-Wizard-World/'
