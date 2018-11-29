@@ -22,17 +22,20 @@ Created on 20/10/18
 @author: GatoLoko
 """
 
-from common import Volume
+import common
+import re
+
+Volume = common.Volume
 
 volumes = {'1': Volume('1', 0, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
-           '6': Volume('6', 501, 506),
+           '6': Volume('6', 501, 577),
            }
 
-origin = 'http://gravitytales.com/novel/the-lords-empire/'
+origin = 'http://www.wuxiaworld.co/The-Lord-is-Empire/'
 author = ' (神天衣)'
 cover_file = 'Covers/the-lords-empire.jpg'
 title = "The Lord's Empire - Vol"
@@ -58,8 +61,11 @@ love The Lord's Empire!
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + "tle-chapter-" + str(i)
+        text = 'Chapter ' + str(i) + '.*'
+        link = list_page.find('a', text=re.compile(text))
+        url = origin + link['href']
         chapterlist.append(url)
     return chapterlist
