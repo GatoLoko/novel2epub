@@ -39,7 +39,7 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '7': Volume('7 - Return of the discarded child',
                        2673, 3108),
            '8': Volume('8 - ',
-                       3109, 3109),
+                       3109, 3111),
            'X': Volume('X - ',
                        9999, 9999)
            }
