@@ -32,7 +32,8 @@ volumes = {'1': Volume('1', 0, 100),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
-           '6': Volume('6', 501, 599),
+           '6': Volume('6', 501, 600),
+           '7': Volume('7', 601, 603),
            }
 
 origin = 'http://www.wuxiaworld.co/The-Lord-is-Empire/'
