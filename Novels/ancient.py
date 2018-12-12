@@ -72,7 +72,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1594, 1794),
            '16': Volume('16 - Oceanic Grand World, Legend of the Nine'
                         ' Continents',
-                        1795, 1921)
+                        1795, 1927)
            # 1795, 2492)
            }
 
