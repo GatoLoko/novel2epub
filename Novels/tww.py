@@ -33,7 +33,7 @@ volumes = {'1': Volume('1', 1, 83),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 631),
+           '7': Volume('7', 601, 633),
            }
 
 origin = 'http://www.wuxiaworld.co/The-Wizard-World/'
@@ -61,7 +61,10 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        text = 'Chapter ' + str(i) + ':.*'
+        if i < 632:
+            text = 'Chapter ' + str(i) + ':.*'
+        else:
+            text = '^' + str(i) + '.*'
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href']
         chapterlist.append(url)
