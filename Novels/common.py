@@ -98,8 +98,14 @@ def get_wuxiaworld_com(html):
     if len(title_parts) == 3:
         chapter_title = title_parts[1]
     # Extract the main text DIV content and turn it into a string
-    contents = html.find('div', 'panel-default').find('div',
-                                                      'fr-view').contents
+    contents = html.find('div', 'panel-default').find('div', 'fr-view')
+    # Site dependant cleanup
+    # Remove links to previous and next chapter
+    nav_links = re.compile(r'[\s]*(Previous|Next) Chapter[\s]*')
+    for link in contents.find_all('a', text=nav_links):
+        link.decompose()
+    for link in contents.find_all('p', text=nav_links):
+        link.decompose()
     return(chapter_title, contents)
 
 
@@ -109,8 +115,14 @@ def get_wuxiaworld_co(html):
     chapter_title = ' - '.join(title_parts[1:-1])
     if len(title_parts) == 3:
         chapter_title = title_parts[1]
+    # Site dependant cleanup
     # Extract the main text DIV content and turn it into a string
-    contents = html.find('div', {'id': 'content'}).contents
+    contents = html.find('div', {'id': 'content'})
+    credline = re.compile(r'Translator:.*Editor:.*')
+    if contents.find(text=credline):
+        contents.find(text=credline).replaceWith('')
+    for script in contents.find_all('script'):
+        script.decompose()
     return(chapter_title, contents)
 
 
@@ -118,7 +130,10 @@ def get_gravitytales(html):
     html_title = html.find('title').text
     chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
     # Extract the main text DIV content and turn it into a string
-    contents = html.find('div', 'innerContent').contents
+    contents = html.find('div', 'innerContent')
+    # Site dependant cleanup
+    for i in contents.find_all('p', {'style': 'text-align: center;'}):
+        i.decompose()
     return(chapter_title, contents)
 
 
@@ -155,26 +170,9 @@ def get_chapter(url):
     print(chapter_file)
     # Then turn the string back into a soup
     soup_text = BeautifulSoup(soup_str, 'lxml')
-    # TODO: Isn't this covered by the next block?
-    if 'gravitytales' in url:
-        for i in soup_text.find_all('p', {'style': 'text-align: center;'}):
-            i.decompose()
     # Remove all atributes from all tags
     for tag in soup_text.findAll(True):
         tag.attrs = {}
-    if 'wuxiaworld.com' in url:
-        # Remove previous and next chapter links in wuxiaworld pages
-        nav_links = re.compile(r'[\s]*(Previous|Next) Chapter[\s]*')
-        for link in soup_text.find_all('a', text=nav_links):
-            link.decompose()
-        for link in soup_text.find_all('p', text=nav_links):
-            link.decompose()
-    elif 'wuxiaworld.co' in url:
-        credline = re.compile(r'Translator:.*Editor:.*')
-        if soup_text.find(text=credline):
-            soup_text.find(text=credline).replaceWith('')
-        for script in soup_text.find_all('script'):
-            script.decompose()
     # Remove empty paragrafs, including those which only contain br tags or the
     # weird space character (why the &·$% do you have a paragraf with nothing?)
     for paragraf in soup_text.findAll(['span', 'p']):
