@@ -79,7 +79,7 @@ volumes = {'1': Volume('1 - Lian tribal clan',
            '27': Volume('27', 1301, 1400),
            '28': Volume('28', 1401, 1500),
            '29': Volume('29', 1501, 1600),
-           '30': Volume('30', 1601, 1611),
+           '30': Volume('30', 1601, 1613),
            'X': Volume('X - ',
                        9999, 9999)
            }
@@ -115,10 +115,7 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        if i < 1609:
-            text = 'Chapter ' + str(i) + ':.*'
-        else:
-            text = '^' + str(i) + '.*'
+        text = '^' + str(i) + '.*'
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href']
         chapterlist.append(url)
