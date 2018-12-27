@@ -30,7 +30,7 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '4': Volume('4 - Soulbeast forest', 362, 510),
            '5': Volume('5 - Turmoil in the Capital', 511, 700),
            '6': Volume('6 - Pill Royale', 701, 840),
-           '7': Volume('7 - Shocking the continent', 841, 843),
+           '7': Volume('7 - Shocking the continent', 841, 844),
            '8': Volume('8 - ', 1001, 1001),
            '9': Volume('9 - ', 1051, 1051),
            '10': Volume('10 - ', 1161, 1161),
@@ -81,6 +81,7 @@ def genlist(start, end):
             url = origin + 'usaw-chapter-638'
         if i in [757, 807]:
             url = origin + 'usaw-chapter-6-' + str(i)
+        # Chapter 841 is first on vol 7 but was placed in vol 6 for some reason
         if i == 841:
             url = origin + 'usaw-book-6-chapter-841'
         chapterlist.append(url)
