@@ -32,6 +32,9 @@ from io import BytesIO
 import re
 import platform
 
+# timeout in seconds
+timeout = 10
+socket.setdefaulttimeout(timeout)
 
 # Create our own User-Agent strings. We may need to fake this if a server tryes
 # to mess with us.
