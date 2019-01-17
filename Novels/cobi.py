@@ -101,7 +101,7 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        text = '^' + str(i) + '.*'
+        text = '^' + str(i) + ' .*'
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href']
         chapterlist.append(url)
