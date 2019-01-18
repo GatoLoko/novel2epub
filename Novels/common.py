@@ -25,12 +25,12 @@ Created on 28/12/16
 import urllib.request
 import urllib.error
 import urllib.parse
-from bs4 import BeautifulSoup
 import socket
 import gzip
 from io import BytesIO
 import re
 import platform
+from bs4 import BeautifulSoup
 
 novel_module = ""
 # timeout in seconds
