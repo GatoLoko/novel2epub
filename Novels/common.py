@@ -34,12 +34,12 @@ from bs4 import BeautifulSoup
 
 novel_module = ""
 # timeout in seconds
-timeout = 10
-socket.setdefaulttimeout(timeout)
+TIMEOUT = 10
+socket.setdefaulttimeout(TIMEOUT)
 
 # Create our own User-Agent strings. We may need to fake this if a server tryes
 # to mess with us.
-user_agent = 'Mozilla/5.0 compatible (' + platform.system() + ' ' + \
+USER_AGENT = 'Mozilla/5.0 compatible (' + platform.system() + ' ' + \
     platform.machine() + '; Novel-Indexer-Bot)'
 
 # Woxter QX95
@@ -72,7 +72,7 @@ def get_html(url):
     # Accept gziped content
     req.add_header('Accepting-encoding', 'gzip')
     # Fake user aggent
-    req.add_header('User-Agent', user_agent)
+    req.add_header('User-Agent', USER_AGENT)
     while tryes > 0:
         try:
             request = urllib.request.urlopen(req)
@@ -86,9 +86,9 @@ def get_html(url):
                 print("URL error: " + error.reason)
                 quit()
     if request.info().get('Content-Encoding') == 'gzip':
-        buf = BytesIO(request.read())
-        f = gzip.GzipFile(fileobj=buf)
-        html = BeautifulSoup(f.read(), 'lxml')
+        buffer = BytesIO(request.read())
+        uncompressed_buffer = gzip.GzipFile(fileobj=buffer)
+        html = BeautifulSoup(uncompressed_buffer.read(), 'lxml')
     else:
         html = BeautifulSoup(request.read(), "lxml")
     request.close()
@@ -164,7 +164,7 @@ def get_chapter(url):
         exit()
     # Novel dependant cleanup
     try:
-        novel = __import__(novel_module)
+        novel = __import__(NOVEL_MODULE)
         contents = novel.clean(contents)
     except ImportError:
         pass
@@ -189,8 +189,8 @@ def get_chapter(url):
         if len(paragraf.text) == 0 or paragraf.text in [' ', '。']:
             paragraf.decompose()
     # Remove stray br tags
-    for br in soup_text.findAll('br'):
-        br.decompose()
+    for br_tag in soup_text.findAll('br'):
+        br_tag.decompose()
     # Turn the soup into text
     # text = str(soup_text)
     text = soup_text.prettify()
