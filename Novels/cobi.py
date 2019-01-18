@@ -106,3 +106,10 @@ def genlist(start, end):
         url = origin + link['href']
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    credline = re.compile(r'Translator:.*Editor:.*')
+    for i in content.find_all(text=credline):
+        i.replaceWith('')
+    return content

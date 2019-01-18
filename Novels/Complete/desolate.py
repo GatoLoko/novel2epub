@@ -145,3 +145,7 @@ def genlist(start, end):
             url = origin + "de-afterword"
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

@@ -133,3 +133,7 @@ def genlist(start, end):
                 url = origin + "ast-chapter-16611"
             chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

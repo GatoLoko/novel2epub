@@ -69,6 +69,7 @@ if __name__ == "__main__":
 
     try:
         novel = __import__(args.novel)
+        common.novel_module = args.novel
         print("Loaded %s module" % args.novel)
     except ImportError:
         print("Unsuported novel")

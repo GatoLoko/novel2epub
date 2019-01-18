@@ -86,3 +86,7 @@ def genlist(start, end):
             url = origin + 'usaw-book-6-chapter-841'
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

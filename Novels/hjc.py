@@ -134,3 +134,7 @@ def genlist(book, chapters):
                     str(i) + '-' + str(j)
             chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

@@ -120,3 +120,7 @@ def genlist(start, end):
         url = origin + link['href']
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

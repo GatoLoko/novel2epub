@@ -85,3 +85,7 @@ def genlist(start, end):
             url = url + "-0583"
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

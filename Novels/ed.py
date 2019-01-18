@@ -86,3 +86,7 @@ def genlist(start, end):
         url = origin + "emperor-chapter-" + str(i)
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

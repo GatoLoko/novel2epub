@@ -23,6 +23,7 @@ Created on 04/11/18
 """
 
 from common import Volume
+import re
 
 volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
@@ -103,3 +104,12 @@ def genlist(start, end):
         url = origin + "pbs-chapter-" + str(i)
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    credline = re.compile(r'(Translator:.*)|(Editor:.*)|(XephiZ)|(DOCuinn)')
+    for i in content.find_all(text=credline):
+        i.replaceWith('')
+    for i in content.find_all('hr'):
+        i.decompose()
+    return content

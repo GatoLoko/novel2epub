@@ -63,3 +63,7 @@ def genlist(start, end):
         #     url = origin + 'tdg-chapter-' + str(i+1)
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

@@ -32,6 +32,7 @@ from io import BytesIO
 import re
 import platform
 
+novel_module = ""
 # timeout in seconds
 timeout = 10
 socket.setdefaulttimeout(timeout)
@@ -161,6 +162,12 @@ def get_chapter(url):
     else:
         print('Something went wrong! Unsuported server!')
         exit()
+    # Novel dependant cleanup
+    try:
+        novel = __import__(novel_module)
+        contents = novel.clean(contents)
+    except ImportError:
+        pass
     soup_str = "".join(map(str, contents))
     # Before turning the html into a soup, replace all weird chinese spaces
     # with actual spaces.

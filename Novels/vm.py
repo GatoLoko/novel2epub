@@ -83,3 +83,7 @@ def genlist(start, end):
             url = url + "-1"
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

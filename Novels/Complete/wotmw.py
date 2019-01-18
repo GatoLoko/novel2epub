@@ -73,3 +73,7 @@ def genlist(start, end):
         url = origin + 'wmw-chapter-' + str(i) + '/'
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

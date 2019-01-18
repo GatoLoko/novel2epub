@@ -83,3 +83,7 @@ def genlist(start, end):
         url = origin + "csg-chapter-" + str(i)
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content

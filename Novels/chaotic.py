@@ -89,3 +89,7 @@ def genlist(start, end):
         url = origin + "clc-chapter-" + str(i)
         chapterlist.append(url)
     return chapterlist
+
+
+def clean(content):
+    return content
