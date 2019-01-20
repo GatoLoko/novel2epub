@@ -65,7 +65,9 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        if i < 608:
+        if i == 0:
+            text = "Prologue"
+        elif i < 608:
             text = 'Chapter ' + str(i) + '.*'
         else:
             text = '^' + str(i) + '.*'
