@@ -49,7 +49,7 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '11': Volume('11 - Profound God convention',
                         1101, 1200),
            '12': Volume('12 - Infatuation in dreams',
-                        1201, 1286),
+                        1201, 1288),
            'X': Volume('X - END',
                        0000, 0000)
            }
