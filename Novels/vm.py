@@ -22,11 +22,13 @@ Created on 04/11/18
 @author: GatoLoko
 """
 
-from common import Volume
+import common
+import re
+Volume = common.Volume
 
 volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
-           '3': Volume('3', 201, 259),
+           '3': Volume('3', 201, 266),
            #
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
@@ -50,7 +52,7 @@ volumes = {'1': Volume('1', 1, 100),
            '23': Volume('23', 2201, 2300),
            }
 
-origin = 'http://gravitytales.com/novel/versatile-mage/'
+origin = 'http://www.wuxiaworld.co/Versatile-Mage/'
 author = 'Chaos (乱)'
 cover_file = 'Covers/versatile-mage.jpg'
 title = 'Versatile Mage - Vol'
@@ -76,11 +78,19 @@ major element of magic, he was a Versatile Mage!
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + "vm-chapter-" + str(i)
-        if i == 230:
-            url = url + "-1"
+        if i < 256:
+            text = "Chapter %s .*" % str(i)
+            if i == 61:
+                text = "Chapter %s.*" % str(i)
+            if i in [124, 135, 251]:
+                text = "Chapter 0%s .*" % str(i)
+        else:
+            text = "^%s .*" % str(i)
+        link = list_page.find('a', text=re.compile(text))
+        url = "%s%s" % (origin, link['href'])
         chapterlist.append(url)
     return chapterlist
 
