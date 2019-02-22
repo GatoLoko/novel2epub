@@ -10,13 +10,13 @@ import os
 import argparse
 import psutil
 from ebooklib import epub
-from string import Template
 import sys
 progdir = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(progdir, "Novels"))
 sys.path.append(os.path.join(progdir, os.path.join("Novels", "Complete")))
 try:
     import common
+    from gs_epub import MyBook
 except ImportError:
     raise
 
@@ -93,77 +93,39 @@ if __name__ == "__main__":
     print("Chapters: " + str(len(chapterlist)))
     print("Filename: " + filename)
 
-    book = epub.EpubBook()
-    book.set_identifier("novel2epub/%s/%s/%s" % (args.novel, novel.title,
-                                                 volume.last))
-    book.set_title(title)
-    book.set_language('en')
-    book.add_metadata('DC', 'subject', 'web2epub')
-    if hasattr(args, 'labels'):
-        for label in args.labels:
-            book.add_metadata('DC', 'subject', label)
-    # Add a cover if it's available
-    with open(os.path.join(progdir, novel.cover_file), 'rb') as coverfile:
-        book.set_cover(file_name='cover.jpg', content=coverfile.read(),
-                       create_page=True)
+    identifier = "novel2epub/%s/%s/%s" % (args.novel, novel.title, volume.last)
+    language = 'en'
 
-    allchapters = []
+    book = MyBook(identifier, title, language, 'novel2epub')
+
+    if hasattr(args, 'labels'):
+        book.add_labels(args.labels)
+
+    # Add a cover if it's available
+    book.add_cover(os.path.join(progdir, novel.cover_file))
 
     for i in chapterlist:
         if args.debug:
             print(i)
         ch_title, ch_file, ch_text = common.get_chapter(i)
-        chapter = epub.EpubHtml(title=ch_title, file_name=ch_file, lang='en')
-        chapter.content = ch_text
-        book.add_item(chapter)
-        allchapters.append(chapter)
+        book.add_chapter(ch_title, ch_file, language, ch_text)
 
     # Define CSS style
     with open(os.path.join(progdir, "CSS/nav.css")) as style_nav:
-        nav_css = epub.EpubItem(uid="style_nav", file_name="style/nav.css",
-                                media_type="text/css",
-                                content=style_nav.read())
+        book.add_nav_style(style_nav.read())
     with open(os.path.join(progdir, "CSS/body.css")) as style_body:
-        body_css = epub.EpubItem(uid="style_body", file_name="style/body.css",
-                                 media_type="text/css",
-                                 content=style_body.read())
-    # Add CSS files
-    book.add_item(nav_css)
-    book.add_item(body_css)
+        book.add_body_style(style_body.read())
 
     # Introduction
-    intro_ch = epub.EpubHtml(title=title, file_name='intro.xhtml')
-    intro_ch.add_item(body_css)
+    book.add_intro(novel.author, novel.origin, novel.synopsis_text,
+                   os.path.join(progdir, 'HTML/intro.xhtml'))
 
-    intro_ch = epub.EpubHtml(title='Introduction', file_name='intro.xhtml')
-    intro_ch.add_item(body_css)
-    with open(os.path.join(progdir, 'HTML/intro.xhtml')) as infile:
-        in_template = Template(infile.read())
-    intro_ch.content = in_template.substitute(title=title,
-                                              author=novel.author,
-                                              url=novel.origin,
-                                              synopsis=novel.synopsis_text)
-    book.add_item(intro_ch)
-
-    # Define Table of Contents
-    book.toc = (epub.Link('intro.xhtml', 'Introduction', 'intro'),
-                (epub.Section('Chapters'), allchapters))
-
-    # Add default NCX and Nav files
-    book.add_item(epub.EpubNcx())
-    book.add_item(epub.EpubNav())
-
-    # Basic spine
-    # myspine = []
-    # myspine.append('cover')
-    # myspine.extend([intro_ch, 'nav'])
-    myspine = ['cover', intro_ch, 'nav']
-    myspine.extend(allchapters)
-    book.spine = myspine
+    # Define Table of Contents, NCX, Nav and book spine
+    book.finalize()
 
     if args.debug:
         print(args)
         mem = psutil.Process(os.getpid()).memory_info()[0] / float(2 ** 20)
         print("Used memory: %s MB" % round(mem, 1))
 
-    epub.write_epub(filename, book, {})
+    book.write(filename)
