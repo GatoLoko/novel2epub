@@ -66,7 +66,6 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        print(i)
         text = '^%s .*' % str(i)
         # if i in range(127, 137):
         #     text = '^Chapter %s' % str(i)
