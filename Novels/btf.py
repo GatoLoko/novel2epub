@@ -27,15 +27,7 @@ import common
 import re
 
 volumes = {'1': Volume('1', 1, 100),
-           '2': Volume('2', 101, 200),
-           '3': Volume('3', 201, 300),
-           '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 500),
-           '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 800),
-           '9': Volume('9', 801, 900),
-           '10': Volume('10', 901, 903),
+           '2': Volume('2', 101, 180),
            }
 
 origin = 'http://www.wuxiaworld.co/Bringing-The-Farm-To-Live-In-Another-World/'
@@ -74,25 +66,12 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        if i < 280:
-            text = '^Chapter %s - .*' % str(i)
-            if i in range(127, 137):
-                text = '^Chapter %s' % str(i)
-            elif i == 149:
-                text = '^Chapter %s-.*' % str(i)
-        else:
-            if i == 283:
-                text = '^Chapter 284 – Special Requests'
-            elif i == 284:
-                text = '^Chapter 284 – Seeing West Wonder King'
-            elif i == 311:
-                text = 'Chapter 312 – Playing the Role of A Silkpants'
-            elif i == 312:
-                text = 'Chapter 312 – Keeping Up Appearances'
-            elif i == 861:
-                text = '^Chapter 861-.*'
-            else:
-                text = '^Chapter %s – .*' % str(i)
+        print(i)
+        text = '^%s .*' % str(i)
+        # if i in range(127, 137):
+        #     text = '^Chapter %s' % str(i)
+        # elif i == 149:
+        #     text = '^Chapter %s-.*' % str(i)
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href']
         chapterlist.append(url)
