@@ -177,7 +177,7 @@ def get_chapter(url):
     # with actual spaces.
     soup_str = soup_str.replace('　', ' ')
     # And replace double br tags with a paragraph break
-    soup_str = re.sub(r'<br/>[\t\n\r\f\v\s　]*<br/>', '</p>\n<p>', soup_str)
+    soup_str = re.sub(r'<br/>[\t\n\r\f\v\s　]*<br/>', '\n<p>', soup_str)
 
     print(chapter_title)
     chapter_file = clean_chapter_name(chapter_title)
