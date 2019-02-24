@@ -169,7 +169,7 @@ def get_chapter(url):
         exit()
     # Novel dependant cleanup
     try:
-        novel = __import__(NOVEL_MODULE)
+        novel = __import__(novel_module)
         contents = novel.clean(contents)
     except ImportError:
         pass
