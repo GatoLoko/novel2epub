@@ -22,6 +22,7 @@ Created on 28/12/16
 @author: GatoLoko
 """
 
+import string
 import urllib.request
 import urllib.error
 import urllib.parse
@@ -36,6 +37,9 @@ novel_module = ""
 # timeout in seconds
 TIMEOUT = 10
 socket.setdefaulttimeout(TIMEOUT)
+
+# Limit chapter file names to characters that wont cause problems.
+VALID_CHARS = "-_.() %s%s" % (string.ascii_letters, string.digits)
 
 # Create our own User-Agent strings. We may need to fake this if a server tryes
 # to mess with us.
@@ -142,11 +146,12 @@ def get_gravitytales(html):
 
 
 def clean_chapter_name(chapter_title):
+    # Replace spaces with underscore
     chapter_file = chapter_title.replace(' ', '_') + '.xhtml'
-    # FAT does NOT allow:\/:*?"<>|"
-    for i in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
-        if i in chapter_file:
-            chapter_file = chapter_file.replace(i, '')
+    # Also replace non ascii "–" with "-"
+    chapter_file = chapter_file.replace("–", "-")
+    # Remove any remaining non-ascii character to avoid problems
+    chapter_file = ''.join(c for c in chapter_file if c in VALID_CHARS)
     return chapter_file
 
 
