@@ -70,7 +70,6 @@ class Volume():
 
 def get_html(url):
     tryes = 5
-    html = ""
     # Build our request
     req = urllib.request.Request(url)
     # Accept gziped content
