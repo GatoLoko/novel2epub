@@ -192,7 +192,7 @@ def get_chapter(url):
     # nothing?)
     for paragraph in soup_text.findAll(['span', 'p']):
         if not paragraph.text or paragraph.text in [' ', '。']:
-            paragraf.decompose()
+            paragraph.decompose()
     # Remove stray br tags
     for br_tag in soup_text.findAll('br'):
         br_tag.decompose()
