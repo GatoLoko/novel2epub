@@ -187,10 +187,11 @@ def get_chapter(url):
     # Remove all atributes from all tags
     for tag in soup_text.findAll(True):
         tag.attrs = {}
-    # Remove empty paragrafs, including those which only contain br tags or the
-    # weird space character (why the &·$% do you have a paragraf with nothing?)
-    for paragraf in soup_text.findAll(['span', 'p']):
-        if len(paragraf.text) == 0 or paragraf.text in [' ', '。']:
+    # Remove empty paragraphs, including those which only contain br tags or
+    # the weird space character (why the &·$% do you have a paragraph with
+    # nothing?)
+    for paragraph in soup_text.findAll(['span', 'p']):
+        if not paragraph.text or paragraph.text in [' ', '。']:
             paragraf.decompose()
     # Remove stray br tags
     for br_tag in soup_text.findAll('br'):
