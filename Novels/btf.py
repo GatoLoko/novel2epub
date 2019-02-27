@@ -27,7 +27,8 @@ import common
 import re
 
 volumes = {'1': Volume('1', 1, 100),
-           '2': Volume('2', 101, 180),
+           '2': Volume('2', 101, 195),
+           '3': Volume('3', 201, 201),
            }
 
 origin = 'http://www.wuxiaworld.co/Bringing-The-Farm-To-Live-In-Another-World/'
