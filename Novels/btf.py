@@ -35,7 +35,7 @@ volumes = {'1': Volume('1', 1, 100),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
-           '10': Volume('10', 901, 911),
+           '10': Volume('10', 901, 918),
            }
 
 origin = 'http://www.wuxiaworld.co/Bringing-The-Farm-To-Live-In-Another-World/'
@@ -74,7 +74,7 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        print(i)
+        # print(i)
         text = '^Chapter %s .*' % str(i)
         if i in range(127, 137):
             text = '^Chapter %s' % str(i)
