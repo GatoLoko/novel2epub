@@ -83,18 +83,21 @@ cover_file = 'Covers/castle-of-black-iron.jpg'
 title = 'Castle of Black Iron - Vol'
 
 synopsis_text = """
-After the Catastrophe, every rule in the world was rewritten.  In the Age of
-Black Iron, steel, iron, steam engines and fighting force became the crux in
-which human beings depended on to survive.  A commoner boy by the name Zhang
-Tie was selected by the gods of fortune and was gifted a small tree which could
-constantly produce various marvelous fruits. At the same time, Zhang Tie was
-thrown into the flames of war, a three-hundred-year war between humans and
-demons on the vacant continent. Using crystals to tap into the potentials of
-the human body, one must cultivate to become stronger.  The thrilling legends
-of mysterious clans, secrets of Oriental fantasies, numerous treasures and
-legacies in the underground world — All in the Castle of Black Iron!  Written
-by Drunk Tiger, this novel is a prime example of fantasy steampunk. Let us
-journey through the world of limitless possibilities and inventions together!
+After the Catastrophe, every rule in the world was rewritten.</p>
+
+<p>In the Age of Black Iron, steel, iron, steam engines and fighting force
+became the crux in which human beings depended on to survive.</p>
+
+<p>A commoner boy by the name Zhang Tie was selected by the gods of fortune and
+was gifted a small tree which could constantly produce various marvelous
+fruits. At the same time, Zhang Tie was thrown into the flames of war, a
+three-hundred-year war between humans and demons on the vacant continent. Using
+crystals to tap into the potentials of the human body, one must cultivate to
+become stronger.</p>
+
+<p>The thrilling legends of mysterious clans, secrets of Oriental fantasies,
+numerous treasures and legacies in the underground world — All in the Castle of
+Black Iron!
 """
 
 
