@@ -33,7 +33,7 @@ volumes = {'1': Volume('1', 1, 100),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 716),
+           '8': Volume('8', 701, 717),
            }
 
 origin = 'http://www.wuxiaworld.co/Long-Live-Summons/'
