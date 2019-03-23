@@ -22,49 +22,69 @@ Created on 24/01/17
 @author: GatoLoko
 """
 
-from common import Volume
+import common
+import re
+
+Volume = common.Volume
 
 volumes = {'1': Volume('1 - Starting from scratch',
-                       11, 248),
+                       1, 248),
            '2': Volume('2 - Rise of heroes',
                        249, 500),
            '3': Volume('3 - The Grandmaster',
                        501, 748),
            '4': Volume('4 - The chase to the top',
-                       749, 829),
+                       749, 830),
            '5': Volume('5',
                        1001, 1250),
            '6': Volume('6 - END',
                        1251, 1379),
            }
 
-origin = 'http://gravitytales.com/novel/Zhan-Long/'
+origin = 'http://www.wuxiaworld.co/Zhan-Long/'
 author = 'Shi Luo Ye'
 cover_file = 'Covers/zhan-long.jpg'
 title = 'Zhan Long - Vol'
 
 synopsis_text = """
-Li Xiao Yao. Former S.W.A.T member, but retired into an ordinary security
-guard. While being sent to grab a ladder, he accidentally stumbled upon the
-VIP room instead of the storage room, and found a women in the middle of
-changing. As revenge, she brought him out in the middle of nowhere and
-kicked him off there. He spent hours walking back, only to find himself
-being kicked out due to lack of payment. As bad things pile one after
-another, his previous supervisor offers him a new job as the bodyguard for
-the daughter of the Tian Xin group CEO, both in reality, and in a virtual
-reality game.
+Li Xiao Yao left S.W.A.T to become an ordinary security guard. While working,
+he happened to enter the VIP room and found Lin Wang Er still in the middle of
+changing. As revenge, she took him on a ride and kicked him out of the car.</p>
+
+<p>After hours of walking, Li Xiao Yao finally managed to get back home just to
+be kicked out of the house. He then got an offer from his previous supervisor
+to become the bodyguard of the Tian Xi group CEO’s daughter both in game and in
+reality. But unknown to Li Xiao Yao the girl was actually…
 """
 
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + 'zl-chapter-' + str(i)
-        if i in [12, 30, 31, 32, 33, 34, 35, 236, 237, 238, 472]:
-            url += "-2"
-        elif i is 11:
-            url += "-3"
+        print(i)
+        text = '^Chapter %s .*' % str(i)
+        if i in [30, 236, 237, 406, 408, 548, 749, 828]:
+            text = '^Chapter %s' % str(i)
+        elif i == 336:
+            text = '^Chapter 336 – You Lump of Meat!'
+        elif i == 337:
+            text = '^Chapter 336 – The Tyrannical Ye Lai'
+        elif i == 490:
+            text = '^Chapter 490 – The Endless Chase'
+        elif i == 590:
+            text = '^Chapter 490 – The Red Dragon Queen'
+        elif i == 830:
+            text = '^Chapter 830 Rotten and Rusty Army Part 1 ?'
+            link = list_page.find('a', text=re.compile(text))
+            url = origin + link['href']
+            chapterlist.append(url)
+            text = '^Chapter 830 – Rotten and Rusty Army Part 2 ?'
+        elif i in [51]:
+            text = '^Chapter %s-.*' % str(i)
+        link = list_page.find('a', text=re.compile(text))
+        url = origin + link['href']
         chapterlist.append(url)
     return chapterlist
 
