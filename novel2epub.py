@@ -11,10 +11,10 @@ import argparse
 import psutil
 from ebooklib import epub
 import sys
-progdir = os.path.dirname(os.path.realpath(__file__))
-sys.path.append(os.path.join(progdir, "libs"))
-sys.path.append(os.path.join(progdir, "Novels"))
-sys.path.append(os.path.join(progdir, os.path.join("Novels", "Complete")))
+PROG_DIR = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.join(PROG_DIR, "libs"))
+sys.path.append(os.path.join(PROG_DIR, "Novels"))
+sys.path.append(os.path.join(PROG_DIR, os.path.join("Novels", "Complete")))
 try:
     import common
     from gs_epub import MyBook
@@ -103,7 +103,7 @@ if __name__ == "__main__":
         book.add_labels(args.labels)
 
     # Add a cover if it's available
-    book.add_cover(os.path.join(progdir, novel.cover_file))
+    book.add_cover(os.path.join(PROG_DIR, novel.cover_file))
 
     for i in chapterlist:
         if args.debug:
@@ -112,14 +112,14 @@ if __name__ == "__main__":
         book.add_chapter(ch_title, ch_file, language, ch_text)
 
     # Define CSS style
-    with open(os.path.join(progdir, "CSS/nav.css")) as style_nav:
+    with open(os.path.join(PROG_DIR, "CSS/nav.css")) as style_nav:
         book.add_nav_style(style_nav.read())
-    with open(os.path.join(progdir, "CSS/body.css")) as style_body:
+    with open(os.path.join(PROG_DIR, "CSS/body.css")) as style_body:
         book.add_body_style(style_body.read())
 
     # Introduction
     book.add_intro(novel.author, novel.origin, novel.synopsis_text,
-                   os.path.join(progdir, 'HTML/intro.xhtml'))
+                   os.path.join(PROG_DIR, 'HTML/intro.xhtml'))
 
     # Define Table of Contents, NCX, Nav and book spine
     book.finalize()
