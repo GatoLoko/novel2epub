@@ -33,7 +33,7 @@ volumes = {'1': Volume('1 - ',
            '4': Volume('4 - ',
                        301, 400),
            '5': Volume('5',
-                       401, 450),
+                       401, 451),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
