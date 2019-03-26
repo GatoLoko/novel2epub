@@ -32,7 +32,7 @@ volumes = {'1': Volume('1', 1, 100),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 654),
+           '7': Volume('7', 601, 655),
            }
 
 origin = 'http://www.wuxiaworld.co/My-Wife-is-a-Beautiful-CEO/'
@@ -62,7 +62,7 @@ together to become husband and wife.</p>
 """
 
 # Regex's for cleanup
-transline = re.compile(r'.*volaretranslations.*')
+volareline = re.compile(r'.*(volaretranslations)|(volarenovel).*')
 
 
 def genlist(start, end):
@@ -93,6 +93,6 @@ def genlist(start, end):
 
 
 def clean(content):
-    for i in content.find_all(text=transline):
+    for i in content.find_all(text=volareline):
         i.replaceWith('')
     return content
