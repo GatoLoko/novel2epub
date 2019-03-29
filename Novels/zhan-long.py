@@ -34,7 +34,7 @@ volumes = {'1': Volume('1 - Starting from scratch',
            '3': Volume('3 - The Grandmaster',
                        501, 748),
            '4': Volume('4 - The chase to the top',
-                       749, 830),
+                       749, 831),
            '5': Volume('5',
                        1001, 1250),
            '6': Volume('6 - END',
@@ -63,7 +63,7 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        print(i)
+        # print(i)
         text = '^Chapter %s .*' % str(i)
         if i in [30, 236, 237, 406, 408, 548, 749, 828]:
             text = '^Chapter %s' % str(i)
