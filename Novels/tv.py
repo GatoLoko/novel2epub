@@ -23,6 +23,7 @@ Created on 09/01/18
 """
 
 from common import Volume
+import re
 
 volumes = {'1': Volume('1 - ',
                        1, 100),
@@ -52,6 +53,8 @@ the corrupt and privileged with his newfound power?</p>
 <p>I am destined to be the protagonist of this era!
 """
 
+april1st = re.compile(r"^(Rezydencja)|(Szybko)|(Następnie)|(Mają)|(Wmiędzyczasie)|(PEW PEW PEW.)|(Tatuś)|(„Idź)|(Hiena: OK.)")
+
 
 def genlist(start, end):
     global origin
@@ -63,4 +66,6 @@ def genlist(start, end):
 
 
 def clean(content):
+    for i in content.find_all(text=april1st):
+        i.replaceWith("")
     return content
