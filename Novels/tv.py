@@ -34,7 +34,7 @@ volumes = {'1': Volume('1 - ',
            '4': Volume('4 - ',
                        301, 400),
            '5': Volume('5',
-                       401, 461),
+                       401, 463),
            }
 
 origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
@@ -53,7 +53,7 @@ the corrupt and privileged with his newfound power?</p>
 <p>I am destined to be the protagonist of this era!
 """
 
-april1st = re.compile(r"^(Rezydencja)|(Szybko)|(Następnie)|(Mają)|(Wmiędzyczasie)|(PEW PEW PEW.)|(Tatuś)|(„Idź)|(Hiena: OK.)")
+april1st = re.compile(r"^(Rezydencja)|(Szybko)|(Następnie)|(Mają)|(W międzyczasie)|(PEW PEW PEW.)|(Tatuś)|(„Idź)|(Hiena: OK.)")
 
 
 def genlist(start, end):
