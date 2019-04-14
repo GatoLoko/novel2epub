@@ -9,7 +9,7 @@ Crated on Sat Nov 12 16:41:00 2016
 import os
 import argparse
 import psutil
-from ebooklib import epub
+import ebooklib
 import sys
 PROG_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(PROG_DIR, "libs"))
@@ -20,6 +20,7 @@ try:
     from gs_epub import MyBook
 except ImportError:
     raise
+epub = ebooklib.epub
 
 
 def arguments():
@@ -47,20 +48,20 @@ def arguments():
 
 
 ###############################################################################
-# TODO: Remove this block when the fix is released
+# TODO: Remove this block when the fix is propagated to most distros
 # Something goes wrong when adding an image as a cover, and we need to work
 # around it by replacing the get_template function with our own that takes care
 # of properly encoding the template as utf8.
-# There is a bug reported, and this will become unnecesary once the fix gets
-# into the distributions.
-original_get_template = epub.EpubBook.get_template
+# The bug was fixed upstream but debian/ubuntu and others haven't packaged new
+# releases of ebooklib since 2014.
+# This will become unnecessary once v0.16 enters the repositories
+if ebooklib.VERSION < (0, 16, 0):
+    original_get_template = epub.EpubBook.get_template
 
-
-def new_get_template(*args, **kwargs):
+    def new_get_template(*args, **kwargs):
         return original_get_template(*args, **kwargs).encode(encoding='utf8')
 
-
-epub.EpubBook.get_template = new_get_template
+    epub.EpubBook.get_template = new_get_template
 ###############################################################################
 
 
