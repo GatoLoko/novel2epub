@@ -32,7 +32,7 @@ volumes = {'1': Volume('1', 0, 100),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 663),
+           '7': Volume('7', 601, 664),
            }
 
 origin = 'http://www.wuxiaworld.co/Great-Demon-King/'
