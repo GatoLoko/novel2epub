@@ -31,7 +31,7 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '5': Volume('5 - Turmoil in the Capital', 511, 700),
            '6': Volume('6 - Pill Royale', 701, 840),
            '7': Volume('7 - Shocking the continent', 841, 1000),
-           '8': Volume('8 - A midlife reincarnation', 1001, 1007),
+           '8': Volume('8 - A midlife reincarnation', 1001, 1008),
            '9': Volume('9 - ', 1051, 1051),
            '10': Volume('10 - ', 1161, 1161),
            '11': Volume('11 - ', 1291, 1356)
@@ -86,6 +86,8 @@ def genlist(start, end):
             url = origin + 'usaw-book-6-chapter-841'
         if i == 969:
             url = origin + 'usaw-chapter-7-' + str(i)
+        if i == 1008:
+            url = origin + 'usaw-chapter-8-' + str(i)
         chapterlist.append(url)
     return chapterlist
 
