@@ -31,7 +31,7 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '5': Volume('5 - Turmoil in the Capital', 511, 700),
            '6': Volume('6 - Pill Royale', 701, 840),
            '7': Volume('7 - Shocking the continent', 841, 1000),
-           '8': Volume('8 - A midlife reincarnation', 1001, 1013),
+           '8': Volume('8 - A midlife reincarnation', 1001, 1014),
            '9': Volume('9 - ', 1051, 1051),
            '10': Volume('10 - ', 1161, 1161),
            '11': Volume('11 - ', 1291, 1356)
