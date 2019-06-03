@@ -35,7 +35,8 @@ volumes = {'1': Volume('1', 1, 100),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
-           '10': Volume('10', 901, 999),
+           '10': Volume('10', 901, 1000),
+           '11': Volume('11', 1001, 1002),
            }
 
 origin = 'http://www.wuxiaworld.co/Bringing-The-Farm-To-Live-In-Another-World/'
