@@ -48,7 +48,7 @@ volumes = {'1': Volume('1', 1, 100),
            '20': Volume('20', 1901, 2000),
            '21': Volume('21', 2001, 2100),
            '22': Volume('22', 2101, 2200),
-           '23': Volume('23', 2201, 2219),
+           '23': Volume('23', 2201, 2226),
            }
 
 origin = 'https://www.wuxiaworld.com/novel/emperors-domination/'
