@@ -37,7 +37,7 @@ volumes = {'1': Volume('1', 1, 100),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
            '12': Volume('12', 1101, 1200),
-           '13': Volume('13', 1201, 1255),
+           '13': Volume('13', 1201, 1258),
            #
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
@@ -49,6 +49,10 @@ volumes = {'1': Volume('1', 1, 100),
            '21': Volume('21', 2001, 2100),
            '22': Volume('22', 2101, 2200),
            '23': Volume('23', 2201, 2300),
+           '24': Volume('24', 2301, 2400),
+           '25': Volume('25', 2401, 2500),
+           '26': Volume('26', 2501, 2600),
+           # As of Jun 2019, there are 2526+ chapters in the original novel
            }
 
 origin = 'http://gravitytales.com/novel/peerless-battle-spirit/'

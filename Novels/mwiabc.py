@@ -33,7 +33,18 @@ volumes = {'1': Volume('1', 1, 100),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 706),
+           '8': Volume('8', 701, 708),
+           #
+           '9': Volume('9', 801, 801),
+           '10': Volume('10', 901, 901),
+           '11': Volume('11', 1001, 1001),
+           '12': Volume('12', 1101, 1101),
+           '13': Volume('13', 1201, 1201),
+           '14': Volume('14', 1301, 1301),
+           '15': Volume('15', 1401, 1401),
+           '16': Volume('16', 1501, 1501),
+           '17': Volume('17', 1601, 1601),
+           # This novel ends with chapter 1664
            }
 
 origin = 'http://www.wuxiaworld.co/My-Wife-is-a-Beautiful-CEO/'
