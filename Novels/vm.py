@@ -30,7 +30,7 @@ volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 489),
+           '5': Volume('5', 401, 495),
            #
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
@@ -50,6 +50,12 @@ volumes = {'1': Volume('1', 1, 100),
            '21': Volume('21', 2001, 2100),
            '22': Volume('22', 2101, 2200),
            '23': Volume('23', 2201, 2300),
+           '24': Volume('24', 2301, 2400),
+           '25': Volume('25', 2401, 2500),
+           '26': Volume('26', 2501, 2600),
+           '27': Volume('27', 2601, 2700),
+           '28': Volume('28', 2701, 2800),
+           # As of Jun 2019, this novel has 2786+ chapters
            }
 
 origin = 'http://www.wuxiaworld.co/Versatile-Mage/'

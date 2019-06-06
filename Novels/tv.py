@@ -25,18 +25,35 @@ Created on 09/01/18
 from common import Volume
 import re
 
-volumes = {'1': Volume('1 - ',
-                       1, 100),
-           '2': Volume('2 - ',
-                       101, 200),
-           '3': Volume('3 - ',
-                       201, 300),
-           '4': Volume('4 - ',
-                       301, 400),
-           '5': Volume('5',
-                       401, 500),
-           '6': Volume('6',
-                       501, 524),
+volumes = {'1': Volume('1', 1, 100),
+           '2': Volume('2', 101, 200),
+           '3': Volume('3', 201, 300),
+           '4': Volume('4', 301, 400),
+           '5': Volume('5', 401, 500),
+           '6': Volume('6', 501, 528),
+           #
+           '7': Volume('7', 601, 601),
+           '8': Volume('8', 701, 701),
+           '9': Volume('9', 801, 801),
+           '10': Volume('10', 901, 901),
+           '11': Volume('11', 1001, 1001),
+           '12': Volume('12', 1101, 1101),
+           '13': Volume('13', 1201, 1201),
+           '14': Volume('14', 1301, 1301),
+           '15': Volume('15', 1401, 1401),
+           '16': Volume('16', 1501, 1501),
+           '17': Volume('17', 1601, 1601),
+           '18': Volume('18', 1701, 1701),
+           '19': Volume('19', 1801, 1801),
+           '20': Volume('20', 1901, 1901),
+           '21': Volume('21', 2001, 2001),
+           '22': Volume('22', 2101, 2101),
+           '23': Volume('23', 2201, 2201),
+           '24': Volume('24', 2301, 2301),
+           '25': Volume('25', 2401, 2401),
+           '26': Volume('26', 2501, 2501),
+           '27': Volume('27', 2601, 2601)
+           # This novel ends with chapter 2621
            }
 
 origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
