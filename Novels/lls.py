@@ -33,7 +33,15 @@ volumes = {'1': Volume('1', 1, 100),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 731),
+           '8': Volume('8', 701, 732),
+           #
+           '9': Volume('9', 801, 700),
+           '10': Volume('10', 901, 900),
+           '11': Volume('11', 1001, 1001),
+           '12': Volume('12', 1101, 1101),
+           '13': Volume('13', 1201, 1201),
+           '14': Volume('14', 1301, 1301),
+           # This novel ends with chapter 1399.
            }
 
 origin = 'http://www.wuxiaworld.co/Long-Live-Summons/'

@@ -32,7 +32,13 @@ volumes = {'1': Volume('1', 0, 100),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 691),
+           '7': Volume('7', 601, 694),
+           #
+           '8': Volume('8', 701, 701),
+           '9': Volume('9', 801, 801),
+           '10': Volume('10', 901, 901),
+           '11': Volume('11', 1001, 1001),
+           # This novel ends in chapter 1027.
            }
 
 origin = 'http://www.wuxiaworld.co/Great-Demon-King/'
