@@ -34,11 +34,12 @@ volumes = {'1': Volume('1 - Starting from scratch',
            '3': Volume('3 - The Grandmaster',
                        501, 748),
            '4': Volume('4 - The chase to the top',
-                       749, 840),
+                       749, 846),
            '5': Volume('5',
-                       1001, 1250),
+                       1001, 1001),
            '6': Volume('6 - END',
-                       1251, 1379),
+                       1251, 1251),
+           # This novel ends with chapter 1379
            }
 
 origin = 'http://www.wuxiaworld.co/Zhan-Long/'
@@ -81,7 +82,7 @@ def genlist(start, end):
             url = origin + link['href']
             chapterlist.append(url)
             text = '^Chapter 830 – Rotten and Rusty Army Part 2 ?'
-        elif i in [51]:
+        elif i == 51 or i >= 841:
             text = '^Chapter %s-.*' % str(i)
         elif i == 839:
             text = '^hapter 839 – The Flying Slash Part 1'

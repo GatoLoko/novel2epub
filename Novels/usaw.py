@@ -31,9 +31,9 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '5': Volume('5 - Turmoil in the Capital', 511, 700),
            '6': Volume('6 - Pill Royale', 701, 840),
            '7': Volume('7 - Shocking the continent', 841, 1000),
-           '8': Volume('8 - A midlife reincarnation', 1001, 1048),
+           '8': Volume('8 - A midlife reincarnation', 1001, 1050),
+           '9': Volume('9 - The return of the mighty', 1051, 1053),
            #
-           '9': Volume('9 - Return of the mighty', 1051, 1051),
            '10': Volume('10 - ', 1161, 1161),
            '11': Volume('11 - ', 1291, 1356)
            # This novel ends with chapter 1356
