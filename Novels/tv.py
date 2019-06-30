@@ -59,7 +59,7 @@ volumes = {'1': Volume('1', 1, 100),
 origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
 author = 'Li Xianyu (李闲鱼)'
 cover_file = 'Covers/tv.jpg'
-title = 'TranXendig Vision - Vol'
+title = 'TranXending Vision - Vol'
 
 synopsis_text = """
 Xia Lei, whose parents were no longer around, had to work hard to support
