@@ -31,7 +31,7 @@ volumes = {'1': Volume('1', 1, 100),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 500),
-           '6': Volume('6', 501, 546),
+           '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
@@ -42,7 +42,7 @@ volumes = {'1': Volume('1', 1, 100),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
            '16': Volume('16', 1501, 1600),
-           '17': Volume('17', 1601, 1640),
+           '17': Volume('17', 1601, 1700),
            '18': Volume('18', 1701, 1800),
            '19': Volume('19', 1801, 1900),
            '20': Volume('20', 1901, 2000),
@@ -90,15 +90,32 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        # if i < 256:
-        #     text = "Chapter %s .*" % str(i)
-        #     if i == 61:
-        #         text = "Chapter %s.*" % str(i)
-        #     if i in [124, 135, 251]:
-        #         text = "Chapter 0%s .*" % str(i)
-        # else:
-        #     text = "^%s .*" % str(i)
-        text = "^Chapter %s: .*" % str(i)
+        # print(i)
+        if i in range(1051, 1056+1) or i in [1441, 1537, 1883, 2450] or \
+                i in range(2481, 2485+1):
+            text = "Chapter %s" % str(i)
+        elif i == 1124:
+            text = "Chapter 1124: Soon Getting Nature pills"
+        elif i == 1224:
+            text = "Chapter 1124: Qiu Yue Xin"
+        elif i == 1936:
+            text = "Chaoter %s:" % str(i)
+        elif i == 2024:
+            text = "Chapter 2024: Collapsing Sky"
+        elif i == 2124:
+            text = "Chapter 2024: Deployment"
+        elif i == 2237:
+            text = "Chapter 2237: Fighting"
+        elif i == 2337:
+            text = "Chapter 2237: Sky Palace"
+        elif i == 2243:
+            text = "Chapter 2243: Name List"
+        elif i == 2343:
+            text = "Chapter 2243: Devouring"
+        elif i in range(2476, 2480+1):
+            text = "Chapters %s" % str(i)
+        else:
+            text = "^Chapter %s:" % str(i)
         link = list_page.find('a', text=re.compile(text))
         url = "%s%s" % (origin, link['href'])
         chapterlist.append(url)
