@@ -82,7 +82,7 @@ def genlist(start, end):
             url = origin + link['href']
             chapterlist.append(url)
             text = '^Chapter 830 – Rotten and Rusty Army Part 2 ?'
-        elif i == 857:
+        elif i in [857, 861, 862, 863, 864, 865, 867, 868, 869]:
             text = '^Chapter %s.*' % str(i)
         elif i == 51 or i >= 841:
             text = '^Chapter %s-.*' % str(i)
