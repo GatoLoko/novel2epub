@@ -80,13 +80,13 @@ volumes = {'1': Volume('1', 1, 19),
            '52': Volume('52', 1592, 1619),
            '53': Volume('53', 1620, 1646),
            '54': Volume('54', 1647, 1719),
-           '55': Volume('55', 1720, 1725),
+           '55': Volume('55', 1720, 1742),
            #
            '56': Volume('56', 1772, 1772),
            '57': Volume('57', 1791, 1791),
            '58': Volume('58', 1856, 1856),
-           '59': Volume('59', 1899, 1899),
-           'X': Volume('X', 9999, 9999)
+           '59': Volume('59', 1899, 1899)
+           # This novel ends at volume 59, chapter 2012
            }
 
 origin = 'http://www.wuxiaworld.co/Castle-of-Black-Iron/'
