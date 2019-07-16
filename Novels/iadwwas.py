@@ -29,7 +29,7 @@ import re
 volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
-           '4': Volume('4', 301, 311),
+           '4': Volume('4', 301, 314),
            }
 
 origin = 'http://www.wuxiaworld.co/In-a-Different-World-with-a-Smartphone/'
@@ -60,6 +60,8 @@ def genlist(start, end):
         text = '^Chapter %s: .*' % str(i)
         if i == 34:
             text = '^Chatper %s: .*' % str(i)
+        elif i >= 312:
+            text = '^Chapter %s' % str(i)
         if i in [187, 300]:  # Skip missing chapters
             continue
         link = list_page.find('a', text=re.compile(text))
