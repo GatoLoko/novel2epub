@@ -29,7 +29,7 @@ import re
 volumes = {'1': Volume('1', 1, 29),
            '2': Volume('2', 30, 85),
            '3': Volume('3', 86, 209),
-           '4': Volume('4', 210, 767),
+           '4': Volume('4', 210, 770),
            # This novel ends in chapter 2610
            }
 
