@@ -72,8 +72,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1594, 1794),
            '16': Volume('16 - Oceanic Grand World, Legend of the Nine'
                         ' Continents',
-                        1795, 2482)
-           # Volume 16 is the last one, and it ends with chapter 2492
+                        1795, 2493)
            }
 
 origin = 'http://www.wuxiaworld.com/novel/ancient-strengthening-technique/'
