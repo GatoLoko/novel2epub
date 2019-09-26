@@ -125,6 +125,10 @@ def get_wuxiaworld_co(html):
     # Site dependant cleanup
     # Extract the main text DIV content and turn it into a string
     contents = html.find('div', {'id': 'content'})
+    paragline = re.compile(r'.*&lt;/p&gt;&lt;p&gt;.*')
+    for i in contents.find_all(text=paragline):
+        istring = re.sub('&lt;/p&gt;&lt;p&gt;', '</p><p>', i)
+        i.replaceWith(istring)
     credline = re.compile(r'Translator:.*Editor:.*')
     if contents.find(text=credline):
         contents.find(text=credline).replaceWith('')
@@ -168,8 +172,10 @@ def get_chapter(url):
         exit()
     # Novel dependant cleanup
     try:
+        print('Cleaning...')
         novel = __import__(novel_module)
         contents = novel.clean(contents)
+        print('Clean')
     except ImportError:
         pass
     soup_str = "".join(map(str, contents))
