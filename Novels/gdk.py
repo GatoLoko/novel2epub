@@ -33,7 +33,7 @@ volumes = {'1': Volume('1', 0, 100),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 756),
+           '8': Volume('8', 701, 760),
            #
            '9': Volume('9', 801, 801),
            '10': Volume('10', 901, 901),
@@ -65,7 +65,7 @@ def genlist(start, end):
         # print(i)
         if i == 0:
             text = '^prologue'
-        elif i in [424, 593, 621]:
+        elif i in [424, 593, 621, 760]:
             text = '^Chapter %s' % str(i)
         else:
             text = '^Chapter %s: .*' % str(i)
