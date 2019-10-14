@@ -28,7 +28,7 @@ volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 481),
+           '5': Volume('5', 401, 482),
            # This author pisses me off, holding back the novel while the manga
            # catches up.
            }
@@ -61,8 +61,8 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         url = origin + 'tdg-chapter-' + str(i)
-        if i >= 481:
-            url = origin + 'tdg-chapter-' + str(i+1)
+       #  if i >= 481:
+       #      url = origin + 'tdg-chapter-' + str(i+1)
         if i == 278:
             url = origin + 'tdg-chapter-' + str(i) + "-1"
         chapterlist.append(url)
