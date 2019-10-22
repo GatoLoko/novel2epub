@@ -78,7 +78,21 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         # print(i)
-        if i not in [186, 284, 286, 293, 295, 296, 361]:
+        if i in [186, 284, 286, 293, 295, 296, 361]:
+            # Some chapters have 2 parts, first kind
+            text = '^Chapter %s Part 1 – .*' % str(i)
+            link = list_page.find('a', text=re.compile(text))
+            url = origin + link['href']
+            chapterlist.append(url)
+            text = '^Chapter %s Part 2 – .*' % str(i)
+        elif i >= 717:
+            # Some chapters have 2 parts, second kind
+            text = '^Chapter %s .* Part 1' % str(i)
+            link = list_page.find('a', text=re.compile(text))
+            url = origin + link['href']
+            chapterlist.append(url)
+            text = '^Chapter %s .* Part 2' % str(i)
+        else:
             text = '^Chapter %s – .*' % str(i)
             if i == 212:
                 text = '^Chapter %s- .*' % str(i)
@@ -86,13 +100,6 @@ def genlist(start, end):
                 text = '^Chapter 356'
             elif i in [647, 651]:
                 text = '^Chapter %s - .*' % str(i)
-        else:
-            # Some chapters have 2 parts
-            text = '^Chapter 186 Part 1 – .*'
-            link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
-            chapterlist.append(url)
-            text = '^Chapter 186 Part 2 – .*'
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href']
         chapterlist.append(url)
