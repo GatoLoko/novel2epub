@@ -55,7 +55,7 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '14': Volume('14 - Crimson calamity',
                         1401, 1500),
            '15': Volume('15 - When hope dies, the devil awakens',
-                        1501, 1541),
+                        1501, 1560),
            'X': Volume('X - END',
                        0000, 0000)
            }
