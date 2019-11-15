@@ -33,7 +33,7 @@ volumes = {'1': Volume('1', 1, 100),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 752),
+           '8': Volume('8', 701, 753),
            #
            '9': Volume('9', 801, 700),
            '10': Volume('10', 901, 900),
@@ -85,7 +85,7 @@ def genlist(start, end):
             url = origin + link['href']
             chapterlist.append(url)
             text = '^Chapter %s Part 2 – .*' % str(i)
-        elif i >= 717:
+        elif i in range(717, 753):
             # Some chapters have 2 parts, second kind
             text = '^Chapter %s .* Part 1' % str(i)
             link = list_page.find('a', text=re.compile(text))
