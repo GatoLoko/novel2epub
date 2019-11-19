@@ -48,13 +48,13 @@ volumes = {'1': Volume('1', 1, 100),
            '22': Volume('22', 2101, 2200),
            '23': Volume('23', 2201, 2300),
            '24': Volume('24', 2301, 2400),
-           '25': Volume('25', 2401, 2477),
+           '25': Volume('25', 2401, 2485),
            #
            '26': Volume('26', 2501, 2600),
            '27': Volume('27', 2601, 2700),
            '28': Volume('28', 2701, 2800),
            '29': Volume('29', 2801, 2900),
-           # As of Jun 2019, there are 2600+ chapters in the original novel.
+           # As of Nov 2019, there are 2700+ chapters in the original novel.
            }
 
 origin = 'http://gravitytales.com/novel/chaotic-sword-god/'
