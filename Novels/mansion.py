@@ -34,7 +34,7 @@ volumes = {'1': Volume('1', 1, 29),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
-           '9': Volume('9', 801, 848),
+           '9': Volume('9', 801, 850),
            #
            '10': Volume('10', 901, 901),
            '11': Volume('11', 1001, 1001),
@@ -113,8 +113,20 @@ def clean(content):
         i.replaceWith('')
     warpEngine = re.compile(r'wrap engine')
     for i in content.find_all(text=warpEngine):
-        i.replaceWith('warp engine')
+        istring = re.sub(warpEngine ,'warp engine', i)
+        i.replaceWith(istring)
     firstCorp = re.compile(r'First Crop')
     for i in content.find_all(text=firstCorp):
-        i.replaceWith('First Corp')
+        istring = re.sub(firstCorp, 'First Corp', i)
+        i.replaceWith(istring)
+    spam = re.compile(r'Find.*authorized.*Webnovel.*click.*visiting.*')
+    for i in content.find_all(text=spam):
+        print('    Spam')
+        istring = re.sub(spam, '', i)
+        i.replaceWith(istring)
+    dragoncavalry = re.compile(r'Dragon Calvary')
+    for i in content.find_all(text=dragoncavalry):
+        print('    Dragon Cavalry')
+        istring = re.sub(dragoncavalry, 'Dragon Cavalry', i)
+        i.replaceWith(istring)
     return content
