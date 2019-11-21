@@ -88,7 +88,7 @@ def genlist(start, end):
             text = "Prologue"
         if i == 231:
             text = "Rule The World"
-        elif i < 608:
+        elif i < 608 or i > 613:
             text = 'Chapter ' + str(i) + '.*'
         else:
             text = '^' + str(i) + '.*'
