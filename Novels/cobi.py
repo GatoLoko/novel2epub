@@ -85,7 +85,7 @@ volumes = {'1': Volume('1', 1, 19),
            '57': Volume('57', 1791, 1855),
            '58': Volume('58', 1856, 1898),
            '59': Volume('59', 1899, 1976),
-           '60': Volume('60', 1977, 2006),
+           '60': Volume('60', 1977, 2008),
            # This novel ends at volume 60, chapter 2012
            }
 
