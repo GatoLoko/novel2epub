@@ -85,7 +85,7 @@ volumes = {'1': Volume('1', 1, 19),
            '57': Volume('57', 1791, 1855),
            '58': Volume('58', 1856, 1898),
            '59': Volume('59', 1899, 1976),
-           '60': Volume('60', 1977, 2014),
+           '60': Volume('60', 1977, 2015),
            # The original novel ends at chapter 2012 of volume 60, but for some
            # reason the translation does not. Maybe some chapteres were split
            # in two parts or something like that.
