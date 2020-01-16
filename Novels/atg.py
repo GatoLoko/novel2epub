@@ -57,11 +57,13 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '15': Volume('15 - When hope dies, the devil awakens',
                         1501, 1600),
            '16': Volume('16 - Emperor of the North',
-                        1601, 1623),
+                        1601, 1625),
            #
            'X': Volume('X - END',
                        0000, 0000)
-           # As of Dec 2019, there are 1615 chapters in the original novel.
+           # As of Jan 2020, the translation is up to date with the original
+           # source and there is no way to know how many chapters/volumes may
+           # be in the future.
            }
 
 origin = 'http://www.wuxiaworld.com/novel/against-the-gods/'
