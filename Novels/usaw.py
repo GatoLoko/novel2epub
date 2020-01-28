@@ -33,7 +33,7 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '7': Volume('7 - Shocking the continent', 841, 1000),
            '8': Volume('8 - A midlife reincarnation', 1001, 1050),
            '9': Volume('9 - The return of the mighty', 1051, 1160),
-           '10': Volume('10 - Times of Turbulence', 1161, 1262),
+           '10': Volume('10 - Times of Turbulence', 1161, 1271),
            #
            '11': Volume('11 - ', 1291, 1356)
            # This novel ends with chapter 1356
@@ -87,9 +87,11 @@ def genlist(start, end):
         if i == 841:
             url = origin + 'usaw-book-6-chapter-841'
         if i == 969:
-            url = origin + 'usaw-chapter-7-' + str(i)
+            url = origin + 'usaw-chapter-7-969'
         if i == 1095:
             url = origin + 'usaw-book-8-chapter-1095'
+        if i == 1256:
+            url = origin + 'usaw-book-10chapter-1256'
         chapterlist.append(url)
     return chapterlist
 
