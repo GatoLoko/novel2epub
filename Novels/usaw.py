@@ -92,6 +92,8 @@ def genlist(start, end):
             url = origin + 'usaw-book-8-chapter-1095'
         if i == 1256:
             url = origin + 'usaw-book-10chapter-1256'
+        if i == 1274:
+            url = origin + 'usaw-chapter-10-1274'
         chapterlist.append(url)
     return chapterlist
 
