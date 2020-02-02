@@ -38,7 +38,7 @@ volumes = {'1': Volume('1', 1, 100),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
            '12': Volume('12', 1101, 1200),
-           '13': Volume('13', 1201, 1208),
+           '13': Volume('13', 1201, 1218),
            #
            '14': Volume('14', 1301, 1301),
            '15': Volume('15', 1401, 1401),
@@ -90,7 +90,7 @@ def genlist(start, end):
         text = '^Chapter %s .*' % str(i)
         if i in range(127, 137):
             text = '^Chapter %s' % str(i)
-        elif i in [149, 861, 1044]:
+        elif i in [149, 861, 1044, 1212]:
             text = '^Chapter %s-.*' % str(i)
         elif i == 283:
             text = '^Chapter 284 – Special Requests'
