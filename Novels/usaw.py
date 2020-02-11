@@ -33,9 +33,9 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '7': Volume('7 - Shocking the continent', 841, 1000),
            '8': Volume('8 - A midlife reincarnation', 1001, 1050),
            '9': Volume('9 - The return of the mighty', 1051, 1160),
-           '10': Volume('10 - Times of Turbulence', 1161, 1274),
+           '10': Volume('10 - Times of Turbulence', 1161, 1283),
            #
-           '11': Volume('11 - ', 1291, 1356)
+           '11': Volume('11 - The Supreme Saints inheritance', 1291, 1356)
            # This novel ends with chapter 1356
            }
 
