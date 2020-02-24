@@ -60,7 +60,7 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        print(i)
+        # print(i)
         if i in list(range(1, 51)) + list(range(52, 505)) + list(range(506,627)):
             text = '^Chapter %s – .*' % str(i)
         elif i in [51]:
@@ -71,12 +71,6 @@ def genlist(start, end):
             url = origin + link['href']
             chapterlist.append(url)
             text = '^Chapter %s.5( |,).*' % str(i)
-        # elif i == 981:
-        #     text = '^Chapter %s,.*' % str(i)
-        #     link = list_page.find('a', text=re.compile(text))
-        #     url = origin + link['href']
-        #     chapterlist.append(url)
-        #     text = '^Chapter %s.5,.*' % str(i)
         elif i == 968:
             text = '^Chapter %s. .*' % str(i)
         else:
