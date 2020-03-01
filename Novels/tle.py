@@ -27,7 +27,7 @@ import re
 
 Volume = common.Volume
 
-volumes = {'1': Volume('1', 0, 100),
+volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
            '3': Volume('3', 201, 300),
            '4': Volume('4', 301, 400),
@@ -39,11 +39,11 @@ volumes = {'1': Volume('1', 0, 100),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
            '12': Volume('12', 1101, 1200),
-           '13': Volume('13', 1201, 1298),
-           #
-           '14': Volume('14', 1301, 1301),
-           '15': Volume('15', 1401, 1401),
+           '13': Volume('13', 1201, 1300),
+           '14': Volume('14', 1301, 1400),
+           '15': Volume('15', 1401, 1500),
            '16': Volume('16', 1501, 1501),
+           #
            '17': Volume('17', 1601, 1601),
            '18': Volume('18', 1701, 1701),
            '19': Volume('19', 1801, 1801),
@@ -84,14 +84,8 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        if i == 0:
-            text = "Prologue"
-        if i == 231:
-            text = "Rule The World"
-        elif i < 608 or i > 613:
-            text = 'Chapter ' + str(i) + '.*'
-        else:
-            text = '^' + str(i) + '.*'
+        # print(i)
+        text = '^' + str(i) + ' .*'
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href']
         chapterlist.append(url)
