@@ -41,7 +41,7 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '8': Volume('8 - Battle of prophecy',
                        3109, 3764),
            '9': Volume('9 - Birth of Asura',
-                       3765, 4091)
+                       3765, 4103)
            # As of Jan 2020, this novel has 4139 chapters and isn't finished
            }
 
