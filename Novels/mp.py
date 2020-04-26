@@ -37,7 +37,8 @@ volumes = {'1': Volume('1', 1, 100),
            '9': Volume('9', 801, 900),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
-           '12': Volume('12', 1101, 1198),
+           '12': Volume('12', 1101, 1200),
+           '13': Volume('13', 1201, 1211),
            # This novel has over 5000 chapters in the original chinese.
            }
 

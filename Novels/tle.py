@@ -43,7 +43,7 @@ volumes = {'1': Volume('1', 1, 100),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
            '16': Volume('16', 1501, 1600),
-           '17': Volume('17', 1601, 1601),
+           '17': Volume('17', 1601, 1609),
            #
            '18': Volume('18', 1701, 1701),
            '19': Volume('19', 1801, 1801),
@@ -52,7 +52,12 @@ volumes = {'1': Volume('1', 1, 100),
            '22': Volume('22', 2101, 2101),
            '23': Volume('23', 2201, 2201),
            '24': Volume('24', 2301, 2301),
-           # As of Jun 2019, there are 2382+ in the original novel
+           '25': Volume('25', 2401, 2401),
+           '26': Volume('26', 2501, 2501),
+           '27': Volume('27', 2601, 2601),
+           '28': Volume('28', 2701, 2701),
+           '29': Volume('29', 2801, 2801),
+           # As of Apr 2020, there are 2832+ chapters in the original novel
            }
 
 origin = 'http://www.wuxiaworld.co/The-Lord-is-Empire/'

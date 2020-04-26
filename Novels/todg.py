@@ -30,7 +30,7 @@ volumes = {'1': Volume('1', 1, 100),
            '4': Volume('4', 301, 400),
            '5': Volume('5', 401, 488),
            # This author pisses me off, holding back the novel while the manga
-           # catches up.
+           # sloooooowly catches up.
            }
 
 origin = 'http://www.wuxiaworld.com/novel/tales-of-demons-and-gods/'
