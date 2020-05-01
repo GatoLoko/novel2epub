@@ -35,7 +35,7 @@ volumes = {'1': Volume('1', 1, 29),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
-           '10': Volume('10', 901, 995),
+           '10': Volume('10', 901, 999),
            #
            '11': Volume('11', 1001, 1001),
            '12': Volume('12', 1101, 1101),
@@ -43,7 +43,7 @@ volumes = {'1': Volume('1', 1, 29),
            '14': Volume('14', 1301, 1301),
            '15': Volume('15', 1401, 1401),
            '16': Volume('16', 1501, 1501),
-           # This novel ends in chapter 2610
+           # This novel ends in chapter 1610
            }
 
 origin = 'http://www.wuxiaworld.co/I-Have-a-Mansion-in-the-Post-apocalyptic-World/'
