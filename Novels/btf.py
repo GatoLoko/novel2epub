@@ -38,9 +38,9 @@ volumes = {'1': Volume('1', 1, 100),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
            '12': Volume('12', 1101, 1200),
-           '13': Volume('13', 1201, 1298),
+           '13': Volume('13', 1201, 1300),
+           '14': Volume('14', 1301, 1306),
            #
-           '14': Volume('14', 1301, 1301),
            '15': Volume('15', 1401, 1401),
            '16': Volume('16', 1501, 1501),
            '17': Volume('17', 1601, 1601),
@@ -59,14 +59,14 @@ synopsis_text = """
 “If he’s being badass, I’m gonna plant my own crops. If he messes with me, he
 will not live past next year.”</p>
 
-<p>Homebody Zhao Hai brought ‘QQ Farm’ along in his traversal to another world and
-resided within the body of a fallen noble. His fief was a black land which
+<p>Homebody Zhao Hai brought ‘QQ Farm’ along in his traversal to another world
+and resided within the body of a fallen noble. His fief was a black land which
 nothing could be planted, and more importantly, he even had a peerlessly
 powerful fiancee, who was actually the successor of a duchy and future Grand
 Duchess!</p>
 
-<p>Even more importantly, he is a magical and martial cripple who could not learn
-magic and martial arts. His crippling was very thorough.</p>
+<p>Even more importantly, he is a magical and martial cripple who could not
+learn magic and martial arts. His crippling was very thorough.</p>
 
 <p>“I can’t learn magic, but I have the farm. You dare attack me? I’ll release
 bugs to eat up your rations and crops, and put pesticides and weed agents into
