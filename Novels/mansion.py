@@ -35,9 +35,9 @@ volumes = {'1': Volume('1', 1, 29),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
-           '10': Volume('10', 901, 999),
+           '10': Volume('10', 901, 1000),
+           '11': Volume('11', 1001, 1010),
            #
-           '11': Volume('11', 1001, 1001),
            '12': Volume('12', 1101, 1101),
            '13': Volume('13', 1201, 1201),
            '14': Volume('14', 1301, 1301),
@@ -113,7 +113,7 @@ def clean(content):
         i.replaceWith('')
     warpEngine = re.compile(r'wrap engine')
     for i in content.find_all(text=warpEngine):
-        istring = re.sub(warpEngine ,'warp engine', i)
+        istring = re.sub(warpEngine, 'warp engine', i)
         i.replaceWith(istring)
     firstCorp = re.compile(r'First Crop')
     for i in content.find_all(text=firstCorp):

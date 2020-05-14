@@ -38,7 +38,7 @@ volumes = {'1': Volume('1', 1, 100),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
            '12': Volume('12', 1101, 1200),
-           '13': Volume('13', 1201, 1220),
+           '13': Volume('13', 1201, 1244),
            # This novel has over 5000 chapters in the original chinese.
            }
 
@@ -63,7 +63,7 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         # print(i)
-        if i in list(range(1, 51)) + list(range(52, 505)) + list(range(506,627)):
+        if i in list(range(1, 51)) + list(range(52, 505)) + list(range(506, 627)):
             text = '^Chapter %s – .*' % str(i)
         elif i in [51]:
             text = '^Chapter %s - .*' % str(i)
