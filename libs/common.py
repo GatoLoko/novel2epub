@@ -148,6 +148,30 @@ def get_gravitytales(html):
     return(chapter_title, contents)
 
 
+def get_syringe(html):
+    html_title = html.find('title').text
+    title_parts = html_title.split(' – ')
+    chapter_title = ' - '.join(title_parts[0:-1])
+    # Extract the main text DIV content and turn it into a string
+    contents = html.find('div', 'entry-content')
+    # Site dependant cleanup
+    for i in contents.find_all('h6', 'has-background-color'):
+        i.decompose()
+    for i in contents.find_all('div', 'aligncenter wpcnt'):
+        i.decompose()
+    for i in contents.find_all('div', 'wpa'):
+        i.decompose()
+    for i in contents.find_all('script'):
+        i.decompose()
+    for i in contents.find_all('div', 'sharedaddy'):
+        i.decompose()
+    for i in contents.find_all('div', id=re.compile('^atatags-')):
+        i.decompose()
+    for i in contents.find_all('p', 'has-text-align-center'):
+        i.decompose()
+    return(chapter_title, contents)
+
+
 def clean_chapter_name(chapter_title):
     # Replace spaces with underscore
     chapter_file = chapter_title.replace(' ', '_') + '.xhtml'
@@ -167,6 +191,8 @@ def get_chapter(url):
         chapter_title, contents = get_wuxiaworld_co(html)
     elif 'gravitytales' in url:
         chapter_title, contents = get_gravitytales(html)
+    elif 'stabbingwithasyringe' in url:
+        chapter_title, contents = get_syringe(html)
     else:
         print('Something went wrong! Unsuported server!')
         exit()
