@@ -137,17 +137,6 @@ def get_wuxiaworld_co(html):
     return(chapter_title, contents)
 
 
-def get_gravitytales(html):
-    html_title = html.find('title').text
-    chapter_title = html_title.split(' - ', 1)[1].rsplit(' - ', 1)[0]
-    # Extract the main text DIV content and turn it into a string
-    contents = html.find('div', 'innerContent')
-    # Site dependant cleanup
-    for i in contents.find_all('p', {'style': 'text-align: center;'}):
-        i.decompose()
-    return(chapter_title, contents)
-
-
 def get_syringe(html):
     html_title = html.find('title').text
     title_parts = html_title.split(' – ')
@@ -189,8 +178,6 @@ def get_chapter(url):
         chapter_title, contents = get_wuxiaworld_com(html)
     elif 'wuxiaworld.co' in url:
         chapter_title, contents = get_wuxiaworld_co(html)
-    elif 'gravitytales' in url:
-        chapter_title, contents = get_gravitytales(html)
     elif 'stabbingwithasyringe' in url:
         chapter_title, contents = get_syringe(html)
     else:
