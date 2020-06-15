@@ -34,7 +34,7 @@ volumes = {'1': Volume('1', 0, 100),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
            '8': Volume('8', 701, 800),
-           '9': Volume('9', 801, 857),
+           '9': Volume('9', 801, 875),
            #
            '10': Volume('10', 901, 901),
            '11': Volume('11', 1001, 1001),
@@ -67,6 +67,10 @@ def genlist(start, end):
             text = '^prologue'
         elif i in [424, 593, 621, 760]:
             text = '^Chapter %s' % str(i)
+        elif i == 860:
+            text = '^GDK 860'
+        elif i == 868:
+            text = '^Chapter868'
         else:
             text = '^Chapter %s: .*' % str(i)
         link = list_page.find('a', text=re.compile(text))
