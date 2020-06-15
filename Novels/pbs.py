@@ -22,8 +22,9 @@ Created on 04/11/18
 @author: GatoLoko
 """
 
-from common import Volume
+import common
 import re
+Volume = common.Volume
 
 volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
@@ -59,7 +60,7 @@ volumes = {'1': Volume('1', 1, 100),
            # As of Apr 2020, there are 3063+ chapters in the original novel
            }
 
-origin = 'http://gravitytales.com/novel/peerless-battle-spirit/'
+origin = 'http://www.wuxiaworld.co/Peerless-Battle-Spirit/'
 author = 'Supreme Villain (极品妖孽)'
 cover_file = 'Covers/peerless-battle-spirit.jpg'
 title = 'Peerless Battle Spirit - Vol'
@@ -107,12 +108,16 @@ Heavens, will you?”
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
         if i not in [295, 773]:
-            url = origin + "pbs-chapter-" + str(i)
-            if i == 296:
-                url = origin + "pbs-chapter-295"
+            if i == 94:
+                text = "Chapater"
+            else:
+                text = "Chapter %s((:)|( -)|( –)|(, 295 -)|(/773 -))" % i
+            link = list_page.find('a', text=re.compile(text))
+            url = "%s%s" % (origin, link['href'])
             chapterlist.append(url)
     return chapterlist
 
