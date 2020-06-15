@@ -22,7 +22,9 @@ Created on 24/01/17
 @author: GatoLoko
 """
 
-from common import Volume
+import common
+import re
+Volume = common.Volume
 
 volumes = {'1': Volume('1', 1, 50),
            '2': Volume('2', 51, 100),
@@ -30,6 +32,7 @@ volumes = {'1': Volume('1', 1, 50),
            '4': Volume('4', 151, 200),
            '5': Volume('5', 201, 250),
            '6': Volume('6', 251, 289),
+           #
            '7..': Volume('5', 301, 349),
            '8..': Volume('5', 351, 400),
            '9..': Volume('5', 401, 449),
@@ -45,7 +48,7 @@ volumes = {'1': Volume('1', 1, 50),
            '19.': Volume('5 - END', 901, 954),
            }
 
-origin = 'http://gravitytales.com/novel/Chaotic-Lightning-Cultivation/'
+origin = 'http://www.wuxiaworld.co/Chaotic-Lightning-Cultivation/'
 author = 'Xie Zi Ban (写字板)'
 cover_file = 'Covers/chaotic-lightning-cultivation.jpg'
 title = 'Chaotic Lightning Cultivation - Vol'
@@ -84,9 +87,12 @@ bolts of lightning”
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + "clc-chapter-" + str(i)
+        text = "Chapter %s: " % str(i)
+        link = list_page.find('a', text=re.compile(text))
+        url = "%s%s" % (origin, link['href'])
         chapterlist.append(url)
     return chapterlist
 
