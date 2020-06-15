@@ -61,8 +61,9 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         url = origin + 'tdg-chapter-' + str(i)
-        # if i >= 485:
-        #     url = origin + 'tdg-chapter-' + str(i+1)
+        if i >= 489:
+            # url = origin + 'tdg-chapter-' + str(i+1)
+            url = origin + 'tdg-chapter-' + str(i+2)
         if i == 278:
             url = origin + 'tdg-chapter-' + str(i) + "-1"
         chapterlist.append(url)
