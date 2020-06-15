@@ -22,7 +22,9 @@ Created on 04/11/18
 @author: GatoLoko
 """
 
-from common import Volume
+import common
+import re
+Volume = common.Volume
 
 volumes = {'1': Volume('1', 1, 100),
            '2': Volume('2', 101, 200),
@@ -51,13 +53,13 @@ volumes = {'1': Volume('1', 1, 100),
            '25': Volume('25', 2401, 2500),
            '26': Volume('26', 2501, 2600),
            '27': Volume('27', 2601, 2700),
-           '28': Volume('28', 2701, 2752),
+           '28': Volume('28', 2701, 2756),
            #
            '29': Volume('29', 2801, 2801),
            # As of Nov 2019, there are 2700+ chapters in the original novel.
            }
 
-origin = 'http://gravitytales.com/novel/chaotic-sword-god/'
+origin = 'http://www.wuxiaworld.co/Chaotic-Sword-God/'
 author = 'Xin Xing Xiao Yao (心星逍遥)'
 cover_file = 'Covers/chaotic-sword-god.jpg'
 title = 'Chaotic Sword God - Vol'
@@ -85,9 +87,19 @@ Saint Emperor.</p>
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
-        url = origin + "csg-chapter-" + str(i)
+        if i == 484:
+            text = "Chapter 384: To War One"
+        elif i == 818:
+            text = "Chapter 718: Saint Ruler Killing Formation"
+        elif i == 1549:
+            text = "Chapter 1548: Driven Back One"
+        else:
+            text = "Chapter %s((: )|( - )|( – ))" % str(i)
+        link = list_page.find('a', text=re.compile(text))
+        url = "%s%s" % (origin, link['href'])
         chapterlist.append(url)
     return chapterlist
 
