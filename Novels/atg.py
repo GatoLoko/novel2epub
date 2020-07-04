@@ -59,7 +59,7 @@ volumes = {'1': Volume('1 - Red-Colored calamity',
            '16': Volume('16 - Emperor of the North',
                         1601, 1700),
            '17': Volume('17 - Advent of Yun',
-                        1701, 1726),
+                        1701, 1745),
            #
            'X': Volume('X - END',
                        0000, 0000)
