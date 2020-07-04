@@ -158,6 +158,12 @@ def get_syringe(html):
         i.decompose()
     for i in contents.find_all('p', 'has-text-align-center'):
         i.decompose()
+    credline = re.compile(r'.*stabbingwithasyringe.*')
+    for i in contents.find_all(text=credline):
+        i.replaceWith('')
+    adultline = re.compile(r'This chapter contains.*18\+.*Be aware\.')
+    for i in contents.find_all(text=adultline):
+        i.replaceWith('')
     return(chapter_title, contents)
 
 
