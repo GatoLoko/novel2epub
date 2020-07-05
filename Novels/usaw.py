@@ -22,7 +22,9 @@ Created on 24/01/17
 @author: GatoLoko
 """
 
-from common import Volume
+import common
+import re
+Volume = common.Volume
 
 volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            '2': Volume('2 - Wandering the Beiyan province', 91, 180),
@@ -38,7 +40,7 @@ volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
            # This novel ends with chapter 1356
            }
 
-origin = 'http://www.wuxiaworld.com/novel/upgrade-specialist-in-another-world/'
+origin = 'http://www.wuxiaworld.co/Upgrade-Specialist-in-Another-World/'
 author = 'Endless Sea Of Clouds (茫茫云海)'
 cover_file = 'Covers/usaw.jpg'
 title = 'Upgrade Specialist in Another World - Book '
@@ -65,36 +67,21 @@ soul cultivator and craftsman!
 
 def genlist(start, end):
     global origin
+    list_page = common.get_html(origin)
     chapterlist = []
     currentvol = ''
     for key, value in volumes.items():
         if value.first is start:
             currentvol = key
     for i in range(start, end+1):
-        url = origin + 'usaw-book-' + str(currentvol) + '-chapter-' + str(i)
         if i == 0:
-            url = origin + 'usaw-chapter-0'
-        if i == 546:
-            url = origin + 'usaw-book-5chapter-546'
-        if i == 573:
-            url = origin + 'usaw-book-5-chapter-5-573'
-        if i == 638:
-            url = origin + 'usaw-chapter-638'
-        if i in [757, 807]:
-            url = origin + 'usaw-chapter-6-' + str(i)
-        # Chapter 841 is first on vol 7 but was placed in vol 6 for some reason
-        if i == 841:
-            url = origin + 'usaw-book-6-chapter-841'
-        if i == 969:
-            url = origin + 'usaw-chapter-7-969'
-        if i == 1095:
-            url = origin + 'usaw-book-8-chapter-1095'
-        if i == 1256:
-            url = origin + 'usaw-book-10chapter-1256'
-        if i == 1274:
-            url = origin + 'usaw-chapter-10-1274'
-        if i == 1332:
-            url = origin + 'usaw-book-12-chapter-1332'
+            text = "USAW Prologue"
+        elif i == 554:
+            text = "Chaper %s:.*" % str(i)
+        else:
+            text = "Chapter %s:.*" % str(i)
+        link = list_page.find('a', text=re.compile(text))
+        url = "%s%s" % (origin, link['href'])
         chapterlist.append(url)
     return chapterlist
 
