@@ -58,8 +58,7 @@ volumes = {'1': Volume('1 - Awakening in the night', 1, 20),
            '29': Volume('29', 1260, 1313),
            '30': Volume('30', 1314, 1338),
            '31': Volume('31', 1339, 1400),
-           '32': Volume('32', 1401, 1450),
-           '33': Volume('33', 1451, 1486),
+           '32': Volume('32', 1401, 1486),
            }
 
 origin = 'http://www.wuxiaworld.co/Swallowed-Star/'
