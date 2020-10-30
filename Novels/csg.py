@@ -99,7 +99,7 @@ def genlist(start, end):
         else:
             text = "Chapter %s((: )|( - )|( – ))" % str(i)
         link = list_page.find('a', text=re.compile(text))
-        url = "%s%s" % (origin, link['href'])
+        url = "%s%s" % (origin, link['href'].split("/")[-1])
         chapterlist.append(url)
     return chapterlist
 

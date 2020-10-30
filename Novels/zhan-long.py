@@ -79,7 +79,7 @@ def genlist(start, end):
         elif i == 830:
             text = '^Chapter 830 Rotten and Rusty Army Part 1 ?'
             link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
+            url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter 830 – Rotten and Rusty Army Part 2 ?'
         elif i in [857, 861, 862, 863, 864, 865] or i >= 867:
@@ -89,7 +89,7 @@ def genlist(start, end):
         elif i == 839:
             text = '^hapter 839 – The Flying Slash Part 1'
         link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href']
+        url = origin + link['href'].split("/")[-1]
         chapterlist.append(url)
     return chapterlist
 

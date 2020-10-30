@@ -71,7 +71,7 @@ def genlist(start, end):
         elif i in [505, 981]:
             text = '^Chapter %s( |,).*' % str(i)
             link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
+            url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter %s.5( |,).*' % str(i)
         elif i == 968:
@@ -79,7 +79,7 @@ def genlist(start, end):
         else:
             text = '^Chapter %s, .*' % str(i)
         link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href']
+        url = origin + link['href'].split("/")[-1]
         chapterlist.append(url)
     return chapterlist
 

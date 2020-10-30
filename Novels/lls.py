@@ -82,14 +82,14 @@ def genlist(start, end):
             # Some chapters have 2 parts, first kind
             text = '^Chapter %s Part 1 – .*' % str(i)
             link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
+            url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter %s Part 2 – .*' % str(i)
         elif i in range(717, 753):
             # Some chapters have 2 parts, second kind
             text = '^Chapter %s .* Part 1' % str(i)
             link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
+            url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter %s .* Part 2' % str(i)
         else:
@@ -101,7 +101,7 @@ def genlist(start, end):
             elif i in [647, 651]:
                 text = '^Chapter %s - .*' % str(i)
         link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href']
+        url = origin + link['href'].split("/")[-1]
         chapterlist.append(url)
     return chapterlist
 

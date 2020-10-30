@@ -87,19 +87,19 @@ def genlist(start, end):
         if i == 123:
             text = '^Chapter %s-1' % str(i)
             link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
+            url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter %s-2:' % str(i)
         elif i in range(124, 229+1) or i in [233, 253]:
             text = '^Chapter %s-1:.*' % str(i)
             link = list_page.find('a', text=re.compile(text))
-            url = origin + link['href']
+            url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter %s-2:.*' % str(i)
         elif i == 250 or i >= 563:
             text = '^Chapter %s' % str(i)
         link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href']
+        url = origin + link['href'].split("/")[-1]
         chapterlist.append(url)
     return chapterlist
 

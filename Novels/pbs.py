@@ -113,11 +113,11 @@ def genlist(start, end):
     for i in range(start, end+1):
         if i not in [295, 773]:
             if i == 94:
-                text = "Chapater"
+                text = "^Chapater"
             else:
-                text = "Chapter %s((:)|( -)|( –)|(, 295 -)|(/773 -))" % i
+                text = "^Chapter %s((:)|( -)|( –)|(, 295 -)|(/773 -))" % i
             link = list_page.find('a', text=re.compile(text))
-            url = "%s%s" % (origin, link['href'])
+            url = "%s%s" % (origin, link['href'].split("/")[-1])
             chapterlist.append(url)
     return chapterlist
 

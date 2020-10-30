@@ -118,13 +118,12 @@ def get_wuxiaworld_com(html):
 
 def get_wuxiaworld_co(html):
     html_title = html.find('title').text
-    title_parts = html_title.split(' - ')
-    chapter_title = ' - '.join(title_parts[1:-1])
-    if len(title_parts) == 3:
-        chapter_title = title_parts[1]
+    chapter_title = html_title.split('_')[1].split(' - ')[0]
+    # if len(title_parts) == 3:
+        # chapter_title = title_parts[1]
     # Site dependant cleanup
     # Extract the main text DIV content and turn it into a string
-    contents = html.find('div', {'id': 'content'})
+    contents = html.find('div', {'id': 'section-list-wp'})
     paragline = re.compile(r'.*&lt;/p&gt;&lt;p&gt;.*')
     for i in contents.find_all(text=paragline):
         istring = re.sub('&lt;/p&gt;&lt;p&gt;', '</p><p>', i)
