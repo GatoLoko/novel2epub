@@ -41,7 +41,7 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '8': Volume('8 - Battle of prophecy',
                        3109, 3764),
            '9': Volume('9 - Birth of Asura',
-                       3765, 4337)
+                       3765, 4515)
            # As of Aug 2020, this novel has 4541 chapters and isn't finished
            }
 
@@ -74,6 +74,10 @@ def genlist(start, end):
             chapterlist.append(url)
             url = origin + 'mga-chapter-1632-02'
             chapterlist.append(url)
+        # elif i == 4452:
+        #     # Author misnumbered chapter 4452 as 4552
+        #     url = origin + 'mga-chapter-4552'
+        #     chapterlist.append(url)
         else:
             url = origin + 'mga-chapter-' + str(i)
             chapterlist.append(url)

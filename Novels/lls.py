@@ -33,7 +33,7 @@ volumes = {'1': Volume('1', 1, 100),
            '5': Volume('5', 401, 500),
            '6': Volume('6', 501, 600),
            '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 760),
+           '8': Volume('8', 701, 797),
            #
            '9': Volume('9', 801, 700),
            '10': Volume('10', 901, 900),
@@ -92,13 +92,30 @@ def genlist(start, end):
             url = origin + link['href'].split("/")[-1]
             chapterlist.append(url)
             text = '^Chapter %s .* Part 2' % str(i)
+        elif i == 761:
+            # Some chapters have 2 parts, third kind
+            text = '^Chapter %s: .*' % str(i)
+            link = list_page.find('a', text=re.compile(text))
+            url = origin + link['href'].split("/")[-1]
+            chapterlist.append(url)
+            text = '^Chapter %s.2 .*' % str(i)
+        elif i == 762 or i >= 765:
+            # Some chapters have 2 parts, fourth kind
+            if i == 790:
+                text = '^Chapter %s .1.*' % str(i)
+            else:
+                text = '^Chapter %s.1.*' % str(i)
+            link = list_page.find('a', text=re.compile(text))
+            url = origin + link['href'].split("/")[-1]
+            chapterlist.append(url)
+            text = '^Chapter %s.2.*' % str(i)
         else:
             text = '^Chapter %s – .*' % str(i)
             if i == 212:
                 text = '^Chapter %s- .*' % str(i)
             elif i == 356:
                 text = '^Chapter 356'
-            elif i in [647, 651]:
+            elif i in [647, 651, 763, 764]:
                 text = '^Chapter %s - .*' % str(i)
         link = list_page.find('a', text=re.compile(text))
         url = origin + link['href'].split("/")[-1]
