@@ -64,7 +64,7 @@ volumes = {'1': Volume('1 - Awakening in the night', 1, 20),
 origin = 'http://www.wuxiaworld.co/Swallowed-Star/'
 author = 'I Eat Tomatoes (我吃西红柿)'
 cover_file = 'Covers/swallowed-star.jpg'
-title = 'Swallowd Star - Vol'
+title = 'Swallowed Star - Vol'
 
 synopsis_text = """
 Year 2056, in a city in the Yuan Jiang Su Jin area. On top of a ruined,
