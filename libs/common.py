@@ -163,6 +163,9 @@ def get_syringe(html):
     adultline = re.compile(r'This chapter contains.*18\+.*Be aware\.')
     for i in contents.find_all(text=adultline):
         i.replaceWith('')
+    stabbing = re.compile(r'stabbing.*blog|translator.*site')
+    for i in contents.find_all(text=stabbing):
+        i.replaceWith('')
     return(chapter_title, contents)
 
 
