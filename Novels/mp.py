@@ -41,7 +41,8 @@ volumes = {'1': Volume('1', 1, 100),
            '13': Volume('13', 1201, 1300),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
-           '16': Volume('16', 1501, 1558),
+           '16': Volume('16', 1501, 1600),
+           '17': Volume('17', 1601, 1645),
            # This novel has over 5400 chapters in the original chinese.
            }
 
@@ -78,6 +79,8 @@ def genlist(start, end):
             text = '^Chapter %s.5( |,).*' % str(i)
         elif i == 968:
             text = '^Chapter %s. .*' % str(i)
+        elif i == 1615:
+            continue
         else:
             text = '^Chapter %s, .*' % str(i)
         link = list_page.find('a', text=re.compile(text))

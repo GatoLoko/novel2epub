@@ -37,7 +37,7 @@ volumes = {'1': Volume('1', 1, 100),
            '9': Volume('9', 801, 900),
            '10': Volume('10', 901, 1000),
            '11': Volume('11', 1001, 1100),
-           '12': Volume('12', 1101, 1155),
+           '12': Volume('12', 1101, 1187),
            #
            '13': Volume('13', 1201, 1201),
            '14': Volume('14', 1301, 1301),
@@ -82,6 +82,8 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
+        if i in [1177, 1179]:
+            continue
         # print(i)
         text = '^Chapter %s: .*' % str(i)
         if i == 123:
