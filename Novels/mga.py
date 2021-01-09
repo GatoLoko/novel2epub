@@ -41,8 +41,8 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '8': Volume('8 - Battle of prophecy',
                        3109, 3764),
            '9': Volume('9 - Birth of Asura',
-                       3765, 4591)
-           # As of Aug 2020, this novel has 4541 chapters and isn't finished
+                       3765, 4620)
+           # As of Jan 2021, this novel has 4684 chapters and isn't finished
            }
 
 origin = 'http://www.wuxiaworld.com/novel/martial-god-asura/'
