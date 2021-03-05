@@ -42,7 +42,8 @@ volumes = {'1': Volume('1', 1, 100),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
            '16': Volume('16', 1501, 1600),
-           '17': Volume('17', 1601, 1645),
+           '17': Volume('17', 1601, 1700),
+           '18': Volume('18', 1701, 1786),
            # This novel has over 5400 chapters in the original chinese.
            }
 
