@@ -60,12 +60,20 @@ volumes = {'1': Volume('1', 1, 100),
            '32': Volume('32', 3101, 3200),
            '33': Volume('33', 3201, 3300),
            '34': Volume('34', 3301, 3400),
-           '35': Volume('35', 3401, 3404),
+           '35': Volume('35', 3401, 3500),
+           '36': Volume('36', 3501, 3508),
            #
-           '36': Volume('36', 3501, 3501),
            '37': Volume('37', 3601, 3601),
            '38': Volume('38', 3701, 3701),
-           # As of Jan 2020, there are 3800+ chapters in the original novel.
+           '39': Volume('38', 3801, 3801),
+           '40': Volume('38', 3901, 3901),
+           '41': Volume('38', 4001, 4001),
+           '42': Volume('38', 4101, 4101),
+           '43': Volume('38', 4201, 4201),
+           '44': Volume('38', 4301, 4301),
+           '45': Volume('38', 4401, 4401),
+           '46': Volume('38', 4501, 4501),
+           # As of Mar 2021, there are 4300+ chapters in the original novel.
            }
 
 origin = 'https://www.wuxiaworld.com/novel/emperors-domination/'
