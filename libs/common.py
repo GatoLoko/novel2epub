@@ -76,6 +76,8 @@ def get_html(url):
     req.add_header('Accepting-encoding', 'gzip')
     # Fake user aggent
     req.add_header('User-Agent', USER_AGENT)
+    # Do NOT Track!
+    req.add_header('DNT', '1')
     while tryes > 0:
         try:
             request = urllib.request.urlopen(req)
