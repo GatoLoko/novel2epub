@@ -133,6 +133,10 @@ def get_wuxiaworld_co(html):
     credline = re.compile(r'Translator:.*Editor:.*')
     if contents.find(text=credline):
         contents.find(text=credline).replaceWith('')
+    goto = re.compile(r'Please go to: http.*to read the latest chapters for free.*')
+    if contents.find(text=goto):
+        contents.find(text=goto).replaceWith('')
+    # Remove all scripts
     for script in contents.find_all('script'):
         script.decompose()
     return(chapter_title, contents)
