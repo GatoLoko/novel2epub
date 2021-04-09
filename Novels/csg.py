@@ -54,8 +54,8 @@ volumes = {'1': Volume('1', 1, 100),
            '26': Volume('26', 2501, 2600),
            '27': Volume('27', 2601, 2700),
            '28': Volume('28', 2701, 2800),
-           '29': Volume('29', 2801, 2889),
-           '30': Volume('30', 2901, 2901),
+           '29': Volume('29', 2801, 2900),
+           '30': Volume('30', 2901, 2924),
            # As of Mar 2021, there are 2910+ chapters in the original novel.
            }
 
