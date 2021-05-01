@@ -36,7 +36,7 @@ volumes = {'1': Volume('1', 0, 100),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
            '10': Volume('10', 901, 1000),
-           '11': Volume('11', 1001, 1002),
+           '11': Volume('11', 1001, 1014),
            #
            # This novel ends in chapter 1027.
            }
@@ -71,7 +71,7 @@ def genlist(start, end):
             text = '^GDK 860'
         elif i == 868:
             text = '^Chapter868'
-        elif i == 969:
+        elif i in [969, 1011]:
             continue
         else:
             text = '^Chapter %s: .*' % str(i)
