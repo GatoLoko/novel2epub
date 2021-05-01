@@ -41,13 +41,13 @@ volumes = {'1': Volume('1', 1, 100),
            '13': Volume('13', 1201, 1300),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
-           '16': Volume('16', 1501, 1515),
+           '16': Volume('16', 1501, 1530),
            #
            '17': Volume('17', 1601, 1601),
            '18': Volume('18', 1701, 1701),
            '19': Volume('19', 1801, 1801),
            '20': Volume('20', 1901, 1901),
-           # As of Jan 2020, there are 9300+ chapters in the original novel.
+           # As of May 2021, there are 10855+ chapters in the original novel.
            }
 
 origin = 'http://www.wuxiaworld.co/Bringing-The-Farm-To-Live-In-Another-World/'
