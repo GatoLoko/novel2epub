@@ -23,7 +23,27 @@ Created on 5/01/19
 """
 
 from string import Template
-from ebooklib import epub
+import ebooklib
+
+epub = ebooklib.epub
+
+
+###############################################################################
+# TODO: Remove this block when the fix is propagated to most distros
+# Something goes wrong when adding an image as a cover, and we need to work
+# around it by replacing the get_template function with our own that takes care
+# of properly encoding the template as utf8.
+# The bug was fixed upstream but debian/ubuntu and others haven't packaged new
+# releases of ebooklib since 2014.
+# This will become unnecessary once v0.16 enters the repositories
+if ebooklib.VERSION < (0, 16, 0):
+    original_get_template = epub.EpubBook.get_template
+
+    def new_get_template(*args, **kwargs):
+        return original_get_template(*args, **kwargs).encode(encoding='utf8')
+
+    epub.EpubBook.get_template = new_get_template
+###############################################################################
 
 
 class MyBook:
