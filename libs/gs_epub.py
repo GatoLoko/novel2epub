@@ -24,8 +24,7 @@ Created on 5/01/19
 
 from string import Template
 import ebooklib
-
-epub = ebooklib.epub
+from ebooklib import epub
 
 
 ###############################################################################
