@@ -36,7 +36,7 @@ volumes = {'1': Volume('1', 0, 100),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
            '10': Volume('10', 901, 1000),
-           '11': Volume('11', 1001, 1014),
+           '11': Volume('11', 1001, 1020),
            #
            # This novel ends in chapter 1027.
            }
@@ -73,6 +73,8 @@ def genlist(start, end):
             text = '^Chapter868'
         elif i in [969, 1011]:
             continue
+        elif i == 1018:
+            text = '^Chapter Sneaky'
         else:
             text = '^Chapter %s: .*' % str(i)
         link = list_page.find('a', text=re.compile(text))
