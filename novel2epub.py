@@ -6,10 +6,12 @@ Crated on Sat Nov 12 16:41:00 2016
 @author: GatoLoko
 """
 
-import os
 import argparse
-import psutil
+import os
 import sys
+
+import psutil
+
 PROG_DIR = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(os.path.join(PROG_DIR, "libs"))
 sys.path.append(os.path.join(PROG_DIR, "Novels"))
@@ -22,6 +24,7 @@ except ImportError:
 
 
 def arguments():
+    """ Manage all supported arguments """
     parser = argparse.ArgumentParser(
         description="Download web stories and stores them as epub.",
         epilog="This script doesn't support actualizing an existing epub" +
@@ -35,14 +38,14 @@ def arguments():
                         help='Print debug messages to stdout')
     parser.add_argument('labels', metavar='labels', nargs='*',
                         help='Labels to add as metadata to the epub')
-    args = parser.parse_args()
+    parsed_args = parser.parse_args()
 
-    if args.debug:
-        print(args)
-        mem = psutil.Process(os.getpid()).memory_info()[0] / float(2 ** 20)
-        print("Used memory: %s MB" % round(mem, 1))
+    if parsed_args.debug:
+        print(parsed_args)
+        memory = psutil.Process(os.getpid()).memory_info()[0] / float(2 ** 20)
+        print("Used memory: %s MB" % round(memory, 1))
 
-    return args
+    return parsed_args
 
 
 if __name__ == "__main__":
@@ -61,10 +64,11 @@ if __name__ == "__main__":
     print("Volume start: %s" % volume.first)
     print("Volume end: %s" % volume.last)
     chapterlist = novel.genlist(volume.first, volume.last)
-    fill = ''
     if args.volume < 10:
-        fill = '0'
-    title = novel.title + fill + volume.title
+        FILL = '0'
+    else:
+        FILL = ''
+    title = novel.title + FILL + volume.title
     # Remove from the file name those characters that FAT does NOT allow, so we
     # can transfer the file to a phone or tablet sdcard: \/:*?"<>|
     for i in ['\\', '/', ':', '*', '?', '"', '<', '>', '|']:
@@ -76,9 +80,9 @@ if __name__ == "__main__":
     print("Filename: " + filename)
 
     identifier = "novel2epub/%s/%s/%s" % (args.novel, novel.title, volume.last)
-    language = 'en'
+    LANGUAGE = 'en'
 
-    book = MyBook(identifier, title, language, 'novel2epub')
+    book = MyBook(identifier, title, LANGUAGE, 'novel2epub')
 
     if hasattr(args, 'labels'):
         book.add_labels(args.labels)
@@ -90,7 +94,7 @@ if __name__ == "__main__":
         if args.debug:
             print(i)
         ch_title, ch_file, ch_text = common.get_chapter(i)
-        book.add_chapter(ch_title, ch_file, language, ch_text)
+        book.add_chapter(ch_title, ch_file, LANGUAGE, ch_text)
 
     # Define CSS style
     with open(os.path.join(PROG_DIR, "CSS/nav.css")) as style_nav:
