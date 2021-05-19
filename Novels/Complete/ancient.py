@@ -24,10 +24,12 @@ Created on 24/01/17
 @author: GatoLoko
 """
 
+import re
 from common import Volume
+import gsweb
 
-volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
-                       'Shui\'s birth',
+volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing Shui\'s '
+                       'birth',
                        1, 115),
            '2': Volume('2 - Legend of Hundred Miles city, peerless and '
                        'independent',
@@ -75,7 +77,7 @@ volumes = {'1': Volume('1 - Divine strength awakens, mystery of Qing '
                         1795, 2493)
            }
 
-origin = 'http://www.wuxiaworld.com/novel/ancient-strengthening-technique/'
+origin = 'http://www.wuxiaworld.co/Ancient-Strengthening-Technique/'
 author = 'I Am Superfluous (我是多余人)'
 cover_file = 'Covers/ancient-strengthening-technique.jpg'
 title = 'Ancient Strengthening Technique - Vol'
@@ -103,36 +105,66 @@ from afar, following which a bloody battle ensued. Can Qing Shui turn danger
 into safety, averting disaster? And his relationships with the various
 beautiful ladies, what will it develop into?</p>
 
-<p><b>Note from Author: I Am Superfluous</b><br />
-To put it simply, this is a story about the rising up in ranks, and getting
+<p><b>Note from Author: I Am Superfluous</b></p>
+
+<p>To put it simply, this is a story about the rising up in ranks, and getting
 hot chicks along his journey to stand at the summit of this world.
 """
 
 
 def genlist(start, end):
     global origin
+    list_page = gsweb.get_soup(origin)
     chapterlist = []
     for i in range(start, end+1):
-        if i not in [29, 1183]:
-            url = origin + "ast-chapter-" + str(i)
-            if i in [28, 393, 397, 399, 410, 805] or i in range(1697, 1952):
-                url = origin + "ast-chapter-" + str(i) + "-1"
-                if i == 1951:
-                    chapterlist.append(url)
-                    url = origin + "ast-chapter-" + str(i) + "-2"
-            elif i == 232:
-                url = origin + "ast-chapter-232-part-1000"
-            elif i in [246, 248]:
-                url = origin + "ast-chapter-" + str(i) + "-part-1"
-            elif i == 329:
-                url = origin + "ast-chapter-329-part-4"
-            elif i == 394:
-                url = origin + "ast-chapter-399"
-            elif i == 1421:
-                url = origin + "chapter-1421"
-            elif i == 1661:
-                url = origin + "ast-chapter-16611"
-            chapterlist.append(url)
+        # print(i)
+        if i in [29, 115, 342, 825, 1183, 1794]:
+            continue
+        elif i in range(1, 572+1):
+            text = '^Chapter %s .*' % str(i)
+            if i == 370:
+                text = '^Chapter %s$' % str(i)
+            elif i in [351, 353, 354]:
+                text = '^Chapter %s - ' % str(i)
+        elif i in [573, ]:
+            text = '^AST: Chapter %s .*' % str(i)
+        elif i in [584, 585, 586, 587, 588, 589, 605, 616]:
+            text = '^AST: Chapter %s!$' % str(i)
+        elif i in [590, 800, ]:
+            text = '^chapter %s$' % str(i)
+        elif i in [596, 598, 799, 1416] + list(range(1440, 2492+1)):
+            text = '^AST %s ' % str(i)
+            if i in [1797, 1957, 2281]:
+                text = '^AST %s- ' % str(i)
+            elif i == 2345:
+                text = '^AST 2345 - Fifth .*'
+            elif i == 2435:
+                text = '^AST 2345 - Tyrannous .*'
+            elif i in [2468, 2473]:
+                text = '^Chapter %s - ' % str(i)
+        elif i in [597, 600, 603, 606, 609, 610, 611, 613, 614, 615, 617,
+                   619] + list(range(591, 595+1)) + list(range(623, 626+1)):
+            text = '^Chapter %s$' % str(i)
+        elif i in [599, 601, 602, 604, 607, 608, 621, 668, 670, 671, 672, 675,
+                   676, 677, 679, 681, 682, 684, 685, 686, 687, 689, 691, ]:
+            text = '^Chapter %s!' % str(i)
+        elif i in [612, ]:
+            text = '^Chapter %s .*' % str(i)
+        elif i in [618, 620, 622, 627, 631, 633, 635, 639, 642, 645, 648, 650]:
+            text = '^AST Chapter: %s!' % str(i)
+        elif i in [654, 658, 661, 663, 666, 669, 674, 678, 680, 683, 688, 690,
+                   693, ] + list(range(697, 798+1)) + \
+                list(range(801, 1415+1)) + list(range(1417, 1436+1)):
+            text = '^Chapter: %s$' % str(i)
+            if i == 1184:
+                text = '^1184$'
+        elif i == 2493:
+            text = '^Author.*'
+        else:
+            text = '^Chapter %s$' % str(i)
+        link = list_page.find('a', text=re.compile(text))
+        url = origin + link['href'].split('/')[-1]
+        chapterlist.append(url)
     return chapterlist
 
 
