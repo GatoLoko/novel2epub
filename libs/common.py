@@ -68,7 +68,7 @@ def get_wuxiaworld_co(html):
     html_title = html.find('title').text
     chapter_title = html_title.split('_')[1].split(' - ')[0]
     # if len(title_parts) == 3:
-        # chapter_title = title_parts[1]
+    #    chapter_title = title_parts[1]
     # Site dependant cleanup
     # Extract the main text DIV content and turn it into a string
     contents = html.find('div', {'id': 'section-list-wp'})
