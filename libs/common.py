@@ -22,8 +22,9 @@ Created on 28/12/16
 @author: GatoLoko
 """
 
-import string
 import re
+import string
+
 from bs4 import BeautifulSoup
 
 import gsweb
