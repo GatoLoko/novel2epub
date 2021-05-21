@@ -141,8 +141,7 @@ def get_chapter(url):
     elif 'stabbingwithasyringe' in url:
         chapter_title, contents = get_syringe(html)
     else:
-        print('Something went wrong! Unsuported server!')
-        exit()
+        raise SystemExit('Something went wrong! Unsuported server!')
     # Novel dependant cleanup
     try:
         print('Cleaning...')
