@@ -23,42 +23,15 @@ Created on 28/12/16
 """
 
 import string
-import urllib.request
-import urllib.error
-import urllib.parse
-import socket
-import gzip
-from io import BytesIO
 import re
-import platform
 from bs4 import BeautifulSoup
 
-novel_module = ""
-# timeout in seconds
-TIMEOUT = 10
-socket.setdefaulttimeout(TIMEOUT)
+import gsweb
+
+novel_module = ""  # pylint: disable=C0103
 
 # Limit chapter file names to characters that wont cause problems.
 VALID_CHARS = "-_.() %s%s" % (string.ascii_letters, string.digits)
-
-# Create our own User-Agent strings. We may need to fake this if a server tryes
-# to mess with us.
-USER_AGENT = 'Mozilla/5.0 compatible (' + platform.system() + ' ' + \
-    platform.machine() + '; Novel-Indexer-Bot)'
-
-# Woxter QX95
-# Mozilla/5.0 (Linux; Android 4.4.2; Woxter QX95 Build/KOT49H)
-#     AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0
-#     Safari/537.36
-
-# Webview (KitKat & Lolipop)
-# Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/LMY48B; wv) AppleWebKit/537.36
-#     (KHTML, like Gecko) Version 4.0 Chrome/30.0.0.0 Mobile Safari/537.36
-
-# Nexus 5 WebView (nuevo):
-# Mozilla/5.0 (Linux; Android 5.1.1; Nexus 5 Build/LMY48B; wv)
-#     AppleWebKit/537.36 (KHTML, like Gecko) Version 4.0 Chrome/43.0.2357.65
-#     Mobile Safari/537.36
 
 
 class Volume():
@@ -69,35 +42,7 @@ class Volume():
 
 
 def get_html(url):
-    tryes = 5
-    # Build our request
-    req = urllib.request.Request(url)
-    # Accept gziped content
-    req.add_header('Accepting-encoding', 'gzip')
-    # Fake user aggent
-    req.add_header('User-Agent', USER_AGENT)
-    # Do NOT Track!
-    req.add_header('DNT', '1')
-    while tryes > 0:
-        try:
-            request = urllib.request.urlopen(req)
-            break
-        except socket.timeout:
-            tryes -= 1
-        except urllib.error.URLError as error:
-            if isinstance(error.reason, socket.timeout):
-                tryes -= 1
-            else:
-                print("URL error: " + error.reason)
-                quit()
-    if request.info().get('Content-Encoding') == 'gzip':
-        buffer = BytesIO(request.read())
-        uncompressed_buffer = gzip.GzipFile(fileobj=buffer)
-        html = BeautifulSoup(uncompressed_buffer.read(), 'lxml')
-    else:
-        html = BeautifulSoup(request.read(), "lxml")
-    request.close()
-    return html
+    return gsweb.get_soup(url)
 
 
 def get_wuxiaworld_com(html):
@@ -187,7 +132,7 @@ def clean_chapter_name(chapter_title):
 
 def get_chapter(url):
     print("Processing: " + url)
-    html = get_html(url)
+    html = gsweb.get_soup(url)
     if 'wuxiaworld.com' in url:
         chapter_title, contents = get_wuxiaworld_com(html)
     elif 'wuxiaworld.co' in url:
