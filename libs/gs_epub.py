@@ -22,10 +22,14 @@ Created on 5/01/19
 @author: GatoLoko
 """
 
+import string
 from string import Template
 import ebooklib
 from ebooklib import epub
 
+
+# Limit chapter file names to characters that wont cause problems.
+VALID_CHARS = "-_.() %s%s" % (string.ascii_letters, string.digits)
 
 ###############################################################################
 # TODO: Remove this block when the fix is propagated to most distros
@@ -70,6 +74,11 @@ class MyBook:
         self.has_cover = True
 
     def add_chapter(self, ch_title, ch_file, ch_lang, ch_text):
+        # Replace non ascii hyphens with ascii ones
+        ch_file = ch_file.replace('–', '-') + '.xhtml'
+        # Remove any remaining non-ascii characters from file name to avoid
+        # problems
+        ch_file = ''.join(c for c in ch_file if c in VALID_CHARS)
         chapter = epub.EpubHtml(title=ch_title, file_name=ch_file,
                                 lang=ch_lang)
         chapter.content = ch_text
