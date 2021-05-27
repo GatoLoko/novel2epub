@@ -36,7 +36,7 @@ volumes = {'1': Volume('1', 0, 100),
            '8': Volume('8', 701, 800),
            '9': Volume('9', 801, 900),
            '10': Volume('10', 901, 1000),
-           '11': Volume('11', 1001, 1020),
+           '11': Volume('11', 1001, 1026),
            #
            # This novel ends in chapter 1027.
            }
