@@ -45,9 +45,9 @@ volumes = {'1': Volume('1', 1, 100),
            '17': Volume('17', 1601, 1700),
            '18': Volume('18', 1701, 1800),
            '19': Volume('19', 1801, 1900),
-           '20': Volume('20', 1901, 1999),
+           '20': Volume('20', 1901, 2000),
+           '21': Volume('21', 2001, 2062),
            #
-           '21': Volume('21', 2001, 2001),
            '22': Volume('12', 2101, 2101),
            '23': Volume('13', 2201, 2201),
            '24': Volume('14', 2301, 2301),
@@ -92,7 +92,7 @@ def genlist(start, end):
             text = '^Chapter %s.5( |,).*' % str(i)
         elif i == 968:
             text = '^Chapter %s. .*' % str(i)
-        elif i == 1615:
+        elif i in [1615, 2048]:
             continue
         else:
             text = '^Chapter %s, .*' % str(i)
