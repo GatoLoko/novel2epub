@@ -61,15 +61,15 @@ def get_url(url):
     encoding = response.info().get('Content-Encoding')
     if encoding == 'gzip':
         buffer = BytesIO(response.read())
-        html = gzip.GzipFile(fileobj=buffer)
+        content = gzip.GzipFile(fileobj=buffer)
     elif encoding == 'br':
-        # html = brotli.decompress(response.content)
-        html = response.text
-        print("Brotli: " + html)
+        # content = brotli.decompress(response.content)
+        content = response.text
+        print("Brotli: " + content)
     else:
-        html = response.read()
+        content = response.read()
     response.close()
-    return html
+    return content
 
 
 def get_soup(url):
