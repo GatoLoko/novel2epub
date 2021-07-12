@@ -56,7 +56,8 @@ def get_url(url):
             if isinstance(error.reason, socket.timeout):
                 tryes -= 1
             else:
-                raise SystemExit("An URL error happened: -%s-" % error.reason) from error
+                raise SystemExit("An URL error happened: -%s-" % error.reason)\
+                    from error
 
     encoding = response.info().get('Content-Encoding')
     if encoding == 'gzip':
