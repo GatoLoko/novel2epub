@@ -55,7 +55,8 @@ volumes = {'1': Volume('1', 1, 100),
            '27': Volume('27', 2601, 2700),
            '28': Volume('28', 2701, 2800),
            '29': Volume('29', 2801, 2900),
-           '30': Volume('30', 2901, 2990),
+           '30': Volume('30', 2901, 3000),
+           '31': Volume('31', 3001, 3028),
            # As of May 2021, there are 2978+ chapters in the original novel.
            }
 
@@ -90,12 +91,15 @@ def genlist(start, end):
     list_page = common.get_html(origin)
     chapterlist = []
     for i in range(start, end+1):
+        # print(i)
         if i == 484:
             text = "Chapter 384: To War One"
         elif i == 818:
             text = "Chapter 718: Saint Ruler Killing Formation"
         elif i == 1549:
             text = "Chapter 1548: Driven Back One"
+        elif i == 2998:
+            continue
         else:
             text = "Chapter %s((: )|( - )|( – ))" % str(i)
         link = list_page.find('a', text=re.compile(text))
