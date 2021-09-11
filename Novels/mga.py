@@ -41,7 +41,7 @@ volumes = {'1': Volume('1 - Battle of dignity',
            '8': Volume('8 - Battle of prophecy',
                        3109, 3764),
            '9': Volume('9 - Birth of Asura',
-                       3765, 4859),
+                       3765, 4868),
            '10': Volume('10 - Hidden Dragon Martial Sect',
                         4600, 4601)
            # As of Apr 2021, this novel has 4790+ chapters and isn't finished
