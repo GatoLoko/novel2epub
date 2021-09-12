@@ -41,7 +41,7 @@ volumes = {'1': Volume('1', 1, 29),
            '13': Volume('13', 1201, 1300),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
-           '16': Volume('16', 1501, 1548),
+           '16': Volume('16', 1501, 1556),
            #
            # This novel ends in chapter 1610
            }
