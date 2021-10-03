@@ -47,15 +47,15 @@ volumes = {'1': Volume('1', 1, 100),
            '19': Volume('19', 1801, 1900),
            '20': Volume('20', 1901, 2000),
            '21': Volume('21', 2001, 2100),
-           '22': Volume('12', 2101, 2200),
-           '23': Volume('13', 2201, 2276),
+           '22': Volume('22', 2101, 2200),
+           '23': Volume('23', 2201, 2300),
+           '24': Volume('24', 2301, 2368),
            #
-           '24': Volume('14', 2301, 2301),
-           '25': Volume('15', 2401, 2401),
-           '26': Volume('16', 2501, 2501),
-           '27': Volume('17', 2601, 2601),
-           '28': Volume('18', 2701, 2701),
-           '29': Volume('19', 2801, 2801),
+           '25': Volume('25', 2401, 2401),
+           '26': Volume('26', 2501, 2501),
+           '27': Volume('27', 2601, 2601),
+           '28': Volume('28', 2701, 2701),
+           '29': Volume('29', 2801, 2801),
            # As of May 2020, there are 5800+ chapters in the original novel.
            }
 
@@ -80,7 +80,8 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         # print(i)
-        if i in list(range(1, 51)) + list(range(52, 505)) + list(range(506, 627)):
+        if i in list(range(1, 51)) + list(range(52, 505)) + \
+                list(range(506, 627)):
             text = '^Chapter %s – .*' % str(i)
         elif i in [51]:
             text = '^Chapter %s - .*' % str(i)
@@ -92,7 +93,7 @@ def genlist(start, end):
             text = '^Chapter %s.5( |,).*' % str(i)
         elif i == 968:
             text = '^Chapter %s. .*' % str(i)
-        elif i in [1615, 2048]:
+        elif i in [1615, 2048, 2288]:
             continue
         else:
             text = '^Chapter %s, .*' % str(i)
