@@ -40,16 +40,16 @@ volumes = {'1': Volume('1', 1, 100),
            '12': Volume('12', 1101, 1200),
            '13': Volume('13', 1201, 1300),
            '14': Volume('14', 1301, 1400),
-           '15': Volume('15', 1401, 1429),
+           '15': Volume('15', 1401, 1500),
            #
-           '16': Volume('16', 1501, 1501),
+           '16': Volume('16', 1501, 1536),
            '17': Volume('17', 1601, 1601),
            '18': Volume('18', 1701, 1701),
            '19': Volume('19', 1801, 1801),
            '20': Volume('20', 1901, 1901),
            }
 
-origin = 'http://www.wuxiaworld.co/Overgeared/'
+origin = 'http://www.wuxiaworld.com/novel/overgeared'
 author = 'Park Saenal'
 cover_file = 'Covers/Overgeared.jpg'
 title = 'Overgeared - Vol'
@@ -58,9 +58,9 @@ synopsis_text = """
 As Shin Youngwoo had an unfortunate life and is now stuck carrying bricks on
 construction sites. He even had to do labor in the VR game, Satisfy!</p>
 
-<p>However, luck would soon enter his hopeless life. His character, ‘Grid’, would
-discover the Northern End Cave for a quest, and in that place, he would find
-‘Pagma’s Rare Book’ and become a legendary class player…
+<p>However, luck would soon enter his hopeless life. His character, ‘Grid’,
+would discover the Northern End Cave for a quest, and in that place, he would
+find ‘Pagma’s Rare Book’ and become a legendary class player…
 """
 
 
@@ -70,7 +70,7 @@ def genlist(start, end):
     chapterlist = []
     for i in range(start, end+1):
         # print(i)
-        text = '^Chapter %s$' % str(i)
+        # text = '^Chapter %s$' % str(i)
         # if i in range(127, 137):
         #     text = '^Chapter %s' % str(i)
         # elif i in [149, 861, 1044, 1212]:
@@ -85,8 +85,11 @@ def genlist(start, end):
         #     text = '^Chapter 312 – Keeping Up Appearances'
         # elif i == 1350:
         #     continue
-        link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href'].split("/")[-1]
+        # link = list_page.find('a', text=re.compile(text))
+        # url = origin + link['href'].split("/")[-1]
+
+        url = origin + '/og-chapter-' + str(i)
+
         chapterlist.append(url)
     # print(chapterlist)
     chapterlist = list(dict.fromkeys(chapterlist))
