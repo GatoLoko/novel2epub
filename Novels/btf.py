@@ -42,15 +42,16 @@ volumes = {'1': Volume('1', 1, 100),
            '14': Volume('14', 1301, 1400),
            '15': Volume('15', 1401, 1500),
            '16': Volume('16', 1501, 1600),
-           '17': Volume('17', 1601, 1626),
+           '17': Volume('17', 1601, 1652),
            #
            '18': Volume('18', 1701, 1701),
            '19': Volume('19', 1801, 1801),
            '20': Volume('20', 1901, 1901),
            # As of May 2021, there are 10855+ chapters in the original novel.
+           # As of Nov 2021, there are 11547+ chapters in the original novel.
            }
 
-origin = 'http://www.wuxiaworld.co/Bringing-The-Farm-To-Live-In-Another-World/'
+origin = 'http://m.wuxiaworld.xyz/Bringing-The-Farm-To-Live-In-Another-World/'
 author = 'Ming Yu (明宇)'
 cover_file = 'Covers/bringing-the-farm.jpg'
 title = 'Bringing the farm to live in another world - Vol'
@@ -84,6 +85,7 @@ swords and magic to become a globally known nightmarish existence.
 def genlist(start, end):
     global origin
     list_page = common.get_html(origin)
+    origin2 = "http://m.wuxiaworld.xyz/"
     chapterlist = []
     for i in range(start, end+1):
         # print(i)
@@ -103,7 +105,7 @@ def genlist(start, end):
         elif i == 1350:
             continue
         link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href'].split("/")[-1]
+        url = origin2 + link['href'].split("/")[-1]
         chapterlist.append(url)
     chapterlist = list(dict.fromkeys(chapterlist))
     return chapterlist
