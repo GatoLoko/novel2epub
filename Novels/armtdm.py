@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-
-# -*- coding: utf-8 -*-
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -18,36 +15,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
+from libs.common import Volume
 
-@author: GatoLoko
-"""
+volumes = {
+    "1": Volume("1", 100, 114),
+    "2": Volume("2", 201, 211),
+    "3": Volume("3", 301, 311),
+    "4": Volume("4", 401, 416),
+    "5": Volume("5", 501, 516),
+    "6": Volume("6", 601, 611),
+    "7": Volume("7", 701, 711),
+    "8": Volume("8", 801, 815),
+}
 
-from common import Volume
-
-volumes = {'1': Volume('1',
-                       100, 114),
-           '2': Volume('2',
-                       201, 211),
-           '3': Volume('3',
-                       301, 311),
-           '4': Volume('4',
-                       401, 416),
-           '5': Volume('5',
-                       501, 516),
-           '6': Volume('6',
-                       601, 611),
-           '7': Volume('7',
-                       701, 711),
-           '8': Volume('8',
-                       801, 815),
-           }
-
-origin = 'http://stabbingwithasyringe.home.blog/translations/tower-dungeon-management/'
-author = 'Kurisutara Sakurai (クリスタラー桜井)'
-cover_file = 'Covers/armtdm.jpg'
-title = 'A reincarnated mage\'s tower dungeon management - Vol'
+origin = "http://stabbingwithasyringe.home.blog/translations/tower-dungeon-management/"
+author = "Kurisutara Sakurai (クリスタラー桜井)"
+cover_file = "Covers/armtdm.jpg"
+title = "A reincarnated mage's tower dungeon management - Vol"
 
 synopsis_text = """
 An otaku with a hobby of masturbating was reincarnated as the son of a great
@@ -66,27 +50,34 @@ filled several traps in the tower dungeon, and thus they enjoyed a s*x spree
 with all the women coming over!
 """
 
+PROLOGUE = 100
+EPILOGUE = 815
 
-def genlist(start, end):
-    origin = 'https://stabbingwithasyringe.home.blog/'
+
+def genlist(start: int, end: int) -> list[str]:
+    origin = "https://stabbingwithasyringe.home.blog/"
     chapterlist = []
-    for i in range(start, end+1):
-        if i == 100:
-            url = origin + 'mage-tower-management-prologue/'
+    for i in range(start, end + 1):
+        if i == PROLOGUE:
+            url = f"{origin}mage-tower-management-prologue/"
             chapterlist.append(url)
-        elif i == 815:
-            url = origin + "translations/tower-dungeon-management/" + \
-                "mage-tower-management-epilogue/"
+        elif i == EPILOGUE:
+            url = (
+                f"{origin}translations/tower-dungeon-management/"
+                f"mage-tower-management-epilogue/"
+            )
             chapterlist.append(url)
         else:
-            url = origin + "translations/tower-dungeon-management/" + \
-                "mage-tower-management-volume-" + str(start)[0] + \
-                "-chapter-" + str(i)[1:].lstrip('0') + "/"
+            url = (
+                f"{origin}translations/tower-dungeon-management/"
+                f"mage-tower-management-volume-{str(start)[0]}-chapter-"
+                f"{str(i)[1:].lstrip('0')}/"
+            )
             chapterlist.append(url)
     return chapterlist
 
 
 def clean(content):
-    for i in content.find_all('script'):
+    for i in content.find_all("script"):
         i.decompose()
     return content

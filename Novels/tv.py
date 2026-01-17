@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 09/01/2018
 # Copyright (C) 2018 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,50 +15,45 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 09/01/18
-
-@author: GatoLoko
-"""
-
-from common import Volume
 import re
 
-volumes = {'1': Volume('1', 1, 100),
-           '2': Volume('2', 101, 200),
-           '3': Volume('3', 201, 300),
-           '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 500),
-           '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 700),
-           '8': Volume('8', 701, 800),
-           '9': Volume('9', 801, 900),
-           '10': Volume('10', 901, 1000),
-           '11': Volume('11', 1001, 1100),
-           '12': Volume('12', 1101, 1200),
-           '13': Volume('13', 1201, 1201),
-           #
-           '14': Volume('14', 1301, 1301),
-           '15': Volume('15', 1401, 1401),
-           '16': Volume('16', 1501, 1501),
-           '17': Volume('17', 1601, 1601),
-           '18': Volume('18', 1701, 1701),
-           '19': Volume('19', 1801, 1801),
-           '20': Volume('20', 1901, 1901),
-           '21': Volume('21', 2001, 2001),
-           '22': Volume('22', 2101, 2101),
-           '23': Volume('23', 2201, 2201),
-           '24': Volume('24', 2301, 2301),
-           '25': Volume('25', 2401, 2401),
-           '26': Volume('26', 2501, 2501),
-           '27': Volume('27', 2601, 2601)
-           # This novel ends with chapter 2621
-           }
+from libs.common import Volume
 
-origin = 'http://www.wuxiaworld.com/novel/tranxending-vision/'
-author = 'Li Xianyu (李闲鱼)'
-cover_file = 'Covers/tv.jpg'
-title = 'TranXending Vision - Vol'
+volumes = {
+    "1": Volume("1", 1, 100),
+    "2": Volume("2", 101, 200),
+    "3": Volume("3", 201, 300),
+    "4": Volume("4", 301, 400),
+    "5": Volume("5", 401, 500),
+    "6": Volume("6", 501, 600),
+    "7": Volume("7", 601, 700),
+    "8": Volume("8", 701, 800),
+    "9": Volume("9", 801, 900),
+    "10": Volume("10", 901, 1000),
+    "11": Volume("11", 1001, 1100),
+    "12": Volume("12", 1101, 1200),
+    "13": Volume("13", 1201, 1201),
+    "14": Volume("14", 1301, 1301),
+    "15": Volume("15", 1401, 1401),
+    "16": Volume("16", 1501, 1501),
+    "17": Volume("17", 1601, 1601),
+    "18": Volume("18", 1701, 1701),
+    "19": Volume("19", 1801, 1801),
+    "20": Volume("20", 1901, 1901),
+    "21": Volume("21", 2001, 2001),
+    "22": Volume("22", 2101, 2101),
+    "23": Volume("23", 2201, 2201),
+    "24": Volume("24", 2301, 2301),
+    "25": Volume("25", 2401, 2401),
+    "26": Volume("26", 2501, 2501),
+    "27": Volume("27", 2601, 2601),
+    # This novel ends with chapter 2621
+}
+
+origin = "http://www.wuxiaworld.com/novel/tranxending-vision/"
+author = "Li Xianyu (李闲鱼)"
+cover_file = "Covers/tv.jpg"
+title = "TranXending Vision - Vol"
 
 synopsis_text = """
 Xia Lei, whose parents were no longer around, had to work hard to support
@@ -72,14 +66,15 @@ the corrupt and privileged with his newfound power?</p>
 <p>I am destined to be the protagonist of this era!
 """
 
-april1st = re.compile(r"^(Rezydencja)|(Szybko)|(Następnie)|(Mają)|(W międzyczasie)|(PEW PEW PEW.)|(Tatuś)|(„Idź)|(Hiena: OK.)")
+april1st = re.compile(
+    r"^(Rezydencja)|(Szybko)|(Następnie)|(Mają)|(W międzyczasie)|(PEW PEW PEW.)|(Tatuś)|(„Idź)|(Hiena: OK.)",
+)
 
 
-def genlist(start, end):
-    global origin
+def genlist(start: int, end: int) -> list[str]:
     chapterlist = []
-    for i in range(start, end+1):
-        url = origin + 'tv-chapter-' + str(i)
+    for i in range(start, end + 1):
+        url = f"{origin}tv-chapter-{i}"
         chapterlist.append(url)
     return chapterlist
 

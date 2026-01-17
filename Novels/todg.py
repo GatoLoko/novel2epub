@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,27 +15,22 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
+from libs.common import Volume
 
-@author: GatoLoko
-"""
+volumes = {
+    "1": Volume("1", 1, 100),
+    "2": Volume("2", 101, 200),
+    "3": Volume("3", 201, 300),
+    "4": Volume("4", 301, 400),
+    "5": Volume("5", 401, 496),
+    # This author pisses me off, holding back the novel while the manga
+    # sloooooowly catches up.
+}
 
-from common import Volume
-
-volumes = {'1': Volume('1', 1, 100),
-           '2': Volume('2', 101, 200),
-           '3': Volume('3', 201, 300),
-           '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 496),
-           # This author pisses me off, holding back the novel while the manga
-           # sloooooowly catches up.
-           }
-
-origin = 'http://www.wuxiaworld.com/novel/tales-of-demons-and-gods/'
-author = 'Mad Snail (发飙的蜗牛)'
-cover_file = 'Covers/todg.jpg'
-title = 'Tales of Demons and Gods - Vol'
+origin = "http://www.wuxiaworld.com/novel/tales-of-demons-and-gods/"
+author = "Mad Snail (发飙的蜗牛)"
+cover_file = "Covers/todg.jpg"
+title = "Tales of Demons and Gods - Vol"
 
 synopsis_text = """
 Killed by a Sage Emperor and reborn as his 13 year old self, Nie Li was
@@ -56,16 +50,12 @@ dominates everything. Let everything else tremble beneath my feet!”
 """
 
 
-def genlist(start, end):
-    global origin
+def genlist(start: int, end: int) -> list[str]:
     chapterlist = []
-    for i in range(start, end+1):
-        url = origin + 'tdg-chapter-' + str(i)
-        # if i >= 489:
-        #     # url = origin + 'tdg-chapter-' + str(i+1)
-        #     url = origin + 'tdg-chapter-' + str(i+2)
+    for i in range(start, end + 1):
+        url = f"{origin}tdg-chapter-{i}"
         if i == 278:
-            url = origin + 'tdg-chapter-' + str(i) + "-1"
+            url = f"{origin}tdg-chapter-{i}-1"
         chapterlist.append(url)
     return chapterlist
 

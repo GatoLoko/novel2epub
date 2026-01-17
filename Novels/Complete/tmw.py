@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,76 +15,49 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
-
-@author: GatoLoko
-"""
-
-from common import Volume
-import common
 import re
 
-volumes = {'1': Volume('1 - Lian tribal clan',
-                       1, 80),
-           '2': Volume('2 - Kingdom selection',
-                       81, 141),
-           '3': Volume('3 - Divine Capital',
-                       142, 156),
-           '4': Volume('4 - Tai Ah Divine city',
-                       157, 212),
-           '5': Volume('5 - Rookie ranking competition',
-                       213, 254),
-           '6': Volume('6 - Desolate Heaven master',
-                       255, 277),
-           '7': Volume('7 - Divine Wilderness',
-                       278, 302),
-           '8': Volume('8 - City Lords birthday banquet',
-                       303, 343),
-           '9': Volume('9 - Tai Ah Divine Kingdom calamity',
-                       344, 372),
-           '10': Volume('10 - Desolate Heaven technique tea session',
-                        373, 407),
-           '11': Volume('11 - Great Empress relic trial',
-                        408, 427),
-           '12': Volume('12 - Great Empress mystic realm',
-                        428, 542),
-           '13': Volume('13 - Post Great Empress mystic realm',
-                        543, 602),
-           '14': Volume('14 - Blackstone trials',
-                        603, 662),
-           '15': Volume('15 - Tian Yuan world disaster',
-                        663, 683),
-           '16': Volume('16 - Divine Wilderness escapade',
-                        684, 718),
-           '17': Volume('17 - Black-armored Demon God',
-                        719, 767),
-           '18': Volume('18 - 12 Empyrean Heavens',
-                        768, 802),
-           '19': Volume('19 - Pre-Luo Divine Hall trials',
-                        803, 854),
-           '20': Volume('20 - Empress Luos banquet',
-                        855, 871),
-           '21': Volume('21 - Luo Divine Hall trials',
-                        872, 916),
-           '22': Volume('22 - Alliance chanllenger',
-                        917, 949),
-           '23': Volume('23 - Disciple recruitment',
-                        950, 988),
-           '24': Volume('24 - Azure Wood Great World',
-                        989, 1100),
-           '25': Volume('25', 1101, 1200),
-           '26': Volume('26', 1201, 1300),
-           '27': Volume('27', 1301, 1400),
-           '28': Volume('28', 1401, 1500),
-           '29': Volume('29', 1501, 1600),
-           '30': Volume('30', 1601, 1710),
-           }
+from libs import common
 
-origin = 'http://www.wuxiaworld.co/True-Martial-World/'
-author = 'Canjian Li De Niu/Cocooned Cow (蚕茧里的牛)'
-cover_file = 'Covers/true-martial-world.jpg'
-title = 'True Martial World - Vol'
+Volume = common.Volume
+
+volumes = {
+    "1": Volume("1 - Lian tribal clan", 1, 80),
+    "2": Volume("2 - Kingdom selection", 81, 141),
+    "3": Volume("3 - Divine Capital", 142, 156),
+    "4": Volume("4 - Tai Ah Divine city", 157, 212),
+    "5": Volume("5 - Rookie ranking competition", 213, 254),
+    "6": Volume("6 - Desolate Heaven master", 255, 277),
+    "7": Volume("7 - Divine Wilderness", 278, 302),
+    "8": Volume("8 - City Lords birthday banquet", 303, 343),
+    "9": Volume("9 - Tai Ah Divine Kingdom calamity", 344, 372),
+    "10": Volume("10 - Desolate Heaven technique tea session", 373, 407),
+    "11": Volume("11 - Great Empress relic trial", 408, 427),
+    "12": Volume("12 - Great Empress mystic realm", 428, 542),
+    "13": Volume("13 - Post Great Empress mystic realm", 543, 602),
+    "14": Volume("14 - Blackstone trials", 603, 662),
+    "15": Volume("15 - Tian Yuan world disaster", 663, 683),
+    "16": Volume("16 - Divine Wilderness escapade", 684, 718),
+    "17": Volume("17 - Black-armored Demon God", 719, 767),
+    "18": Volume("18 - 12 Empyrean Heavens", 768, 802),
+    "19": Volume("19 - Pre-Luo Divine Hall trials", 803, 854),
+    "20": Volume("20 - Empress Luos banquet", 855, 871),
+    "21": Volume("21 - Luo Divine Hall trials", 872, 916),
+    "22": Volume("22 - Alliance chanllenger", 917, 949),
+    "23": Volume("23 - Disciple recruitment", 950, 988),
+    "24": Volume("24 - Azure Wood Great World", 989, 1100),
+    "25": Volume("25", 1101, 1200),
+    "26": Volume("26", 1201, 1300),
+    "27": Volume("27", 1301, 1400),
+    "28": Volume("28", 1401, 1500),
+    "29": Volume("29", 1501, 1600),
+    "30": Volume("30", 1601, 1710),
+}
+
+origin = "http://www.wuxiaworld.co/True-Martial-World/"
+author = "Canjian Li De Niu/Cocooned Cow (蚕茧里的牛)"
+cover_file = "Covers/true-martial-world.jpg"
+title = "True Martial World - Vol"
 
 synopsis_text = """
 With the strongest experts from the 33 Skies, the Human Emperor, Lin Ming
@@ -103,19 +75,18 @@ martial arts.</p>
 <p>A young adult named Yi Yun from modern Earth had unwittingly stumbled into
 such a world and began that journey with a purple card of unknown origin.</p>
 
-<p>It’s a magnificent yet unknown true martial art world. This is the story of
+<p>It's a magnificent yet unknown true martial art world. This is the story of
 a normal young adult turning into a legendary peerless expert.
 """
 
 
 def genlist(start, end):
-    global origin
     list_page = common.get_html(origin)
     chapterlist = []
-    for i in range(start, end+1):
-        text = '^' + str(i) + '.*'
-        link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href'].split("/")[-1]
+    for i in range(start, end + 1):
+        text = f"^{i}.*"
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link["href"].split("/")[-1]}"
         chapterlist.append(url)
     return chapterlist
 

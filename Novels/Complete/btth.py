@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,37 +15,33 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
 
-@author: GatoLoko
-"""
+from libs.common import Volume
 
-from common import Volume
+volumes = {
+    "1": Volume("1", 1, 99),
+    "2": Volume("2", 100, 199),
+    "3": Volume("3", 200, 299),
+    "4": Volume("4", 300, 399),
+    "5": Volume("5", 400, 499),
+    "6": Volume("6", 500, 599),
+    "7": Volume("7", 600, 699),
+    "8": Volume("8", 700, 799),
+    "9": Volume("9", 800, 899),
+    "10": Volume("10", 900, 999),
+    "11": Volume("11", 1000, 1099),
+    "12": Volume("12", 1100, 1199),
+    "13": Volume("13", 1200, 1299),
+    "14": Volume("14", 1300, 1399),
+    "15": Volume("15", 1400, 1499),
+    "16": Volume("16", 1500, 1599),
+    "17": Volume("17", 1600, 1648),
+}
 
-volumes = {'1': Volume('1', 1, 99),
-           '2': Volume('2', 100, 199),
-           '3': Volume('3', 200, 299),
-           '4': Volume('4', 300, 399),
-           '5': Volume('5', 400, 499),
-           '6': Volume('6', 500, 599),
-           '7': Volume('7', 600, 699),
-           '8': Volume('8', 700, 799),
-           '9': Volume('9', 800, 899),
-           '10': Volume('10', 900, 999),
-           '11': Volume('11', 1000, 1099),
-           '12': Volume('12', 1100, 1199),
-           '13': Volume('13', 1200, 1299),
-           '14': Volume('14', 1300, 1399),
-           '15': Volume('15', 1400, 1499),
-           '16': Volume('16', 1500, 1599),
-           '17': Volume('17', 1600, 1648),
-           }
-
-origin = 'http://www.wuxiaworld.com/novel/battle-through-the-heavens/'
-author = 'Heavenly Silkworm Potato (天蚕土豆)'
-cover_file = 'Covers/btth.jpg'
-title = 'Battle through the heavens - Vol'
+origin = "http://www.wuxiaworld.com/novel/battle-through-the-heavens/"
+author = "Heavenly Silkworm Potato (天蚕土豆)"
+cover_file = "Covers/btth.jpg"
+title = "Battle through the heavens - Vol"
 
 synopsis_text = """
 In a land where no magic is present. A land where the strong make the rules
@@ -59,10 +54,10 @@ lose all of his powers? And why has his fiancee suddenly shown up?
 
 
 def genlist(start, end):
-    global origin
+    # global origin
     chapterlist = []
-    for i in range(start, end+1):
-        url = origin + 'btth-chapter-' + str(i)
+    for i in range(start, end + 1):
+        url = f"{origin}btth-chapter-{i}"
         chapterlist.append(url)
     return chapterlist
 

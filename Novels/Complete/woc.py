@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 19/02/2021
 # Copyright (C) 2021 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,29 +15,28 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 19/02/21
-
-@author: GatoLoko
-"""
-
-from common import Volume
-import common
 import re
 
-volumes = {'1': Volume('1', 1, 100),
-           '2': Volume('2', 101, 200),
-           '3': Volume('3', 201, 300),
-           '4': Volume('4', 301, 400),
-           '5': Volume('5', 401, 500),
-           '6': Volume('6', 501, 600),
-           '7': Volume('7', 601, 633),
-           }
+from libs import common
 
-origin = 'https://www.wuxiaworld.co/While-Others-Cultivate,-I-Use-My-Unique-RPG-Leveling-System-to-Cultivate-Smut-Romance-With-Their-Girlfriends!/'
-author = 'MotivatedSloth'
-cover_file = 'Covers/woc.jpg'
-title = 'While others cultivate, I use my unique RPG leveling system to cultivate smut romance with their girlfriends - Vol'
+Volume = common.Volume
+
+volumes = {
+    "1": Volume("1", 1, 100),
+    "2": Volume("2", 101, 200),
+    "3": Volume("3", 201, 300),
+    "4": Volume("4", 301, 400),
+    "5": Volume("5", 401, 500),
+    "6": Volume("6", 501, 600),
+    "7": Volume("7", 601, 633),
+}
+
+origin = "https://www.wuxiaworld.co/While-Others-Cultivate,-I-Use-My-"
+"Unique-RPG-Leveling-System-to-Cultivate-Smut-Romance-With-Their-Girlfriends!/"
+author = "MotivatedSloth"
+cover_file = "Covers/woc.jpg"
+title = "While others cultivate, I use my unique RPG leveling system"
+" to cultivate smut romance with their girlfriends - Vol"
 
 synopsis_text = """
 Did I reincarnate? Or was I transported to an Isekai cultivation world? To be
@@ -68,23 +66,24 @@ devil general?
 
 
 def genlist(start, end):
-    global origin
     list_page = common.get_html(origin)
     chapterlist = []
-    for i in range(start, end+1):
+    for i in range(start, end + 1):
         # print(i)
-        if i in [605, ]:
+        if i in [
+            605,
+        ]:
             continue
-        text = '^%s .*' % str(i)
-        link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href'].split("/")[-1]
+        text = f"^{i} .*"
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link['href'].split('/')[-1]}"
         chapterlist.append(url)
     chapterlist = list(dict.fromkeys(chapterlist))
     return chapterlist
 
 
 def clean(content):
-    credline = re.compile(r'Translator:.*Editor:.*')
+    credline = re.compile(r"Translator:.*Editor:.*")
     for i in content.find_all(text=credline):
-        i.replaceWith('')
+        i.replaceWith("")
     return content

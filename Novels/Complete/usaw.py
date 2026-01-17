@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,34 +15,31 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
-
-@author: GatoLoko
-"""
-
-import common
 import re
+
+from libs import common
+
 Volume = common.Volume
 
-volumes = {'1': Volume('1 - Rise of the Cloud', 0, 90),
-           '2': Volume('2 - Wandering the Beiyan province', 91, 180),
-           '3': Volume('3 - The Crafting School', 181, 361),
-           '4': Volume('4 - Soulbeast forest', 362, 510),
-           '5': Volume('5 - Turmoil in the Capital', 511, 700),
-           '6': Volume('6 - Pill Royale', 701, 840),
-           '7': Volume('7 - Shocking the continent', 841, 1000),
-           '8': Volume('8 - A midlife reincarnation', 1001, 1050),
-           '9': Volume('9 - The return of the mighty', 1051, 1160),
-           '10': Volume('10 - Times of Turbulence', 1161, 1290),
-           '11': Volume('11 - The Supreme Saints inheritance', 1291, 1356)
-           # This novel ends with chapter 1356
-           }
+volumes = {
+    "1": Volume("1 - Rise of the Cloud", 0, 90),
+    "2": Volume("2 - Wandering the Beiyan province", 91, 180),
+    "3": Volume("3 - The Crafting School", 181, 361),
+    "4": Volume("4 - Soulbeast forest", 362, 510),
+    "5": Volume("5 - Turmoil in the Capital", 511, 700),
+    "6": Volume("6 - Pill Royale", 701, 840),
+    "7": Volume("7 - Shocking the continent", 841, 1000),
+    "8": Volume("8 - A midlife reincarnation", 1001, 1050),
+    "9": Volume("9 - The return of the mighty", 1051, 1160),
+    "10": Volume("10 - Times of Turbulence", 1161, 1290),
+    "11": Volume("11 - The Supreme Saints inheritance", 1291, 1356),
+    # This novel ends with chapter 1356
+}
 
-origin = 'http://www.wuxiaworld.co/Upgrade-Specialist-in-Another-World/'
-author = 'Endless Sea Of Clouds (茫茫云海)'
-cover_file = 'Covers/usaw.jpg'
-title = 'Upgrade Specialist in Another World - Book '
+origin = "http://www.wuxiaworld.co/Upgrade-Specialist-in-Another-World/"
+author = "Endless Sea Of Clouds (茫茫云海)"
+cover_file = "Covers/usaw.jpg"
+title = "Upgrade Specialist in Another World - Book "
 
 synopsis_text = """Just as a gamer found an overpowered skill book called ‘Item
 Upgrade’ in the hottest virtual reality role-playing game on Earth, something
@@ -59,29 +55,24 @@ no limits. There was a group of humans here who could cultivate the power of
 their own souls then control their bodies, the natural elements and even other
 people’s souls with that power! These special beings were called — soul
 cultivators. Come witness how the several fragments of the dead
-inter-dimensional traveler’s soul and that skill book, which was not governed
+inter-dimensional traveler's soul and that skill book, which was not governed
 by the laws of this plane, were going to help Bai Yunfei become a legendary
 soul cultivator and craftsman!
 """
 
 
 def genlist(start, end):
-    global origin
     list_page = common.get_html(origin)
     chapterlist = []
-    currentvol = ''
-    for key, value in volumes.items():
-        if value.first is start:
-            currentvol = key
-    for i in range(start, end+1):
+    for i in range(start, end + 1):
         if i == 0:
             text = "USAW Prologue"
         elif i == 554:
-            text = "Chaper %s:.*" % str(i)
+            text = f"Chaper {i}:.*"
         else:
-            text = "Chapter %s:.*" % str(i)
-        link = list_page.find('a', text=re.compile(text))
-        url = "%s%s" % (origin, link['href'].split("/")[-1])
+            text = f"Chapter {i}:.*"
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link["href"].split("/")[-1]}"
         chapterlist.append(url)
     return chapterlist
 

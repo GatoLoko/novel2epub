@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 25/03/2019
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,29 +15,25 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 25/03/19
 
-@author: GatoLoko
-"""
-
-from common import Volume
-import common
 import re
 
-volumes = {'1': Volume('1', 1, 113),
-           '2': Volume('2', 114, 339),
-           '3': Volume('3', 340, 409),
-           '4': Volume('4', 410, 511),
-           '5': Volume('5', 512, 580),
-           '6': Volume('6', 581, 735),
-           '7': Volume('7', 736, 1026),
-           }
+from libs.common import Volume
 
-origin = 'http://www.wuxiaworld.co/God-and-Devil-World/'
-author = 'Zi Chan Bao Zeng (资产暴增)'
-cover_file = 'Covers/godanddevilworld.jpg'
-title = 'God and Devil world - Vol'
+volumes = {
+    "1": Volume("1", 1, 113),
+    "2": Volume("2", 114, 339),
+    "3": Volume("3", 340, 409),
+    "4": Volume("4", 410, 511),
+    "5": Volume("5", 512, 580),
+    "6": Volume("6", 581, 735),
+    "7": Volume("7", 736, 1026),
+}
+
+origin = "http://www.wuxiaworld.co/God-and-Devil-World/"
+author = "Zi Chan Bao Zeng (资产暴增)"
+cover_file = "Covers/godanddevilworld.jpg"
+title = "God and Devil world - Vol"
 
 synopsis_text = """
 In less than an instant the world as we knew it was at its end.</p>
@@ -58,11 +53,11 @@ before he suddenly discovers that he has only gotten over the first hurdle….
 Unbeknownst to Yue Zhong and company, the world outside of China is mostly a
 wasteland! Country sized swathes of nuclear radiation and an extreme shortage
 of supplies in the world after the nuclear explosions was quickly becoming the
-“norm”. Mutants, Evolved animals and what’s worse, intelligent out of control
+“norm”. Mutants, Evolved animals and what's worse, intelligent out of control
 dinosaurs had quickly appeared and claimed their own sections of the planet.
 There were several innately powerful Evolved races which appeared that were
 more than 10 times stronger than humans, nearly all of them possessing bodies
-impenetrable by normal bullets. The fabled orcs’ were another of these Evolved
+impenetrable by normal bullets. The fabled orcs' were another of these Evolved
 races, the leader of which had in fact enslaved many of the remaining human
 beings.</p>
 
@@ -73,13 +68,12 @@ Or overcome all obstacles and struggle towards Evolution!!!
 
 
 def genlist(start, end):
-    global origin
     list_page = common.get_html(origin)
     chapterlist = []
-    for i in range(start, end+1):
-        text = '^' + str(i) + ' .*'
-        link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href'].split("/")[-1]
+    for i in range(start, end + 1):
+        text = f"^{i} .*"
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link['href'].split('/')[-1]}"
         chapterlist.append(url)
     return chapterlist
 

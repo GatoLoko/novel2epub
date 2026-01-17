@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-
-# -*- coding: utf-8 -*-
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -18,64 +15,40 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
+from libs.common import Volume
 
-@author: GatoLoko
-"""
+volumes = {
+    "1": Volume("1 - Red-Colored calamity", 0, 100),
+    "2": Volume("2 - Blue Wind continent", 101, 200),
+    "3": Volume("3 - Name that shakes the Profound Sky", 201, 300),
+    "4": Volume("4 - Fury that burns the heavens", 301, 400),
+    "5": Volume("5 - Primordial Profound Ark", 401, 500),
+    "6": Volume("6 - Lordship in Illusory Demon", 501, 650),
+    "7": Volume("7 - Heaven Smiting shakes the world", 651, 800),
+    "8": Volume("8 - Cloud's End Mirage", 801, 900),
+    "9": Volume("9 - Realm of the gods", 901, 1000),
+    "10": Volume("10 - Snow Song's flame God", 1001, 1100),
+    "11": Volume("11 - Profound God convention", 1101, 1200),
+    "12": Volume("12 - Infatuation in dreams", 1201, 1300),
+    "13": Volume("13 - Demise of life and soul", 1301, 1400),
+    "14": Volume("14 - Crimson calamity", 1401, 1500),
+    "15": Volume("15 - When hope dies, the devil awakens", 1501, 1600),
+    "16": Volume("16 - Emperor of the North", 1601, 1700),
+    "17": Volume("17 - Advent of Yun", 1701, 1800),
+    "18": Volume("18 - Night of Calamity has yet to End", 1801, 1900),
+    "19": Volume("19 - Ancient Abyss", 1901, 2000),
+    "20": Volume("20 - Emperor of the Endless Fog", 2001, 2100),
+    "21": Volume("21 - The Kingdom of God In Turmoil", 2101, 2165),
+    "X": Volume("X - END", 0000, 0000),
+    # As of Dec 2026, the translation is up to date with the original
+    # source and there is no way to know how many chapters/volumes may
+    # be in the future.
+}
 
-from common import Volume
-
-volumes = {'1': Volume('1 - Red-Colored calamity',
-                       0, 100),
-           '2': Volume('2 - Blue Wind continent',
-                       101, 200),
-           '3': Volume('3 - Name that shakes the Profound Sky',
-                       201, 300),
-           '4': Volume('4 - Fury that burns the heavens',
-                       301, 400),
-           '5': Volume('5 - Primordial Profound Ark',
-                       401, 500),
-           '6': Volume('6 - Lordship in Illusory Demon',
-                       501, 650),
-           '7': Volume('7 - Heaven Smiting shakes the world',
-                       651, 800),
-           '8': Volume('8 - Cloud\'s End Mirage',
-                       801, 900),
-           '9': Volume('9 - Realm of the gods',
-                       901, 1000),
-           '10': Volume('10 - Snow Song\'s flame God',
-                        1001, 1100),
-           '11': Volume('11 - Profound God convention',
-                        1101, 1200),
-           '12': Volume('12 - Infatuation in dreams',
-                        1201, 1300),
-           '13': Volume('13 - Demise of life and soul',
-                        1301, 1400),
-           '14': Volume('14 - Crimson calamity',
-                        1401, 1500),
-           '15': Volume('15 - When hope dies, the devil awakens',
-                        1501, 1600),
-           '16': Volume('16 - Emperor of the North',
-                        1601, 1700),
-           '17': Volume('17 - Advent of Yun',
-                        1701, 1800),
-           '18': Volume('18 - Night of Calamity has yet to End',
-                        1801, 1900),
-           '19': Volume('19 - Ancient Abyss',
-                        1901, 1924),
-           #
-           'X': Volume('X - END',
-                       0000, 0000)
-           # As of Jan 2020, the translation is up to date with the original
-           # source and there is no way to know how many chapters/volumes may
-           # be in the future.
-           }
-
-origin = 'http://www.wuxiaworld.com/novel/against-the-gods/'
-author = 'Mars Gravity (火星引力)'
-cover_file = 'Covers/againstthegods-225x300.jpg'
-title = 'Against the Gods - Vol'
+origin = "http://www.wuxiaworld.com/novel/against-the-gods/"
+author = "Mars Gravity (火星引力)"
+cover_file = "Covers/againstthegods-225x300.jpg"
+title = "Against the Gods - Vol"
 
 synopsis_text = """
 Official description:</p>
@@ -89,22 +62,20 @@ the body of a boy with the same name in another world. Fortunately, he has kept
 the treasure he ran off with.
 """
 
+DOUBLE_CHAPTER = 761
+MISSING_ATG = [1043, 1044]
 
-def genlist(start, end):
-    global origin
+
+def genlist(start: int, end: int) -> list[str]:
     chapterlist = []
-    for i in range(start, end+1):
-        if i == 761:
-            url = origin + "atg-chapter-" + str(i)
+    for i in range(start, end + 1):
+        url = f"{origin}atg-chapter-{i}"
+        if i == DOUBLE_CHAPTER:
             chapterlist.append(url)
-            url = origin + "atg-chapter-" + str(i) + "-05"
-            chapterlist.append(url)
-        if i in [1043, 1044]:
-            url = origin + "chapter-" + str(i)
-            chapterlist.append(url)
-        else:
-            url = origin + "atg-chapter-" + str(i)
-            chapterlist.append(url)
+            url = f"{origin}atg-chapter-{i}-05"
+        elif i in MISSING_ATG:
+            url = f"{origin}chapter-{i}"
+        chapterlist.append(url)
     return chapterlist
 
 

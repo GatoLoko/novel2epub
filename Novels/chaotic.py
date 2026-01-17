@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-
+# Created on 24/01/2017
 # Copyright (C) 2017 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
@@ -16,42 +15,38 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 24/01/17
-
-@author: GatoLoko
-"""
-
-import common
 import re
+
+from libs import common
+
 Volume = common.Volume
 
-volumes = {'1': Volume('1', 1, 50),
-           '2': Volume('2', 51, 100),
-           '3': Volume('3', 101, 150),
-           '4': Volume('4', 151, 200),
-           '5': Volume('5', 201, 250),
-           '6': Volume('6', 251, 289),
-           #
-           '7..': Volume('5', 301, 349),
-           '8..': Volume('5', 351, 400),
-           '9..': Volume('5', 401, 449),
-           '10.': Volume('5', 450, 500),
-           '11.': Volume('5', 501, 549),
-           '12.': Volume('5', 551, 600),
-           '13.': Volume('5', 601, 649),
-           '14.': Volume('5', 651, 700),
-           '15.': Volume('5', 701, 749),
-           '16.': Volume('5', 751, 800),
-           '17.': Volume('5', 801, 849),
-           '18.': Volume('5', 851, 900),
-           '19.': Volume('5 - END', 901, 954),
-           }
+volumes = {
+    "1": Volume("1", 1, 50),
+    "2": Volume("2", 51, 100),
+    "3": Volume("3", 101, 150),
+    "4": Volume("4", 151, 200),
+    "5": Volume("5", 201, 250),
+    "6": Volume("6", 251, 289),
+    "7..": Volume("5", 301, 349),
+    "8..": Volume("5", 351, 400),
+    "9..": Volume("5", 401, 449),
+    "10.": Volume("5", 450, 500),
+    "11.": Volume("5", 501, 549),
+    "12.": Volume("5", 551, 600),
+    "13.": Volume("5", 601, 649),
+    "14.": Volume("5", 651, 700),
+    "15.": Volume("5", 701, 749),
+    "16.": Volume("5", 751, 800),
+    "17.": Volume("5", 801, 849),
+    "18.": Volume("5", 851, 900),
+    "19.": Volume("5 - END", 901, 954),
+}
 
-origin = 'http://www.wuxiaworld.co/Chaotic-Lightning-Cultivation/'
-author = 'Xie Zi Ban (写字板)'
-cover_file = 'Covers/chaotic-lightning-cultivation.jpg'
-title = 'Chaotic Lightning Cultivation - Vol'
+origin = "http://www.wuxiaworld.co/Chaotic-Lightning-Cultivation/"
+author = "Xie Zi Ban (写字板)"
+cover_file = "Covers/chaotic-lightning-cultivation.jpg"
+title = "Chaotic Lightning Cultivation - Vol"
 
 synopsis_text = """
 His parents were the geniuses of the sect. But they were apparently killed
@@ -85,14 +80,13 @@ bolts of lightning”
 """
 
 
-def genlist(start, end):
-    global origin
+def genlist(start: int, end: int) -> list[str]:
     list_page = common.get_html(origin)
     chapterlist = []
-    for i in range(start, end+1):
-        text = "Chapter %s: " % str(i)
-        link = list_page.find('a', text=re.compile(text))
-        url = "%s%s" % (origin, link['href'])
+    for i in range(start, end + 1):
+        text = f"Chapter {i}: "
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link['href']}"
         chapterlist.append(url)
     return chapterlist
 

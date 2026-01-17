@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-
-# Copyright (C) 2017 GatoLoko
+# Created on 19/02/2019
+# Copyright (C) 2019 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,29 +15,27 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 19/02/19
 
-@author: GatoLoko
-"""
-
-from common import Volume
-import common
 import re
 
-volumes = {'1': Volume('1', 1, 88),
-           '2': Volume('2', 89, 96),
-           '3': Volume('3', 97, 481),
-           '4': Volume('4', 482, 825),
-           '5': Volume('5', 826, 1218),
-           '6': Volume('6', 1219, 1498),
-           # This novel ends with chapter 1498
-           }
+from libs import common
 
-origin = 'http://www.wuxiaworld.co/Release-that-Witch/'
-author = 'Er Mu (二目)'
-cover_file = 'Covers/release-that-witch.jpg'
-title = 'Release that witch - Vol'
+Volume = common.Volume
+
+volumes = {
+    "1": Volume("1", 1, 88),
+    "2": Volume("2", 89, 96),
+    "3": Volume("3", 97, 481),
+    "4": Volume("4", 482, 825),
+    "5": Volume("5", 826, 1218),
+    "6": Volume("6", 1219, 1498),
+    # This novel ends with chapter 1498
+}
+
+origin = "http://www.wuxiaworld.co/Release-that-Witch/"
+author = "Er Mu (二目)"
+cover_file = "Covers/release-that-witch.jpg"
+title = "Release that witch - Vol"
 
 synopsis_text = """
 Chen Yan travels through time, only to end up becoming an honorable prince in
@@ -56,20 +53,19 @@ from the realm of evil.
 
 
 def genlist(start, end):
-    global origin
     list_page = common.get_html(origin)
     chapterlist = []
-    for i in range(start, end+1):
+    for i in range(start, end + 1):
         # print(i)
-        text = '^%s .*' % str(i)
-        link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href'].split("/")[-1]
+        text = f"^{i} .*"
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link["href"].split("/")[-1]}"
         chapterlist.append(url)
     return chapterlist
 
 
 def clean(content):
-    credline = re.compile(r'Translator:.*Editor:.*')
+    credline = re.compile(r"Translator:.*Editor:.*")
     for i in content.find_all(text=credline):
-        i.replaceWith('')
+        i.replaceWith("")
     return content

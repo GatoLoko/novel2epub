@@ -1,6 +1,5 @@
-#!/usr/bin/env python3
-
-# Copyright (C) 2017 GatoLoko
+# Created on 19/02/2019
+# Copyright (C) 2019 GatoLoko
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -16,26 +15,23 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 
-"""
-Created on 19/02/19
-
-@author: GatoLoko
-"""
-
-from common import Volume
-import common
 import re
 
-volumes = {'1': Volume('1', 1, 100),
-           '2': Volume('2', 101, 200),
-           '3': Volume('3', 201, 300),
-           '4': Volume('4', 301, 314),
-           }
+from libs import common
 
-origin = 'http://www.wuxiaworld.co/In-a-Different-World-with-a-Smartphone/'
-author = 'Ming Yu (明宇)'
-cover_file = 'Covers/iadwwas.jpg'
-title = 'In a different world with a smartphone - Vol'
+Volume = common.Volume
+
+volumes = {
+    "1": Volume("1", 1, 100),
+    "2": Volume("2", 101, 200),
+    "3": Volume("3", 201, 300),
+    "4": Volume("4", 301, 314),
+}
+
+origin = "http://www.wuxiaworld.co/In-a-Different-World-with-a-Smartphone/"
+author = "Ming Yu (明宇)"
+cover_file = "Covers/iadwwas.jpg"
+title = "In a different world with a smartphone - Vol"
 
 synopsis_text = """
 After a freak accident involving some lightning winds up zapping him dead,
@@ -43,7 +39,7 @@ After a freak accident involving some lightning winds up zapping him dead,
 am afraid to say that I have made a bit of a blunder…” laments the old coot.
 But all is not lost! God says that he can reincarnate Touya into a world of
 fantasy, and as a bonus, he gets to bring his smartphone along with! So begins
-Touya’s adventure in a new, anachronistic pseudo-medieval world. Friends!
+Touya's adventure in a new, anachronistic pseudo-medieval world. Friends!
 Laughs! Tears! Inexplicable Deus ex Machina! He sets off on a journey full of
 wonder as he absentmindedly travels from place to place, following whatever
 goal catches his fancy. The curtains lift on an epic tale of swords, sorcery,
@@ -51,27 +47,26 @@ and smartphone apps!
 """
 
 
-def genlist(start, end):
-    global origin
+def genlist(start: int, end: int) -> list[str]:
     list_page = common.get_html(origin)
     chapterlist = []
-    for i in range(start, end+1):
+    for i in range(start, end + 1):
         # print(i)
-        text = '^Chapter %s: .*' % str(i)
+        text = f"^Chapter {i}: .*"
         if i == 34:
-            text = '^Chatper %s: .*' % str(i)
+            text = f"^Chatper {i}: .*"
         elif i >= 312:
-            text = '^Chapter %s' % str(i)
+            text = f"^Chapter {i}"
         if i in [187, 300]:  # Skip missing chapters
             continue
-        link = list_page.find('a', text=re.compile(text))
-        url = origin + link['href']
+        link = list_page.find("a", text=re.compile(text))
+        url = f"{origin}{link['href']}"
         chapterlist.append(url)
     return chapterlist
 
 
 def clean(content):
-    credline = re.compile(r'Translator:.*Editor:.*')
+    credline = re.compile(r"Translator:.*Editor:.*")
     for i in content.find_all(text=credline):
-        i.replaceWith('')
+        i.replaceWith("")
     return content
